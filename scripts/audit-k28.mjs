@@ -18,7 +18,9 @@ for(const file of ["album-k28.css","cinema-k28.css","k28-experience.css","CNAME"
  assert(has(file),"Missing "+file);
 for(const id of ["albumK28Groups","albumK28Message","albumK28Lightbox","albumK28Enhanced","albumK28Original","mapBadge","provinceFilter","locationMode","shareK28","exportNotes"])
  assert(html.includes('id="'+id+'"'),"Missing HTML ID "+id);
-assert(album.includes('const root=$("albumK28Groups")'),"Gallery selector not synced with HTML");
+assert(album.includes('const host=$("albumK28Groups")'),"Carousel host selector not synced with HTML");
+assert(album.includes('k28-carousel-stage')&&album.includes('k28-carousel-dot'),"Single-frame carousel elements missing");
+assert(album.includes('function step(delta)')&&album.includes('touchend'),"Next/previous and swipe handling missing");
 assert(!album.includes('$("albumK28Grid")'),"Old missing gallery selector");
 assert(html.indexOf('id="anhxua"')<html.indexOf('id="bandokyuc"'),"Album should appear before map");
 assert(html.includes("(!loc||locationName(p)===loc)"),"Map filter should use active location mode");
