@@ -31,14 +31,15 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 @media(max-width:720px){.wrap{padding:0 17px}.masthead-inner{align-items:flex-start;padding-top:10px;padding-bottom:10px;flex-direction:column;gap:2px}.nav{gap:13px}.hero-inner{grid-template-columns:1fr;padding-top:45px;padding-bottom:38px}.hero h1{font-size:69px}.postcard{display:none}.stats-inner{grid-template-columns:repeat(2,1fr)}.stat{padding:14px}.map-shell{display:flex;flex-direction:column}.side{order:2;border-right:0;border-top:1px solid #d8c6a8}.map-area{order:1;min-height:480px}#map{height:480px;min-height:480px}.student-list{max-height:260px}.map-tools{right:8px;top:57px}.map-badge{left:8px;top:9px}.map-note{bottom:10px;left:8px;max-width:245px}.story-grid,.guest-grid{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr);row-gap:10px}.memory-grid{grid-template-columns:1fr 1fr}.memory-grid .memory-card:last-child{display:none}.memory-pic{height:145px}.story-band h2{font-size:46px}.quote{font-size:26px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.masthead,.map-tools,.side,.btn,.guestbook,footer{display:none!important}.map-shell{display:block}#map{height:360px;min-height:360px}.hero-inner{min-height:auto}.hero{background:#fff}.map-section,.timeline-section{padding:25px 0}}
+.map-mode{display:flex;gap:9px;align-items:center;margin:9px 0 12px}.map-mode label{white-space:nowrap;font-size:12px}.map-mode select{flex:1;min-width:0}.map-actions{flex-wrap:wrap}.map-actions .btn{white-space:normal}.map-note a{color:inherit;text-decoration:underline}
 </style>
 </head>
 <body>
 <header class="masthead"><div class="wrap masthead-inner"><a class="identity" href="#dau">Kinh tế <b>K28</b> <span aria-hidden="true">✦</span></a><nav class="nav" aria-label="Điều hướng"><a href="#bandokyuc">BẢN ĐỒ KÝ ỨC</a><a href="#cauchuyen">CHUYỆN CHÚNG MÌNH</a><a href="#namthang">NĂM THÁNG</a><a href="#luubut">LƯU BÚT</a></nav></div></header>
 <main>
 <section class="hero" id="dau"><div class="wrap hero-inner"><div><div class="eyebrow">✦ Kỷ yếu điện tử · Kinh tế K28 · Niên khóa 2007–2011 ✦</div><h1>Khi ta còn là <em>sinh viên...</em></h1><p class="hero-lead">Từ những miền quê khác nhau, chúng ta gặp nhau trong cùng một lớp học. Tháng năm trôi qua, tình bạn và những buổi đến trường vẫn còn nguyên trong ký ức.</p><div class="cta"><a class="btn primary" href="#bandokyuc">⌖ Tìm lại miền quê bạn bè</a><a class="btn soft" href="#namthang">♡ Đi qua những năm tháng</a></div></div><div class="postcard" aria-label="Bưu thiếp ký ức K28"><div class="postmark">K28<br>THANH XUÂN<br>♥</div><div class="postcard-inner"><div class="eyebrow">Bốn năm · Một thời</div><div class="year">2007<br>—2011</div><div class="dash"></div><div class="words">Nhớ một thời áo trắng,<br>nhớ một thời sinh viên</div></div></div></div></section>
-<div class="stats"><div class="wrap stats-inner"><div class="stat"><strong id="total">33</strong><span>Gương mặt trong kỷ yếu</span></div><div class="stat"><strong id="places">19</strong><span>Miền quê đặt điểm tham khảo</span></div><div class="stat"><strong id="modern">17</strong><span>Tỉnh, thành hiện nay đã xác định</span></div><div class="stat"><strong>04</strong><span>Năm thanh xuân 2007–2011</span></div></div></div>
-<section class="map-section" id="bandokyuc"><div class="wrap"><div class="section-head"><div class="eyebrow">01 / Kết nối ký ức bằng địa lý</div><h2>Bản đồ những miền quê</h2><p>Mỗi điểm sáng là một miền quê được ghi trong danh sách lớp. Rê chuột lên điểm để gặp lại bạn bè; chọn từng người để xem MSSV, năm sinh và hành trình tên gọi địa danh qua thời gian.</p></div><div class="map-shell"><aside class="side" aria-label="Tra cứu bạn học"><div class="panel-title">Danh sách thân thương ♡</div><input class="field" id="search" type="search" placeholder="Tìm tên, MSSV, quê quán…" aria-label="Tìm sinh viên"><div class="filter-row"><select class="field" id="provinceFilter" aria-label="Lọc theo tỉnh hiện nay"><option value="">Tất cả tỉnh, thành</option></select><button class="btn soft" id="reset" type="button" title="Xóa bộ lọc">↺</button></div><div class="micro" id="found" aria-live="polite">Đang tải danh sách…</div><div class="student-list" id="studentList" tabindex="0"></div><div class="profile" id="profile" aria-live="polite"><div class="micro">Chọn một người bạn để tìm về những năm tháng đã qua.</div></div><div class="map-actions"><button class="btn soft" type="button" id="outline">▱ Ranh giới hiện nay</button><button class="btn soft" type="button" id="export">↓ Xuất GeoJSON</button></div><div class="status" role="status" id="status">Các điểm là vị trí đại diện địa danh cũ ở cấp tỉnh, không phải tọa độ nơi sinh chính xác.</div></aside><div class="map-area"><div id="map" role="region" aria-label="Bản đồ địa hình các miền quê lớp K28"></div><div class="map-badge">⌖ VIỆT NAM · NHỮNG MIỀN QUÊ K28</div><div class="map-tools"><select id="basemap" aria-label="Chọn lớp bản đồ"><option value="topo">Địa hình</option><option value="sat">Vệ tinh · ClipMap</option><option value="road">Đường phố</option></select><button id="resetMap" title="Xem toàn cảnh Việt Nam" type="button">⌂ Toàn cảnh</button></div><div class="map-note">● Điểm quy ước theo địa danh cũ · Ranh giới mới là dữ liệu tham khảo · WGS84</div></div></div></div></section>
+<div class="stats"><div class="wrap stats-inner"><div class="stat"><strong id="total">33</strong><span>Gương mặt trong kỷ yếu</span></div><div class="stat"><strong id="places">19</strong><span>Quê quán trong danh sách</span></div><div class="stat"><strong id="modern">17</strong><span>Nơi ở hiện tại đã xác định</span></div><div class="stat"><strong>04</strong><span>Năm thanh xuân 2007–2011</span></div></div></div>
+<section class="map-section" id="bandokyuc"><div class="wrap"><div class="section-head"><div class="eyebrow">01 / Kết nối ký ức bằng địa lý</div><h2>Bản đồ K28 · Bạn bè hôm nay</h2><p>Bản đồ mặc định theo nơi ở hiện tại; có thể chuyển về quê quán. Ranh giới hành chính sau sắp xếp 2025 và vị trí đại diện cấp tỉnh/thành được hiển thị, không phải địa chỉ cá nhân.</p></div><div class="map-shell"><aside class="side" aria-label="Tra cứu bạn học"><div class="panel-title">Danh sách thân thương ♡</div><div class="map-mode"><label for="locationMode">Hiển thị</label><select id="locationMode" class="field"><option value="current">Nơi ở hiện tại</option><option value="old">Quê quán</option></select></div><input class="field" id="search" type="search" placeholder="Tìm tên, MSSV, quê quán, nơi ở…" aria-label="Tìm sinh viên"><div class="filter-row"><select class="field" id="provinceFilter" aria-label="Lọc nơi ở hiện tại"><option value="">Tất cả nơi ở</option></select><button class="btn soft" id="reset" type="button" title="Xóa bộ lọc">↺</button></div><div class="micro" id="found" aria-live="polite">Đang tải danh sách…</div><div class="student-list" id="studentList" tabindex="0"></div><div class="profile" id="profile" aria-live="polite"><div class="micro">Chọn một người bạn để tìm về những năm tháng đã qua.</div></div><div class="map-actions"><button class="btn soft" type="button" id="outline">▱ Ẩn ranh giới</button><button class="btn soft" type="button" id="allBoundaries">▱ Nạp đủ 34 tỉnh/thành</button><button class="btn soft" type="button" id="export">↓ Xuất GeoJSON</button></div><div class="status" role="status" id="status">Vị trí đại diện tỉnh/thành hoặc quốc gia; không phải nơi ở cụ thể.</div></aside><div class="map-area"><div id="map" role="region" aria-label="Bản đồ địa hình các miền quê lớp K28"></div><div class="map-badge">⌖ KINH TẾ K28 · NƠI Ở HIỆN TẠI</div><div class="map-tools"><select id="basemap" aria-label="Chọn lớp bản đồ"><option value="topo">Địa hình</option><option value="sat">Vệ tinh · ClipMap</option><option value="road">Đường phố</option></select><button id="resetMap" title="Xem toàn cảnh Việt Nam" type="button">⌂ Toàn cảnh</button></div><div class="map-note">● Ranh giới tỉnh/thành 2025 · Điểm đại diện, không phải nhà riêng · <a href="https://github.com/ThangLeQuoc/vietnamese-provinces-database" target="_blank" rel="noopener">Nguồn GeoJSON</a></div></div></div></div></section>
 <section class="story-band" id="cauchuyen"><div class="wrap story-grid"><div><div class="eyebrow" style="color:#d9b47e">02 / Một thời để nhớ</div><h2>Chúng mình đã từng<br>trẻ như thế.</h2><p>Dẫu sau này mỗi người một phương, những cái tên quen, chỗ ngồi ngày cũ, buổi thi cuối kỳ hay những cuộc hẹn không báo trước vẫn là một phần của tuổi trẻ.</p></div><div class="quote">“Bản đồ có thể đổi tên những miền đất, nhưng không thể đổi tên những kỷ niệm chúng ta đã có cùng nhau.”</div></div></section>
 <section class="timeline-section" id="namthang"><div class="wrap"><div class="section-head"><div class="eyebrow">03 / Dòng thời gian</div><h2>2007 — 2011, một thời không quên</h2><p>Những dấu mốc gợi nhớ của niên khóa. Các câu chuyện cụ thể có thể bổ sung khi lớp cùng xác nhận tư liệu.</p></div><div class="timeline"><div class="time-item"><strong>2007</strong><span>Ngày đầu gặp gỡ</span><p>Tên nhau còn lạ, lớp học thành quen.</p></div><div class="time-item"><strong>2008</strong><span>Những buổi đến trường</span><p>Bài vở, bạn bè, tiếng cười hành lang.</p></div><div class="time-item"><strong>2009</strong><span>Thanh xuân rực rỡ</span><p>Những kỷ niệm dần đầy thêm.</p></div><div class="time-item"><strong>2010</strong><span>Sắp đến ngày xa</span><p>Cùng nhau qua những mùa thi.</p></div><div class="time-item"><strong>2011</strong><span>Giữ một lời hẹn</span><p>Ra trường, mỗi người một hành trình.</p></div></div></div></section>
 <section class="memories-section" id="anhxua"><div class="wrap"><div class="section-head"><div class="eyebrow">04 / Album thời gian</div><h2>Những bức ảnh còn giữ thanh xuân</h2><p>Ba khoảnh khắc của chúng mình, từ giảng đường đến những chuyến đi. Nhấp vào ảnh để xem lớn hơn. Bạn vẫn có thể chọn ảnh khác để xem thử trên trình duyệt.</p></div><div class="memory-grid" id="memoryGrid">
@@ -50,39 +51,39 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 </main>
 <footer><div class="wrap"><div class="footer-flex"><div>© 2026 · Kinh tế K28 · Niên khóa 2007–2011</div><div>♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.</div></div></div></footer>
 <script type="text/plain" id="roster">
-1|0768005|PHẠM TRẦN THỊ NGỌC ÁNH|1989|Hà Tĩnh|Hà Tĩnh
-2|0768029|MAI THỊ GIẢNG|1988|Ninh Bình|Ninh Bình
-3|0768030|BÙI THỊ NGỌC HÀ|1989|Cao Bằng|Cao Bằng
-4|0768031|LÊ THỊ HÀ|1988|Quảng Ngãi|Quảng Ngãi
-5|0768032|NGUYỄN THỊ HÀ|1989|Ninh Bình|Ninh Bình
-6|0768047|NGUYỄN KIM HOA|1988|Thái Bình|Hưng Yên
-7|0768053|TRƯƠNG THỊ NGUYỆT HUẾ|1988|Hà Tây|Hà Nội
-8|0768060|PHẠM THỊ HUYỀN|1988|Thanh Hoá|Thanh Hóa
-9|0768068|LÊ THỊ HƯỜNG|1989|Bình Thuận|Lâm Đồng
-10|0768069|PHẠM THỊ NGỌC HƯỞNG|1989|Bình Thuận|Lâm Đồng
-11|0768080|VŨ KIÊN TRƯỜNG KỲ|1989|Sông Bé|Thành phố Hồ Chí Minh
-12|0768098|LÊ THỊ LY|1989|Đắk Lắk|Đắk Lắk
-13|0768126|NGUYỄN THỊ Ý NHI|1987|Hà Tĩnh|Hà Tĩnh
-14|0768129|NGÔ THỊ NHUNG|1988|Thanh Hoá|Thanh Hóa
-15|0768131|PHẠM THỊ NHUNG|1989|Hưng Yên|Hưng Yên
-16|0768139|NGUYỄN VĂN PHƯƠNG|1989|Đắk Lắk|Đắk Lắk
-17|0768141|PHẠM VINH QUANG|1989|Vĩnh Phúc|Phú Thọ
-18|0768146|LÊ THỊ KIM QUYÊN|1989|Thái Bình|Hưng Yên
-19|0768151|NGUYỄN VĂN SÁNG|1984|Kiên Giang|An Giang
-20|0768155|NGUYỄN NGỌC TÂM|1988|Nam Định|Ninh Bình
-21|0768156|NGUYỄN THỊ THANH TÂM|1985|Thanh Hoá|Thanh Hóa
-22|0768160|NGUYỄN NGỌC ĐAN THANH|1989|Kiên Giang|An Giang
-23|0768170|PHẠM THỊ THẢO|1984|Thanh Hoá|Thanh Hóa
-24|0768178|NGUYỄN KAO THIỆP|1989|Tp.HCM|Thành phố Hồ Chí Minh
-25|0768183|LÊ THỊ THUẬN|1989|Nam Định|Ninh Bình
-26|0768188|NGUYỄN THỊ THỦY|1989|Nghệ An|Nghệ An
-27|0768189|PHẠM THỊ THỦY|1988|Vĩnh Phúc|Phú Thọ
-28|0768207|LÊ THỊ HIỀN TRINH|1988|Bến Tre|Vĩnh Long
-29|0768219|HOÀNG THỊ VÂN|1987|Bình Thuận|Lâm Đồng
-30|0768221|HỒ THỊ VINH|1988|Khánh Hoà|Khánh Hòa
-31|0768222|LUYỆN THỊ VUI|1986|Đồng Nai|Đồng Nai
-32|0768227|ĐỚI THỊ YẾN|1989|Đà Nẵng|Thành phố Đà Nẵng
-33|0768231|TÔ NGỌC LIÊN|1988|Nghệ An|Nghệ An
+1|0768005|PHẠM TRẦN THỊ NGỌC ÁNH|1989|Đắk Nông|TP. Hồ Chí Minh
+2|0768029|MAI THỊ GIẢNG|1988|Thanh Hóa|TP. Hồ Chí Minh
+3|0768030|BÙI THỊ NGỌC HÀ|1989|Hà Tĩnh|Chưa xác định
+4|0768031|LÊ THỊ HÀ|1988|Thanh Hóa|Chưa xác định
+5|0768032|NGUYỄN THỊ HÀ|1989|Thanh Hóa|Chưa xác định
+6|0768047|NGUYỄN KIM HOA|1988|Gia Lai|Gia Lai
+7|0768053|TRƯƠNG THỊ NGUYỆT HUẾ|1988|Vũng Tàu|Chưa xác định
+8|0768060|PHẠM THỊ HUYỀN|1988|Thanh Hóa|TP. Hồ Chí Minh
+9|0768068|LÊ THỊ HƯỜNG|1989|Thanh Hóa|Thanh Hóa
+10|0768069|PHẠM THỊ NGỌC HƯỞNG|1989|Phú Yên|TP. Hồ Chí Minh
+11|0768080|VŨ KIÊN TRƯỜNG KỲ|1989|Kon Tum|Quảng Ngãi
+12|0768098|LÊ THỊ LY|1989|Quảng Ngãi|Chưa xác định
+13|0768126|NGUYỄN THỊ Ý NHI|1987|Cần Thơ|Chưa xác định
+14|0768129|NGÔ THỊ NHUNG|1988|Nghệ An|Nhật Bản
+15|0768131|PHẠM THỊ NHUNG|1989|Hà Tĩnh|TP. Hồ Chí Minh
+16|0768139|NGUYỄN VĂN PHƯƠNG|1989|Bình Phước|Đồng Nai
+17|0768141|PHẠM VINH QUANG|1989|Thanh Hóa|Thanh Hóa
+18|0768146|LÊ THỊ KIM QUYÊN|1989|Quảng Nam|TP. Hồ Chí Minh
+19|0768151|NGUYỄN VĂN SÁNG|1984|Đắk Nông|Lâm Đồng
+20|0768155|NGUYỄN NGỌC TÂM|1988|Tp Hồ Chí Minh|TP. Hồ Chí Minh
+21|0768156|NGUYỄN THỊ THANH TÂM|1985|Bến Tre|TP. Hồ Chí Minh
+22|0768160|NGUYỄN NGỌC ĐAN THANH|1989|Đồng Tháp|Chưa xác định
+23|0768170|PHẠM THỊ THẢO|1984|Đắk Lắk|Lâm Đồng
+24|0768178|NGUYỄN KAO THIỆP|1989|Kon Tum|TP. Đà Nẵng
+25|0768183|LÊ THỊ THUẬN|1989|Thanh Hóa|Chưa xác định
+26|0768188|NGUYỄN THỊ THỦY|1989|Thanh Hóa|TP. Hồ Chí Minh
+27|0768189|PHẠM THỊ THỦY|1988|Quảng Bình|TP. Hồ Chí Minh
+28|0768207|LÊ THỊ HIỀN TRINH|1988|Đắk Lắk|Đắk Lắk
+29|0768219|HOÀNG THỊ VÂN|1987|Quảng Bình|TP. Hồ Chí Minh
+30|0768221|HỒ THỊ VINH|1988|Gia Lai|Đồng Nai
+31|0768222|LUYỆN THỊ VUI|1986|Bắc Giang|Chưa xác định
+32|0768227|ĐỚI THỊ YẾN|1989|Thanh Hóa|TP. Hồ Chí Minh
+33|0768231|TÔ NGỌC LIÊN|1988|Lâm Đồng|Lâm Đồng
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/vietflexmap@1.0.2/dist/vietflexmap.js"></script>
@@ -92,21 +93,36 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 const $=id=>document.getElementById(id);
 const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").toLowerCase().replace(/\s+/g," ").trim();
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
 const rows=$("roster").textContent.trim().split(/\n+/).map(line=>{const [stt,id,name,born,old,current]=line.split("|");return {stt,id,name,born:+born,old,current}});
-/* A point represents a broadly recognizable town in the ORIGINAL province.
-   It is NOT an individual birthplace, historical provincial centroid, or precise address. */
-const towns={
-"Sông Bé":[11.004,106.651],
-"Hà Tĩnh":[18.355,105.9],"Ninh Bình":[20.25,105.974],"Cao Bằng":[22.666,106.263],
-"Quảng Ngãi":[15.121,108.804],"Thái Bình":[20.447,106.334],"Hà Tây":[20.97,105.77],
-"Thanh Hoá":[19.807,105.776],"Bình Thuận":[10.928,108.102],"Đắk Lắk":[12.674,108.05],
-"Hưng Yên":[20.649,106.051],"Vĩnh Phúc":[21.309,105.604],"Kiên Giang":[10.011,105.08],
-"Nam Định":[20.438,106.162],"Nghệ An":[18.679,105.681],"Tp.HCM":[10.776,106.699],
-"Bến Tre":[10.243,106.377],"Khánh Hoà":[12.246,109.194],"Đồng Nai":[10.947,106.824],
-"Đà Nẵng":[16.059,108.224]
+const oldPoints={
+"Đắk Nông":[12.00,107.69],"Thanh Hóa":[19.81,105.78],"Hà Tĩnh":[18.36,105.90],"Gia Lai":[13.98,108],
+"Vũng Tàu":[10.35,107.08],"Phú Yên":[13.09,109.31],"Kon Tum":[14.35,108],"Quảng Ngãi":[15.12,108.80],
+"Cần Thơ":[10.045,105.746],"Nghệ An":[18.68,105.68],"Bình Phước":[11.53,106.90],"Quảng Nam":[15.57,108.47],
+"Tp Hồ Chí Minh":[10.78,106.70],"Bến Tre":[10.24,106.38],"Đồng Tháp":[10.46,105.64],
+"Đắk Lắk":[12.67,108.05],"Quảng Bình":[17.47,106.62],"Bắc Giang":[21.28,106.2],"Lâm Đồng":[11.95,108.44]
 };
-const R2="https://pub-7dd53e3ae939474d8bbfe3cec7145b16.r2.dev/";
-let map,base,markers=[],chosen=null,boundary=null,lastRows=rows.slice(),busy=false;
+const currentPoints={
+"TP. Hồ Chí Minh":[10.78,106.70],"Thanh Hóa":[19.81,105.78],"Gia Lai":[13.98,108],
+"Quảng Ngãi":[15.12,108.80],"Đồng Nai":[10.95,106.82],"Lâm Đồng":[11.95,108.44],
+"TP. Đà Nẵng":[16.06,108.22],"Đắk Lắk":[12.67,108.05],"Nhật Bản":[36.2,138.25]
+};
+const geoFolders={
+"Hà Nội":"01_ha_noi","Cao Bằng":"04_cao_bang","Tuyên Quang":"08_tuyen_quang","Điện Biên":"11_dien_bien",
+"Lai Châu":"12_lai_chau","Sơn La":"14_son_la","Lào Cai":"15_lao_cai","Thái Nguyên":"19_thai_nguyen",
+"Lạng Sơn":"20_lang_son","Quảng Ninh":"22_quang_ninh","Bắc Ninh":"24_bac_ninh","Phú Thọ":"25_phu_tho",
+"Hải Phòng":"31_hai_phong","Hưng Yên":"33_hung_yen","Ninh Bình":"37_ninh_binh","Thanh Hóa":"38_thanh_hoa",
+"Nghệ An":"40_nghe_an","Hà Tĩnh":"42_ha_tinh","Quảng Trị":"44_quang_tri","Huế":"46_hue",
+"TP. Đà Nẵng":"48_da_nang","Quảng Ngãi":"51_quang_ngai","Gia Lai":"52_gia_lai","Khánh Hòa":"56_khanh_hoa",
+"Đắk Lắk":"66_dak_lak","Lâm Đồng":"68_lam_dong","Đồng Nai":"75_dong_nai","TP. Hồ Chí Minh":"79_ho_chi_minh",
+"Tây Ninh":"80_tay_ninh","Đồng Tháp":"82_dong_thap","Vĩnh Long":"86_vinh_long","An Giang":"91_an_giang",
+"Cần Thơ":"92_can_tho","Cà Mau":"96_ca_mau"
+};
+const GEO_BASE="https://raw.githubusercontent.com/ThangLeQuoc/vietnamese-provinces-database/master/json/geojson/";
+let map,base,markers=[],chosen=null,lastRows=rows.slice(),locationMode="current";
+let boundaryGroup=null,polygons=new Map(),inflight=new Map(),boundaryVisible=true;
+const locationName=p=>locationMode==="old"?p.old:p.current;
+const locationCoords=p=>(locationMode==="old"?oldPoints:currentPoints)[locationName(p)];
 const layers={
 topo:{url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",attrib:"Tiles © Esri · Topographic"},
 sat:{url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",attrib:"Imagery © Esri, Maxar, Earthstar Geographics"},
@@ -114,99 +130,120 @@ road:{url:"https://tile.openstreetmap.org/{z}/{x}/{y}.png",attrib:"© OpenStreet
 };
 function setStatus(s){$("status").textContent=s}
 function selectBase(which){if(!map)return;if(base)map.removeLayer(base);let k=layers[which]||layers.topo;base=L.tileLayer(k.url,{maxZoom:19,attribution:k.attrib}).addTo(map)}
+
 function initMap(){
- if(!window.L){$("map").innerHTML='<div style="padding:60px;text-align:center">Không tải được thư viện Leaflet. Vui lòng kiểm tra Internet hoặc tải lại trang.</div>';setStatus("Không tải được thư viện bản đồ.");return}
+ if(!window.L){$("map").textContent="Không tải được Leaflet. Kiểm tra Internet.";return}
  try{
-  if(window.Vietflex&&typeof window.Vietflex.vietflexMap==="function"){
-   const v=window.Vietflex.vietflexMap("map",{center:[16.35,107.7],zoom:6,zoomControl:false});
-   map=v&&v.map&&typeof v.map.addLayer==="function"?v.map:v;
-   if(!map||typeof map.addLayer!=="function")throw Error("Vietflex không trả về đối tượng Leaflet");
-  } else throw Error("Không có lõi Vietflexmap");
+  const v=window.Vietflex&&typeof Vietflex.vietflexMap==="function"?Vietflex.vietflexMap("map",{center:[16.35,107.7],zoom:6,zoomControl:false}):null;
+  map=v&&(v.map&&typeof v.map.addLayer==="function"?v.map:v);
+  if(!map||typeof map.addLayer!=="function")throw Error("Fallback Leaflet");
  }catch(e){
-   try{if(map&&map.remove)map.remove()}catch(_){}
-   const el=$("map");if(el&&el._leaflet_id){el._leaflet_id=null;el.innerHTML=""}
-   map=L.map("map",{zoomControl:false,center:[16.35,107.7],zoom:6,minZoom:4});
+  try{if(map&&map.remove)map.remove()}catch(_){}
+  const el=$("map");if(el._leaflet_id){el._leaflet_id=null;el.innerHTML=""}
+  map=L.map("map",{center:[16.35,107.7],zoom:6,minZoom:3,zoomControl:false});
  }
  L.control.zoom({position:"bottomright"}).addTo(map);
  L.control.scale({position:"bottomleft",imperial:false}).addTo(map);
  map.eachLayer(layer=>{if(layer instanceof L.TileLayer)map.removeLayer(layer)});
- selectBase("topo");
- map.setMaxBounds([[6,98],[25,120]]);
- renderMarkers(rows);
+ selectBase("topo");map.setMaxBounds([[3,94],[46,149]]);
+ boundaryGroup=L.featureGroup().addTo(map);
+ renderMarkers(lastRows);
+ // Nạp lớp ranh giới nơi ở hiện tại theo nhu cầu, không chặn hiển thị bản đồ.
+ loadBoundaries([...new Set(rows.map(p=>p.current))].filter(n=>geoFolders[n]));
 }
 function makePopup(group,place){
- const modern=[...new Set(group.map(p=>p.current))].join(", ");
- return '<div class="map-tooltip"><div class="p-title">✦ '+esc(place)+'</div><div class="p-arrow">Địa danh hiện nay: <b>'+esc(modern)+'</b><br>'+group.length+' người bạn từ miền quê này</div>'+group.map(p=>'<button type="button" class="p-person" data-mssv="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong>MSSV '+esc(p.id)+' · Sinh năm '+p.born+'</button>').join("")+'</div>';
+ return '<div class="map-tooltip"><div class="p-title">✦ '+esc(place)+'</div><div class="p-arrow">'+(locationMode==="old"?"QUÊ QUÁN":"NƠI Ở HIỆN TẠI")+' · '+group.length+' bạn. Điểm đại diện, không phải địa chỉ riêng.</div>'+
+ group.map(p=>'<button type="button" class="p-person" data-mssv="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong>MSSV '+esc(p.id)+' · Quê: '+esc(p.old)+' · Ở: '+esc(p.current)+'</button>').join("")+'</div>';
 }
 function renderMarkers(items){
- if(!map)return;
- markers.forEach(m=>map.removeLayer(m));markers=[];
- const groups=new Map();
- items.forEach(p=>{if(!towns[p.old])return;if(!groups.has(p.old))groups.set(p.old,[]);groups.get(p.old).push(p)});
- groups.forEach((arr,place)=>{
-  const c=towns[place],html='<span class="province-pin '+(arr.length===1?"single":"")+'">'+arr.length+'</span>';
-  const icon=L.divIcon({html,className:"",iconSize:[35,35],iconAnchor:[17,17],popupAnchor:[0,-20]});
-  const marker=L.marker(c,{icon,title:place+" · "+arr.length+" người"}).addTo(map);
-  marker.bindPopup(makePopup(arr,place),{maxWidth:355,minWidth:245,autoPan:true});
-  marker.on("mouseover",()=>marker.openPopup());
-  marker.on("click",()=>{marker.openPopup();showProfile(arr[0],false)});
-  marker.place=place;markers.push(marker);
+ if(!map)return;markers.forEach(m=>map.removeLayer(m));markers=[];
+ const group=new Map();
+ items.forEach(p=>{let n=locationName(p);if(!locationCoords(p))return;if(!group.has(n))group.set(n,[]);group.get(n).push(p)});
+ group.forEach((arr,n)=>{
+  const c=locationCoords(arr[0]),html='<span class="province-pin '+(arr.length===1?"single":"")+'" style="'+(locationMode==="old"?"background:#9b783f;":"")+'">'+arr.length+'</span>';
+  const m=L.marker(c,{icon:L.divIcon({html,className:"",iconSize:[35,35],iconAnchor:[17,17],popupAnchor:[0,-20]}),title:n+" · "+arr.length+" người"}).addTo(map);
+  m.bindPopup(makePopup(arr,n),{maxWidth:355,minWidth:245,autoPan:true});
+  m.on("click",()=>{m.openPopup();showProfile(arr[0],false)});m.place=n;markers.push(m);
  });
- if(!items.length)setStatus("Không tìm thấy sinh viên phù hợp bộ lọc.");
+}
+function highlightArea(n){
+ polygons.forEach((poly,name)=>poly.setStyle({color:name===n?"#9b423a":"#587e75",weight:name===n?3:1.3,fillColor:name===n?"#d8a96b":"#80b3a2",fillOpacity:name===n?.27:.10}));
+ if(boundaryGroup&&boundaryVisible)polygons.forEach((p,k)=>{if(k===n&&p.bringToFront)p.bringToFront()});
 }
 function showProfile(p,move){
  chosen=p;
- $("profile").innerHTML='<div class="micro">HỒ SƠ KỶ YẾU · KINH TẾ K28</div><h3>'+esc(p.name)+'</h3><dl><dt>MSSV</dt><dd>'+esc(p.id)+'</dd><dt>Năm sinh</dt><dd>'+p.born+'</dd><dt>Nơi sinh cũ</dt><dd>'+esc(p.old)+'</dd><dt>Hiện nay</dt><dd class="change">'+esc(p.current)+'</dd></dl><div class="small">'+(p.old==='Sông Bé'?'Theo thông tin lớp: TP.HCM. Điểm minh họa đặt tại Thủ Dầu Một; tỉnh Sông Bé cũ còn bao gồm địa bàn thuộc Đồng Nai ngày nay.':'Vị trí bản đồ là điểm đại diện cấp tỉnh, không phải địa điểm sinh chính xác.')+'</div>';
+ $("profile").innerHTML='<div class="micro">HỒ SƠ · KINH TẾ K28 · STT '+esc(p.stt)+'</div><h3>'+esc(p.name)+'</h3><dl>'+
+ '<dt>MSSV</dt><dd>'+esc(p.id)+'</dd><dt>Năm sinh</dt><dd>'+p.born+'</dd><dt>Quê quán</dt><dd>'+esc(p.old)+'</dd>'+
+ '<dt>Nơi ở hiện tại</dt><dd class="change">'+esc(p.current)+'</dd></dl><div class="small">Chỉ xác định cấp tỉnh/thành hoặc quốc gia, không phải nhà riêng.</div>';
  document.querySelectorAll(".student").forEach(el=>el.classList.toggle("active",el.dataset.mssv===p.id));
- if(move&&map&&towns[p.old]){map.flyTo(towns[p.old],Math.max(map.getZoom(),8),{duration:.85});const marker=markers.find(m=>m.place===p.old);if(marker)marker.openPopup()}
- if(!towns[p.old])setStatus("Sông Bé là địa danh lịch sử trải trên nhiều địa phương hiện nay; cần thêm nơi sinh cấp huyện/xã để xác định đúng.");
+ highlightArea(p.current);
+ if(p.current==="Chưa xác định")setStatus("Chưa xác định nơi ở hiện tại: "+p.name+". Không tự tạo tọa độ.");
+ if(p.current==="Nhật Bản")setStatus("Nhật Bản là vị trí quy ước cấp quốc gia, chưa xác định thành phố nơi cư trú.");
+ if(move&&map){
+  const c=locationCoords(p);
+  if(c){map.flyTo(c,p.current==="Nhật Bản"&&locationMode==="current"?5:7,{duration:.8});const m=markers.find(m=>m.place===locationName(p));if(m)m.openPopup()}
+  if(geoFolders[p.current])loadBoundaries([p.current]);
+ }
 }
 function renderList(){
- const q=normalize($("search").value),province=$("provinceFilter").value;
- lastRows=rows.filter(p=>(!province||p.current===province)&&(!q||normalize([p.name,p.id,p.old,p.current].join(" ")).includes(q)));
+ const q=normalize($("search").value),loc=$("provinceFilter").value;
+ lastRows=rows.filter(p=>(!loc||p.current===loc)&&(!q||normalize([p.stt,p.name,p.id,p.old,p.current].join(" ")).includes(q)));
  const list=$("studentList");list.replaceChildren();
- for(const p of lastRows){
+ lastRows.forEach(p=>{
   const b=document.createElement("button");b.type="button";b.className="student"+(chosen&&chosen.id===p.id?" active":"");b.dataset.mssv=p.id;
-  const avatar=document.createElement("span");avatar.className="avatar";avatar.textContent=p.name.split(" ").at(-1).charAt(0);
-  const labels=document.createElement("span");labels.innerHTML='<span class="n">'+esc(p.name)+'</span><span class="origin">'+esc(p.old)+' → '+esc(p.current)+'</span>';
-  b.append(avatar,labels);b.addEventListener("click",()=>showProfile(p,true));
-  b.addEventListener("mouseenter",()=>{showProfile(p,false);if(map){const m=markers.find(m=>m.place===p.old);if(m)m.openPopup()}});
-  list.appendChild(b);
- }
- $("found").textContent="Đang hiển thị "+lastRows.length+"/"+rows.length+" người bạn"+(lastRows.some(p=>!towns[p.old])?" · có hồ sơ chưa định vị":"");
+  const av=document.createElement("span");av.className="avatar";av.textContent=p.name.split(" ").at(-1).charAt(0);
+  const lab=document.createElement("span");lab.innerHTML='<span class="n">'+esc(p.name)+'</span><span class="origin">'+esc(p.old)+' → '+esc(p.current)+'</span>';
+  b.append(av,lab);b.addEventListener("click",()=>showProfile(p,true));list.appendChild(b);
+ });
+ $("found").textContent="Hiển thị "+lastRows.length+"/"+rows.length+" bạn · "+lastRows.filter(p=>p.current==="Chưa xác định").length+" chưa rõ nơi ở";
  renderMarkers(lastRows);
 }
-async function showBoundary(){
- if(!map||busy)return;
- if(boundary){map.removeLayer(boundary);boundary=null;$("outline").textContent="▱ Ranh giới hiện nay";setStatus("Đã ẩn ranh giới.");return}
- if(!chosen){setStatus("Hãy chọn một sinh viên để biết tỉnh cần xem ranh giới.");return}
- if(chosen.current==="Chưa xác định"){setStatus("Không thể tìm ranh giới: hồ sơ này chưa xác định tỉnh hiện nay.");return}
- busy=true;$("outline").disabled=true;setStatus("Đang tải ranh giới hành chính từ bộ dữ liệu ClipMap / R2…");
- try{
-  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
-  let idx,resp;
-  try{resp=await fetch(R2+"index.json",{signal:controller.signal});if(!resp.ok)throw Error("Không tìm thấy chỉ mục R2 (HTTP "+resp.status+")");idx=await resp.json()}finally{clearTimeout(timeout)}
-  if(!Array.isArray(idx.provinces))throw Error("Chỉ mục tỉnh không hợp lệ");
-  const canonical=s=>normalize(s).replace(/^(tinh|thanh pho)\s+/,"").replace(/^tp\s+/,"");
-  const name=canonical(chosen.current);
-  const matches=idx.provinces.filter(p=>canonical(p.name)===name);
-  if(matches.length!==1)throw Error("Không đối chiếu được tên tỉnh "+chosen.current+" trong chỉ mục");
-  const p=matches[0];
-  if(!/^provinces\/[A-Za-z0-9_-]+\.geojson$/.test(String(p.path)))throw Error("Đường dẫn GeoJSON không hợp lệ");
-  const g=await fetch(R2+p.path);if(!g.ok)throw Error("Không tải được GeoJSON: HTTP "+g.status);
-  const gj=await g.json();
-  boundary=L.geoJSON(gj,{interactive:false,style:{color:"#913d36",weight:1.3,fillColor:"#e1ab61",fillOpacity:.12}}).addTo(map);
-  if(boundary.getBounds().isValid())map.fitBounds(boundary.getBounds().pad(.07),{maxZoom:9});
-  $("outline").textContent="✕ Ẩn ranh giới";setStatus("Đã nạp ranh giới tham khảo tỉnh "+chosen.current+" sau sáp nhập 2025.");
- }catch(e){setStatus("Không tải được ranh giới: "+e.message+". Có thể tra cứu địa danh tại ẢnhMap hoặc ClipMap.")}
- finally{busy=false;$("outline").disabled=false}
+async function getPolygon(name){
+ if(!geoFolders[name]||!map)return null;
+ if(polygons.has(name))return polygons.get(name);
+ if(inflight.has(name))return inflight.get(name);
+ const folder=geoFolders[name];
+ const task=(async()=>{
+  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),20000);
+  try{
+   const res=await fetch(GEO_BASE+folder+"/"+folder+".geojson",{signal:ctrl.signal});
+   if(!res.ok)throw Error(name+": HTTP "+res.status);
+   const json=await res.json();
+   if(json.type!=="FeatureCollection"||!Array.isArray(json.features)||!json.features.length)throw Error(name+": GeoJSON không hợp lệ");
+   const poly=L.geoJSON(json,{style:{color:"#587e75",weight:1.3,fillColor:"#80b3a2",fillOpacity:.10}});
+   polygons.set(name,poly);
+   if(boundaryVisible)boundaryGroup.addLayer(poly);
+   poly.bindPopup("<strong>Ranh giới tỉnh/thành: "+esc(name)+"</strong>");
+   if(chosen&&chosen.current===name)highlightArea(name);
+   return poly;
+  }finally{clearTimeout(timer);inflight.delete(name)}
+ })();
+ inflight.set(name,task);return task;
+}
+async function loadBoundaries(names){
+ if(!map)return;
+ const missing=[...new Set(names)].filter(n=>geoFolders[n]);
+ let idx=0,failed=0;
+ setStatus("Đang tải ranh giới hành chính sau sắp xếp 2025…");
+ await Promise.all(Array.from({length:Math.min(4,missing.length)},async()=>{
+  while(idx<missing.length){const n=missing[idx++];try{await getPolygon(n)}catch(e){failed++;console.warn(e)}}
+ }));
+ setStatus("Đã nạp "+polygons.size+"/34 ranh giới cấp tỉnh."+(failed?" Không tải được "+failed+" ranh giới, kiểm tra kết nối đến GitHub Raw.":""));
+ if(chosen)highlightArea(chosen.current);
+}
+function showBoundary(){
+ if(!map||!boundaryGroup)return;
+ boundaryVisible=!boundaryVisible;
+ if(boundaryVisible){map.addLayer(boundaryGroup);polygons.forEach(p=>boundaryGroup.addLayer(p))}
+ else map.removeLayer(boundaryGroup);
+ $("outline").textContent=boundaryVisible?"▱ Ẩn ranh giới":"▱ Hiện ranh giới";
+ setStatus(boundaryVisible?"Đã bật ranh giới 2025.":"Đã tắt ranh giới; điểm bạn bè vẫn còn.");
 }
 function exportGeoJSON(){
- const features=lastRows.filter(p=>towns[p.old]).map(p=>({type:"Feature",geometry:{type:"Point",coordinates:[towns[p.old][1],towns[p.old][0]]},properties:{MSSV:p.id,ho_ten:p.name,nam_sinh:p.born,noi_sinh_cu:p.old,dia_danh_2025:p.current,do_chinh_xac:"Diem dai dien dia danh cap tinh; khong phai vi tri sinh"}}));
- const data={type:"FeatureCollection",name:"Kinh te K28 2007-2011 - representative points",features};
- const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/geo+json"}));
- const a=document.createElement("a");a.href=u;a.download="K28-mien-que-tham-khao.geojson";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2500);
- setStatus("Đã xuất "+features.length+" điểm tham khảo GeoJSON WGS84. Không gồm hồ sơ chưa định vị.");
+ const features=lastRows.filter(p=>locationCoords(p)).map(p=>{const c=locationCoords(p);return {type:"Feature",geometry:{type:"Point",coordinates:[c[1],c[0]]},properties:{STT:+p.stt,MSSV:p.id,ho_ten:p.name,nam_sinh:p.born,que_quan:p.old,noi_o_hien_tai:p.current,che_do:locationMode,ghi_chu:"Diem dai dien dia danh, khong phai vi tri nha rieng"}}});
+ const data={type:"FeatureCollection",name:"Kinh te K28 - "+locationMode,features},u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/geo+json"}));
+ const a=document.createElement("a");a.href=u;a.download="K28-"+locationMode+"-tham-khao.geojson";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2500);
+ setStatus("Đã xuất "+features.length+" điểm minh họa WGS84.");
 }
 function addPhotos(files){
  const valid=[...files].filter(f=>["image/png","image/jpeg","image/webp"].includes(f.type)&&f.size<=8*1024*1024).slice(0,3);
@@ -236,20 +273,23 @@ function notesSave(){
  const arr=notesRead();arr.push({id:Date.now()+"-"+Math.random().toString(36).slice(2),name,text:value,date:new Date().toLocaleDateString("vi-VN")});
  try{localStorage.setItem(NOTE_KEY,JSON.stringify(arr.slice(-25)));$("noteText").value="";notesRender()}catch(_){alert("Trình duyệt đang chặn lưu cục bộ. Hãy kiểm tra chế độ riêng tư hoặc dung lượng lưu trữ.")}
 }
+
 $("total").textContent=rows.length;
-$("places").textContent=new Set(rows.filter(p=>towns[p.old]).map(p=>p.old)).size;
+$("places").textContent=new Set(rows.map(p=>p.old)).size;
 $("modern").textContent=new Set(rows.filter(p=>p.current!=="Chưa xác định").map(p=>p.current)).size;
-[...new Set(rows.map(p=>p.current))].sort((a,b)=>a.localeCompare(b,"vi")).forEach(name=>$("provinceFilter").add(new Option(name,name)));
+[...new Set(rows.map(p=>p.current))].sort((a,b)=>a.localeCompare(b,"vi")).forEach(n=>$("provinceFilter").add(new Option(n,n)));
 $("search").addEventListener("input",renderList);
 $("provinceFilter").addEventListener("change",renderList);
+$("locationMode").addEventListener("change",e=>{locationMode=e.target.value;renderList();if(chosen)showProfile(chosen,false);if(map)map.setView([16.35,107.7],6)});
 $("reset").addEventListener("click",()=>{$("search").value="";$("provinceFilter").value="";renderList();if(map)map.setView([16.35,107.7],6)});
 $("basemap").addEventListener("change",e=>selectBase(e.target.value));
 $("resetMap").addEventListener("click",()=>{if(map)map.setView([16.35,107.7],6)});
 $("outline").addEventListener("click",showBoundary);
+$("allBoundaries").addEventListener("click",async()=>{const b=$("allBoundaries");b.disabled=true;b.textContent="Đang nạp…";try{await loadBoundaries(Object.keys(geoFolders));b.textContent=polygons.size===34?"✓ Đủ 34 ranh giới":"↻ Nạp lại ranh giới còn thiếu"}finally{b.disabled=false}});
 $("export").addEventListener("click",exportGeoJSON);
 $("photos").addEventListener("change",e=>addPhotos(e.target.files));
 $("saveNote").addEventListener("click",notesSave);
-document.addEventListener("click",e=>{const el=e.target.closest("[data-mssv].p-person");if(el){const p=rows.find(x=>x.id===el.dataset.mssv);if(p)showProfile(p,false)}});
+document.addEventListener("click",e=>{const el=e.target.closest("[data-mssv].p-person");if(el){const p=rows.find(x=>x.id===el.dataset.mssv);if(p)showProfile(p,true)}});
 notesRender();renderList();initMap();if(!chosen)showProfile(rows[0],false);
 })();
 </script>
