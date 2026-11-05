@@ -41,3 +41,17 @@
  #anhxua .album-k28-group-head p{margin-top:5px}
  #anhxua .album-k28-group-head span{display:inline-block;margin-top:7px}
 }
+
+/* QA v3: album groups and controls match index.html and album-k28.js */
+#anhxua .album-k28-categories{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 24px}
+#anhxua .album-k28-categories a{padding:9px 13px;border:1px solid #d8c3a1;border-radius:999px;background:#fbf4e8;color:#703d3d;font-size:12px;text-decoration:none}
+#anhxua .album-k28-categories a:hover{background:#eee0c4}
+#anhxua .album-k28-group{margin:28px 0 42px;scroll-margin-top:105px}
+#anhxua .album-k28-heading{font:600 clamp(28px,3.7vw,42px)/1.1 "Cormorant Garamond",Georgia,serif;color:#713637;margin:0 0 16px}
+#anhxua .album-k28-empty{padding:20px;background:#f9f1e4;border:1px dashed #d0b994;color:#876a54}
+#anhxua .album-k28-message{border-left:3px solid #9d684e;padding:10px 13px;background:#fbf1e0;color:#714c40;font-size:13px}
+#anhxua .album-k28-message[hidden]{display:none}
+#anhxua .album-k28-choice:disabled{opacity:.48;cursor:not-allowed}
+#anhxua .album-k28-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+#anhxua .album-k28-thumb:disabled{cursor:not-allowed;opacity:.55}
+@media(max-width:540px){#anhxua .album-k28-grid{grid-template-columns:1fr}#anhxua .album-k28-group{margin-bottom:28px}}
