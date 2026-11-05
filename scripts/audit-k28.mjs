@@ -16,9 +16,11 @@ for(const [name,code] of [["album-k28.js",album],["cinema-k28.js",cinema],...inl
 }
 for(const file of ["album-k28.css","cinema-k28.css","k28-experience.css","CNAME","data/roster-k28.csv"])
  assert(has(file),"Missing "+file);
-for(const id of ["albumK28Groups","albumK28Message","albumK28Lightbox","albumK28Enhanced","albumK28Original","mapBadge","provinceFilter","locationMode","shareK28","exportNotes"])
+for(const id of ["albumK28Groups","albumK28Message","albumK28Lightbox","albumK28Count","mapBadge","provinceFilter","locationMode","shareK28","exportNotes"])
  assert(html.includes('id="'+id+'"'),"Missing HTML ID "+id);
 assert(album.includes('const host=$("albumK28Groups")'),"Carousel host selector not synced with HTML");
+assert(html.includes('class="album-k28-name">Ảnh K28</strong>'),"Album name not unified");
+for(const phrase of ["Ảnh phục dựng rõ nét","Ảnh gốc","Ảnh xử lý làm rõ","albumK28Disclaimer","albumK28Enhanced","albumK28Original"]) assert(!html.includes(phrase)&&!album.includes(phrase),"Obsolete album text or controls: "+phrase);
 assert(album.includes('k28-carousel-stage')&&album.includes('k28-carousel-dot'),"Single-frame carousel elements missing");
 assert(album.includes('function step(delta)')&&album.includes('touchend'),"Next/previous and swipe handling missing");
 assert(!album.includes('$("albumK28Grid")'),"Old missing gallery selector");
