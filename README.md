@@ -6,8 +6,8 @@ Một trang **WebGIS kỷ niệm** cho lớp Kinh tế K38, gợi lại những 
 
 ## Tính năng
 
-- 33 hồ sơ được chép từ file `K38.docx` do người biên tập cung cấp: họ tên, MSSV, năm sinh, nơi sinh cũ và địa danh được ghi sau sáp nhập năm 2025.
-- 19 miền quê đặt điểm đại diện trên bản đồ (32 hồ sơ); ô tìm kiếm theo họ tên, MSSV hoặc địa danh; lọc theo tỉnh/thành hiện nay.
+- 33 hồ sơ sinh viên K38 với họ tên, MSSV, năm sinh, nơi sinh cũ và địa danh tham chiếu sau sáp nhập năm 2025.
+- 20 miền quê đặt điểm đại diện trên bản đồ (33 hồ sơ); ô tìm kiếm theo họ tên, MSSV hoặc địa danh; lọc theo tỉnh/thành hiện nay.
 - Rê chuột lên điểm bản đồ để mở popup bạn học; nhấn hồ sơ để phóng đến điểm tương ứng. Mỗi popup hiển thị họ tên, MSSV, năm sinh, địa danh cũ và hiện nay.
 - 3 nền địa lý: **Địa hình (Esri World Topographic)**, **Vệ tinh (Esri World Imagery)** và **Đường phố (OpenStreetMap)**. Nền vệ tinh và mô hình sử dụng Leaflet/Vietflexmap dựa vào cách tổ chức của [ClipMap](https://github.com/xulytiengviet/clipmap).
 - Nút **Ranh giới hiện nay** tải theo nhu cầu chỉ mục `index.json` và GeoJSON chia theo tỉnh từ public Cloudflare R2 được giới thiệu ở ClipMap. Nút này có thể không hoạt động nếu dữ liệu, CORS hoặc endpoint chưa sẵn sàng; phần còn lại của website vẫn dùng được.
@@ -19,11 +19,22 @@ Một trang **WebGIS kỷ niệm** cho lớp Kinh tế K38, gợi lại những 
 
 Nguồn hồ sơ: bảng "DANH SÁCH SINH VIÊN KT-K38" trong file Word `K38.docx`, 33 dòng.
 
-- **32/33** hồ sơ được hiển thị tại **19 điểm tham khảo theo địa danh cũ**; tất cả các điểm đều gần một đô thị tiêu biểu trong địa phương tương ứng, *không phải tọa độ nơi sinh chính xác hoặc trọng tâm ranh giới*.
-- Hồ sơ **0768080** có nơi sinh lịch sử **Sông Bé** và cột hiện nay **Chưa xác định**. Không tự suy luận vị trí hay tỉnh hiện nay; cần bổ sung huyện/xã lịch sử để đối chiếu.
-- Dòng có MSSV **0768219** mang **STT 39** trong Word dù nằm ở vị trí thứ 29. Website giữ nguyên giá trị nguồn; nên xác minh với danh sách lớp trước khi sửa.
+- **33/33** hồ sơ được hiển thị tại **20 điểm tham khảo theo địa danh cũ**; tất cả các điểm đều gần một đô thị tiêu biểu trong địa phương tương ứng, *không phải tọa độ nơi sinh chính xác hoặc trọng tâm ranh giới*.
+- Hồ sơ **0768080** có nơi sinh cũ **Sông Bé** và được lớp cung cấp địa danh hiện nay là **Thành phố Hồ Chí Minh**. Bản đồ dùng điểm minh họa tại Thủ Dầu Một (vùng Sông Bé cũ), **không khẳng định đó là nơi sinh chính xác**. Về lịch sử, tỉnh Sông Bé còn bao gồm khu vực Bình Phước, nay thuộc Đồng Nai; muốn xác định chuẩn cần thêm huyện/xã nơi sinh.
+- Dòng MSSV **0768219 – Hoàng Thị Vân** được chuẩn hóa **STT 29** theo hiệu đính của lớp (bản Word ban đầu ghi STT 39).
 - Dữ liệu tỉnh sau sáp nhập được **sao đúng nội dung Word**; website không phải công cụ xác minh pháp lý từng địa giới. Để dùng cho nghiên cứu, xác minh với hồ sơ hành chính chính thức.
 - Kết quả xuất GeoJSON chỉ chứa điểm định vị tham khảo, không chứa polygon hành chính; tùy chọn polygon cần tải thêm dữ liệu R2 công khai.
+
+## Ba ảnh kỷ niệm
+
+Website dùng ba ảnh thật do người biên tập cung cấp: `images/k38-lop-hoc.webp`, `images/k38-tham-quan.webp`, `images/k38-da-ngoai.webp`. Đây là các bản WebP nhẹ để website tải nhanh. Có thể thay bằng bản WebP chất lượng cao với **cùng tên tệp** mà không phải sửa HTML.
+
+Lời tặng hiển thị ở chân trang: **♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K38.**
+
+## Kết nối tên miền PA Việt Nam
+
+Xem [`HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md`](./HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md) để cấu hình CNAME/A record, kích hoạt HTTPS và kiểm tra DNS trên Windows.
+
 
 ## Triển khai GitHub Pages
 
