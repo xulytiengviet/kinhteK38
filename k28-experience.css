@@ -1,0 +1,47 @@
+/* K28: memory-first, responsive and accessible experience */
+html{scroll-padding-top:80px}
+body{font-size:15px;line-height:1.75}
+.masthead{position:sticky;top:0;z-index:900}
+.nav{gap:clamp(10px,1.8vw,22px)}
+.nav a{font-size:11px;font-weight:600}
+.hero-inner{min-height:520px}
+.hero h1{font-size:clamp(55px,7.5vw,106px);line-height:.95;letter-spacing:-1.3px}
+.hero h1 em{line-height:1.12}
+.hero-lead{font-size:clamp(15px,1.5vw,18px);line-height:1.9;max-width:650px}
+.hero-whisper{font-size:12px;color:#875d4b;font-weight:600}
+.hero-share-status{min-height:18px;font-size:12px;color:#703c3d}
+.cta .btn{min-height:46px}
+.story-band p,.section-head p{font-size:15px;line-height:1.9}
+.map-section{background:#f2e7d4}
+.note-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.note-actions .btn{min-height:44px}
+.note-status{min-height:18px;font-size:12px;color:#735344}
+.k28-epilogue{text-align:center;padding:80px 0;background:linear-gradient(155deg,#fbf1dc,#e9d0b2);border-top:1px solid #d4b58e}
+.k28-epilogue .wrap{max-width:850px}
+.k28-epilogue-mark{font-size:43px;color:#943c42}
+.k28-epilogue-overline{font-size:12px;letter-spacing:.18em;color:#886448;text-transform:uppercase}
+.k28-epilogue h2{font:600 clamp(43px,6vw,72px)/1.08 "Cormorant Garamond",Georgia,serif;color:#703338;margin:16px 0 22px}
+.k28-epilogue p{font-size:16px;line-height:2;color:#6e5448}
+.k28-epilogue .k28-epilogue-quote{font:italic 600 clamp(26px,3.1vw,39px)/1.36 "Cormorant Garamond",Georgia,serif;color:#914349;margin:26px 0}
+.k28-epilogue .k28-gift{margin-top:32px;color:#855744;font-size:13px;font-weight:700}
+.k28-epilogue .btn{min-height:46px}
+@media(max-width:720px){
+ .masthead-inner{gap:7px}
+ .nav{flex-wrap:nowrap;overflow-x:auto;max-width:100%;width:100%;gap:17px;padding:5px 0 10px}
+ .nav a{white-space:nowrap;flex-shrink:0;min-height:34px;display:flex;align-items:center}
+ .hero-inner{min-height:unset;gap:16px}
+ .hero h1{font-size:clamp(51px,10vw,76px)}
+ .postcard{display:block!important;max-width:230px;transform:rotate(2deg)}
+ .postcard-inner{min-height:180px}
+ .postcard .year{font-size:44px}
+ .postcard .words{font-size:22px}
+ .postmark{width:55px;height:55px;font-size:7px;right:11px;top:11px}
+ .cta{gap:8px}
+ .cta .btn{width:100%;font-size:13px}
+ .memory-grid{grid-template-columns:1fr}
+ .memory-grid .memory-card:last-child{display:block}
+ .story-band,.timeline-section,.memories-section,.map-section{padding-top:46px;padding-bottom:46px}
+ .k28-epilogue{padding:64px 0}
+ .k28-epilogue p{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.hero,.postcard,.btn{animation:none!important;transition:none!important}}
