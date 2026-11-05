@@ -27,7 +27,7 @@ Có hai bộ ảnh dự kiến:
 - images/ky-niem-k28/01.webp đến 10.webp: ảnh xử lý làm rõ
 - images/ky-niem-k28-goc/01.webp đến 10.webp: ảnh tư liệu gốc
 
-Album hiện hiển thị **duy nhất một khung ảnh**, điều hướng **Trước / Tiếp**, 10 nút chọn nhanh, vuốt ngang trên điện thoại, phím mũi tên và mở ảnh lớn. Người xem có thể chuyển giữa ảnh gốc và ảnh làm rõ mà không mất vị trí đang xem. Ảnh dùng `object-fit: contain` để không cắt khuôn mặt. Trình duyệt kiểm tra từng ảnh trước khi hiển thị; khi chưa có bộ ảnh trên máy chủ, trang thông báo còn thiếu chứ **không hiển thị ba ảnh dự phòng hoặc ảnh giả**.
+Album công khai mang tên **Ảnh K28**, chỉ hiển thị **một khung ảnh**, điều hướng **Trước / Tiếp**, 10 nút chọn nhanh, vuốt ngang, phím mũi tên và mở ảnh lớn. Ảnh dùng `object-fit: contain` để không cắt khuôn mặt. Các ảnh nguồn gốc vẫn lưu trong repository phục vụ bảo quản tư liệu nhưng không còn nút chuyển chế độ hoặc các nhãn kỹ thuật hiển thị cho bạn học.
 
 Ảnh làm rõ bằng AI cần đối chiếu bản gốc trước khi khẳng định nhân vật, địa điểm và thời gian.
 
@@ -50,4 +50,4 @@ GitHub Pages: nhánh main, thư mục gốc. Tệp CNAME giữ www.kt28.io.vn; h
 
 ## Gói ảnh chính thức của người biên tập (05/11/2026)
 
-Bộ ZIP được cung cấp trong cuộc hội thoại có **10 ảnh làm rõ và 10 ảnh gốc**, định dạng WebP, kiểm tra toàn bộ tệp hợp lệ. Do GitHub connector chỉ ghi được tệp văn bản trong luồng hiện tại, những tệp ảnh nhị phân vẫn cần **được đẩy lên repository** qua Git/PowerShell. Có thể chạy `DONG_BO_ALBUM_K28.ps1` trong gói `K28_Album_10_Anh_Next_GitHub.zip` (sau khi giải nén) trên máy Windows đã cấu hình GitHub, hoặc tải hai thư mục ảnh lên repo thủ công. Cổng kiểm định ảnh `--strict` chưa PASS trước khi GitHub nhận đủ ảnh.
+**Đã đồng bộ lên GitHub đủ 20/20 WebP từ bộ ZIP** (10 ảnh chính trong `images/ky-niem-k28/` và 10 ảnh lưu trữ trong `images/ky-niem-k28-goc/`) tại commit `9d92eb371befd232c003327d0d0249584854acee`. Mã băm đối chiếu với nguồn gốc trùng khớp. Giao diện công khai chỉ hiển thị tên chung **Ảnh K28**; ảnh lưu trữ tiếp tục được giữ nguyên trong repository. Cổng kiểm tra `--strict` đã PASS ở commit đăng ảnh; rà soát nội dung và quyền công bố vẫn là công đoạn biên tập riêng.
