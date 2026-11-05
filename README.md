@@ -1,46 +1,48 @@
-# Kinh tế K28 · Bản đồ bạn bè và Album thanh xuân
+# Kinh tế K28 · Thanh xuân của chúng mình
 
-**Website:** https://www.kt28.io.vn/  
-**Repository:** https://github.com/xulytiengviet/kinhteK38/  
-**Lời tặng:** ♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.
+- Website: https://www.kt28.io.vn/
+- Mã nguồn: https://github.com/xulytiengviet/kinhteK38
+- Niên khóa: 2007–2011
+- Lời tặng: ♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.
+- Giấy phép: kiểm tra LICENSE trước khi tái sử dụng nội dung và hình ảnh; tác quyền ảnh, video của chủ sở hữu tương ứng.
 
-## Dữ liệu K28
+## Trải nghiệm
+Trang đầu cảm xúc → Chuyện chúng mình → Dòng thời gian 2007–2011 → Album ảnh → Bản đồ bạn bè → YouTube & nhạc → Lưu bút cá nhân → Lời gửi cuối.
 
-Danh sách 33 sinh viên từ bảng cập nhật ngày 05/11/2026, gồm STT, MSSV, họ tên, năm sinh, quê quán và nơi ở hiện tại. STT 29 là **0768219 – Hoàng Thị Vân**. Xem [data/roster-k28.csv](data/roster-k28.csv).
+Lưu ý: Không biến kỷ niệm gợi nhớ thành các sự kiện lịch sử được khẳng định khi chưa có xác nhận của lớp.
 
-WebGIS mặc định hiển thị nơi ở hiện tại, cho phép chuyển về quê quán, lọc và tìm kiếm, đặt điểm đại diện vùng và hiển thị ranh giới 34 tỉnh/thành sau sắp xếp 2025 (nguồn GeoJSON [ThangLeQuoc/vietnamese-provinces-database](https://github.com/ThangLeQuoc/vietnamese-provinces-database)). Trường hợp chưa xác định không bị gán điểm giả; Nhật Bản dùng điểm quy ước cấp quốc gia. Không công bố vị trí nhà riêng.
+## Dữ liệu chuẩn
+- Có 33 thành viên, lưu chính tại data/roster-k28.csv và một bảng nhúng trong index.html.
+- Đúng 24/33 thành viên có nơi ở hiện tại đã xác định, 9 người chưa xác định.
+- MSSV 0768219 mang STT 29.
+- Trên bản đồ có thể chọn nơi ở hiện tại hoặc quê quán; lọc và thống kê phải đổi đồng bộ.
+- Điểm trên bản đồ là tâm đại diện địa danh, không phải GPS nhà riêng.
+- Xuất GeoJSON mặc định không chứa MSSV hoặc năm sinh. Hồ sơ gốc vẫn ở repository công khai; người quản trị chịu trách nhiệm xin phép và xử lý yêu cầu sửa/gỡ.
+- Ranh giới 34 tỉnh/thành năm 2025 dùng dữ liệu cộng đồng từ https://github.com/ThangLeQuoc/vietnamese-provinces-database, chỉ để tham khảo.
 
-## Album ảnh K28 – không dùng ba ảnh cũ
+## Album ảnh
+Module: album-k28.js và album-k28.css. HTML phải có albumK28Groups, albumK28Message, các nút chuyển chế độ, dialog cùng các phần tử của nó.
 
-Album `#anhxua` có **10 ảnh** được chia thành ba nhóm, với đủ các nhãn kỷ niệm:
+Có hai bộ ảnh dự kiến:
+- images/ky-niem-k28/01.webp đến 10.webp: ảnh xử lý làm rõ
+- images/ky-niem-k28-goc/01.webp đến 10.webp: ảnh tư liệu gốc
 
-- **Lớp học thân quen:** 01, 03, 04, 05, 06 – khoảnh khắc tốt nghiệp, lớp học và bạn bè.
-- **Chuyến tham quan K28 – Chuyến đi cùng nhau:** 02, 08, 09, 10 – những chuyến tham quan.
-- **Kỷ niệm dã ngoại K28 – Một ngày dã ngoại:** 07 – khoảnh khắc Lang Biang.
+Trình duyệt kiểm tra từng ảnh có thực trước khi hiển thị. Khi chưa có bộ chính, website chỉ hiển thị 3 hình hiện có trong thư mục images/ và ghi rõ là ảnh dự phòng. Không coi đó là album 10 ảnh đã hoàn thành.
 
-Ảnh được tải theo thứ tự, tối ưu di động (mỗi hàng một ảnh trên màn hình nhỏ), giữ đủ khung hình bằng `object-fit: contain`, phóng lớn trong lightbox, điều khiển bằng bàn phím hoặc vuốt. Có thể chọn **Ảnh phục dựng rõ nét** và **Ảnh gốc**. Bản AI có thể làm thay đổi một số chi tiết khuôn mặt/cảnh vật, không nên xem là tư liệu lịch sử nguyên trạng.
+Ảnh làm rõ bằng AI cần đối chiếu bản gốc trước khi khẳng định nhân vật, địa điểm và thời gian.
 
-**Ba ảnh cũ và các bản sao K38 tương ứng đã được gỡ khỏi repository và không còn được dùng làm dự phòng.**
+## Video và lưu bút
+- Video được nhúng từ YouTube: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Người xem chủ động phát; có liên kết mở YouTube khi không thể nhúng.
+- Lưu bút hiện chỉ lưu ở trình duyệt người dùng (localStorage), có chức năng sao lưu JSON; **chưa chia sẻ chung giữa các thành viên**.
+- Nút chia sẻ cho phép mở trình chia sẻ trên thiết bị hỗ trợ hoặc sao chép đường dẫn.
 
-### Đưa ảnh mới vào GitHub
+## Triển khai
+GitHub Pages: nhánh main, thư mục gốc. Tệp CNAME giữ www.kt28.io.vn; hướng dẫn DNS PA Việt Nam tại HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md.
 
-Gói **`K28_Album_GitHub.zip`** có 20 tệp WebP. Giải nén rồi tải nguyên cấu trúc hai thư mục sau vào nhánh `main`:
+## Kiểm định
+- node scripts/audit-k28.mjs: kiểm tra Core.
+- node scripts/audit-k28.mjs --strict: kiểm tra đầy đủ 20 ảnh.
+- CI: .github/workflows/quality-gate.yml
+- Điều kiện nghiệm thu và phân loại PASS: docs/QUALITY_GATE.md
 
-- `images/ky-niem-k28/01.webp` đến `10.webp` (phục dựng rõ nét);
-- `images/ky-niem-k28-goc/01.webp` đến `10.webp` (ảnh gốc).
-
-Có thể dùng `DONG_BO_ALBUM_K28.ps1` trong gói để sao chép ảnh vào clone Git, commit và push sau khi đăng nhập GitHub trên máy Windows. Khi các tệp chưa được tải lên, giao diện vẫn giữ đủ 10 vị trí ảnh với thông báo **Đang đồng bộ ảnh**, không quay lại ảnh cũ.
-
-## YouTube và âm nhạc
-
-Mục `#k28Cinema` nhúng video: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Người dùng nhấn **Xem YouTube & bật nhạc** để tải trình phát YouTube, tương thích chính sách phát có âm thanh trên di động. Nếu YouTube chặn tự phát hoặc nhúng, người dùng nhấn Play trong video hay mở trực tiếp YouTube. Không sao chép nhạc thương mại lên repository.
-
-## GitHub Pages
-
-Dùng `main` và `/(root)`; `CNAME` là `www.kt28.io.vn`. Xem [hướng dẫn DNS PA Việt Nam](HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md). Đổi tên repository `kinhteK38` sang `kinhteK28` thủ công tại Settings → General nếu muốn đồng bộ URL GitHub.
-
-## Quyền riêng tư
-
-Dữ liệu thành viên và ảnh lớp có người thật; cần bảo đảm quyền công bố và tiếp nhận yêu cầu chỉnh sửa/gỡ bỏ từ thành viên.
-
-© 2026 · Kinh tế K28 · ♡ Thầy Long Ngo gửi tặng Lớp.
+**Chưa FULL PASS** cho đến khi cung cấp 20 tệp ảnh đúng, rà soát tư liệu, quyền công bố và kiểm thử thực tế trên thiết bị.
