@@ -1,100 +1,146 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
-const root=$("albumK28Groups");
-if(!root)return;
-const names=["Ngày tốt nghiệp","Dã ngoại trên đồi cát","Tập thể trước giảng đường","Những người bạn thân thiết","Khoảnh khắc lớp học","Ngày hội lớp","Lang Biang – Chuyến đi đáng nhớ","Hội ngộ trên núi","Tham quan trang trại","Một ngày bên nhau"];
-const groups=[
- {id:"albumK28Class",title:"Lớp học thân quen",indices:[0,2,3,4,5]},
- {id:"albumK28Trip",title:"Chuyến tham quan K28",indices:[6,8]},
- {id:"albumK28Picnic",title:"Kỷ niệm dã ngoại K28",indices:[1,7,9]}
+const host=$("albumK28Groups");
+if(!host)return;
+const photos=[
+ ["Ngày tốt nghiệp","Ngày tốt nghiệp"],
+ ["Dã ngoại trên đồi cát","Chuyến đi cùng nhau"],
+ ["Tập thể trước giảng đường","Lớp học thân quen"],
+ ["Những người bạn thân thiết","Lớp học thân quen"],
+ ["Khoảnh khắc lớp học","Lớp học thân quen"],
+ ["Ngày hội lớp","Lớp học thân quen"],
+ ["Lang Biang – Chuyến đi đáng nhớ","Kỷ niệm dã ngoại K28"],
+ ["Hội ngộ trên núi","Kỷ niệm dã ngoại K28"],
+ ["Tham quan trang trại","Chuyến tham quan K28"],
+ ["Một ngày bên nhau","Một ngày dã ngoại"]
 ];
-const paths={restored:"images/ky-niem-k28/",original:"images/ky-niem-k28-goc/"};
-const fallback=[
- {src:"images/k28-lop-hoc.webp",title:"Lớp học thân quen",group:"albumK28Class"},
- {src:"images/k28-tham-quan.webp",title:"Chuyến tham quan",group:"albumK28Trip"},
- {src:"images/k28-da-ngoai.webp",title:"Kỷ niệm dã ngoại",group:"albumK28Picnic"}
-];
-const count=$("albumK28Count"),notice=$("albumK28Message"),disclaimer=$("albumK28Disclaimer");
-const restoredBtn=$("albumK28Enhanced"),originalBtn=$("albumK28Original");
-const dialog=$("albumK28Lightbox"),image=$("albumK28LightboxImage");
-let present={restored:[],original:[]},mode="fallback",items=[],currentIndex=0,previousFocus=null;
-const file=(m,n)=>paths[m]+String(n+1).padStart(2,"0")+".webp";
-function exists(url){
+const folders={restored:"images/ky-niem-k28/",original:"images/ky-niem-k28-goc/"};
+const path=(m,i)=>folders[m]+String(i+1).padStart(2,"0")+".webp";
+const present={restored:Array(10).fill(false),original:Array(10).fill(false)};
+const notice=$("albumK28Message"),count=$("albumK28Count"),hint=$("albumK28Disclaimer");
+const modes=[["albumK28Enhanced","restored"],["albumK28Original","original"]];
+const dialog=$("albumK28Lightbox"),large=$("albumK28LightboxImage");
+let mode="restored",index=0,lastFocus=null,touchX=null;
+const view=document.createElement("div");view.className="k28-carousel";
+view.innerHTML=[
+ '<div class="k28-carousel-stage">',
+  '<button class="k28-carousel-arrow prev" type="button" aria-label="Ảnh trước">❮</button>',
+  '<button class="k28-carousel-image-button" type="button" aria-label="Phóng to ảnh">',
+   '<img class="k28-carousel-image" alt="" decoding="async">',
+  '</button>',
+  '<button class="k28-carousel-arrow next" type="button" aria-label="Ảnh tiếp theo">❯</button>',
+  '<span class="k28-carousel-count" aria-live="polite">00 / 10</span>',
+ '</div>',
+ '<div class="k28-carousel-footer">',
+  '<div><div class="k28-carousel-category"></div><h3 class="k28-carousel-title"></h3>',
+  '<p class="k28-carousel-origin"></p></div>',
+  '<div class="k28-carousel-controls">',
+   '<button class="prev" type="button">← Trước</button><button class="next" type="button">Tiếp →</button>',
+  '</div>',
+ '</div>',
+ '<div class="k28-carousel-dots" role="group" aria-label="Chọn ảnh trong album"></div>',
+ '<p class="k28-carousel-help">Vuốt ngang trên điện thoại hoặc dùng phím ← → để chuyển ảnh. Chạm ảnh để xem lớn.</p>'
+].join("");
+host.replaceChildren(view);
+const stage=view.querySelector(".k28-carousel-stage");
+const img=view.querySelector(".k28-carousel-image");
+const zoom=view.querySelector(".k28-carousel-image-button");
+const dots=view.querySelector(".k28-carousel-dots");
+const showNotice=s=>{notice.hidden=!s;notice.textContent=s||"";};
+const available=()=>photos.map((p,i)=>i).filter(i=>present[mode][i]);
+function probe(url){
  return new Promise(resolve=>{
+  const c=typeof AbortController==="function"?new AbortController():null;
   let done=false;
-  const finish=ok=>{if(done)return;done=true;resolve(ok);};
-  const controller=typeof AbortController!=="undefined"?new AbortController():null;
-  const timer=setTimeout(()=>{controller?.abort();finish(false);},6500);
-  fetch(url,{method:"HEAD",signal:controller?.signal}).then(r=>{clearTimeout(timer);finish(r.ok);}).catch(()=>{
-   const img=new Image();
-   img.onload=()=>{clearTimeout(timer);finish(true);};
-   img.onerror=()=>{clearTimeout(timer);finish(false);};
-   img.src=url;
+  const finish=ok=>{if(!done){done=true;resolve(ok);}};
+  const timer=setTimeout(()=>{c?.abort();finish(false);},7000);
+  fetch(url,{method:"HEAD",signal:c?.signal}).then(r=>{clearTimeout(timer);finish(r.ok);}).catch(()=>{
+   const im=new Image();im.onload=()=>{clearTimeout(timer);finish(true);};
+   im.onerror=()=>{clearTimeout(timer);finish(false);};im.src=url;
   });
  });
 }
-function has(m){return present[m].some(Boolean);}
-function status(s){notice.hidden=!s;notice.textContent=s;}
-function photos(){
- if(mode==="fallback")return fallback.map((p,i)=>({...p,index:i,caption:"Ảnh dự phòng hiện có"}));
- return names.map((title,i)=>({index:i,title,src:file(mode,i),group:groups.find(g=>g.indices.includes(i)).id,caption:mode==="original"?"Ảnh tư liệu gốc":"Ảnh xử lý rõ nét · đối chiếu ảnh gốc"})).filter(p=>present[mode][p.index]);
-}
-function openPhoto(i){
- if(!items.length)return;
- currentIndex=(i+items.length)%items.length;
- const p=items[currentIndex];
- image.src=p.src;image.alt=p.title;
- $("albumK28LightboxLabel").textContent=p.title;
- $("albumK28LightboxIndex").textContent=(currentIndex+1)+" / "+items.length+" · "+p.caption;
- if(!dialog.open){previousFocus=document.activeElement;dialog.showModal();}
+function syncDialog(){
+ large.src=path(mode,index);large.alt=photos[index][0];
+ $("albumK28LightboxLabel").textContent=photos[index][0];
+ $("albumK28LightboxIndex").textContent=String(index+1).padStart(2,"0")+" / 10 · "+(mode==="original"?"Ảnh gốc":"Ảnh làm rõ");
 }
 function render(){
- items=photos();root.replaceChildren();
- restoredBtn.disabled=!has("restored");originalBtn.disabled=!has("original");
- for(const [button,m] of [[restoredBtn,"restored"],[originalBtn,"original"]]){
+ const choices=available();
+ for(const [id,m] of modes){
+  const button=$(id);button.disabled=!present[m].some(Boolean);
   button.classList.toggle("is-selected",mode===m);
   button.setAttribute("aria-pressed",String(mode===m));
  }
- disclaimer.textContent=mode==="fallback"?"Chưa đủ album 10 ảnh. Các hình bên dưới chỉ là ảnh dự phòng, chưa được nghiệm thu.":mode==="original"?"Đây là ảnh tư liệu gốc; hãy giữ bản gốc để đối chiếu.":"Ảnh xử lý bằng AI có thể sai khuôn mặt hoặc bối cảnh. Chỉ xác nhận sự kiện sau khi đối chiếu ảnh gốc.";
- for(const group of groups){
-  const section=document.createElement("section");section.className="album-k28-group";section.id=group.id;
-  const title=document.createElement("h3");title.className="album-k28-heading";title.textContent=group.title;section.append(title);
-  const subset=items.filter(p=>p.group===group.id);
-  if(!subset.length){const p=document.createElement("p");p.className="album-k28-empty";p.textContent="Đang chờ bổ sung ảnh tư liệu cho nhóm này.";section.append(p);}
-  else{
-   const grid=document.createElement("div");grid.className="album-k28-grid";
-   for(const photo of subset){
-    const card=document.createElement("article");card.className="album-k28-card";
-    const button=document.createElement("button");button.type="button";button.className="album-k28-thumb";button.setAttribute("aria-label","Phóng to "+photo.title);
-    const img=document.createElement("img");img.src=photo.src;img.alt=photo.title;img.loading="lazy";img.decoding="async";
-    img.addEventListener("error",()=>{button.disabled=true;button.title="Không tải được ảnh";});
-    button.append(img);button.addEventListener("click",()=>openPhoto(items.indexOf(photo)));
-    const label=document.createElement("div");label.className="album-k28-photo-label";label.textContent=photo.title;
-    const small=document.createElement("small");small.textContent=photo.caption;label.append(small);
-    card.append(button,label);grid.append(card);
-   }
-   section.append(grid);
-  }
-  root.append(section);
+ hint.textContent=mode==="original"?"Bạn đang xem ảnh tư liệu gốc, giữ nguyên tỷ lệ và khung hình.":"Đây là ảnh xử lý làm rõ. Các chi tiết có thể khác ảnh gốc; hãy đối chiếu trước khi xác nhận nhân vật, sự kiện.";
+ if(choices.length&&!present[mode][index])index=choices[0];
+ dots.replaceChildren();
+ photos.forEach((p,i)=>{
+  const b=document.createElement("button");b.type="button";
+  b.className="k28-carousel-dot"+(index===i?" active":"");
+  b.textContent=String(i+1);b.disabled=!present[mode][i];
+  b.setAttribute("aria-label","Ảnh "+(i+1)+": "+p[0]);
+  b.setAttribute("aria-current",String(i===index&&present[mode][i]));
+  b.addEventListener("click",()=>show(i));dots.append(b);
+ });
+ if(!choices.length){
+  img.removeAttribute("src");img.alt="";zoom.disabled=true;
+  view.classList.add("is-empty");
+  view.querySelector(".k28-carousel-title").textContent="Đang chờ bộ 10 ảnh K28";
+  view.querySelector(".k28-carousel-category").textContent="ALBUM TƯ LIỆU";
+  view.querySelector(".k28-carousel-origin").textContent="Vui lòng đồng bộ ảnh vào thư mục images/ của repository.";
+  view.querySelector(".k28-carousel-count").textContent="00 / 10";
+  count.textContent="0/10 ảnh đã công bố";
+  showNotice("Bộ ảnh chưa có trên máy chủ. Không dùng ảnh dự phòng để thay thế 10 ảnh của lớp.");
+  return;
  }
- count.textContent=mode==="fallback"?items.length+" ảnh dự phòng · chờ album 10 ảnh":items.length+"/10 ảnh · "+(mode==="original"?"Ảnh gốc":"Ảnh xử lý");
- status(mode==="fallback"?"Bộ 10 ảnh gốc và phục dựng chưa được tải đủ lên GitHub.":items.length<10?"Chỉ có "+items.length+"/10 ảnh thuộc chế độ này. Những ảnh thiếu đã được ẩn.":"");
+ view.classList.remove("is-empty");zoom.disabled=false;
+ img.src=path(mode,index);img.alt=photos[index][0]+(mode==="original"?" · ảnh gốc":" · ảnh làm rõ");
+ view.querySelector(".k28-carousel-count").textContent=String(index+1).padStart(2,"0")+" / 10";
+ view.querySelector(".k28-carousel-category").textContent=photos[index][1];
+ view.querySelector(".k28-carousel-title").textContent=photos[index][0];
+ view.querySelector(".k28-carousel-origin").textContent=mode==="original"?"Ảnh tư liệu gốc":"Ảnh xử lý làm rõ";
+ count.textContent=choices.length+"/10 ảnh · "+(mode==="original"?"Ảnh gốc":"Ảnh làm rõ");
+ showNotice(choices.length<10?"Chỉ có "+choices.length+"/10 ảnh; những tấm chưa tải lên được bỏ qua.":"");
+ if(dialog.open)syncDialog();
+ if(choices.length>1){
+  const next=choices[(choices.indexOf(index)+1)%choices.length];
+  const preload=new Image();preload.src=path(mode,next);
+ }
 }
-restoredBtn.addEventListener("click",()=>{if(has("restored")){mode="restored";render();}});
-originalBtn.addEventListener("click",()=>{if(has("original")){mode="original";render();}});
+function show(next){if(!present[mode][next])return;index=next;render();}
+function step(delta){
+ const v=available();if(!v.length)return;
+ const pos=v.indexOf(index);show(v[(pos+delta+v.length)%v.length]);
+}
+modes.forEach(([id,m])=>$(id).addEventListener("click",()=>{
+ if(!present[m].some(Boolean))return;
+ mode=m;render();
+}));
+view.querySelectorAll(".prev").forEach(b=>b.addEventListener("click",()=>step(-1)));
+view.querySelectorAll(".next").forEach(b=>b.addEventListener("click",()=>step(1)));
+zoom.addEventListener("click",()=>{if(!available().length)return;lastFocus=document.activeElement;syncDialog();dialog.showModal();});
 $("albumK28LightboxClose").addEventListener("click",()=>dialog.close());
-$("albumK28LightboxPrev").addEventListener("click",()=>openPhoto(currentIndex-1));
-$("albumK28LightboxNext").addEventListener("click",()=>openPhoto(currentIndex+1));
-dialog.addEventListener("close",()=>{if(previousFocus?.isConnected)previousFocus.focus();});
+$("albumK28LightboxPrev").addEventListener("click",()=>step(-1));
+$("albumK28LightboxNext").addEventListener("click",()=>step(1));
+dialog.addEventListener("close",()=>{if(lastFocus?.isConnected)lastFocus.focus();});
 dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
+stage.addEventListener("touchstart",e=>{if(e.touches.length===1)touchX=e.touches[0].clientX;},{passive:true});
+stage.addEventListener("touchend",e=>{
+ if(touchX===null||!e.changedTouches.length)return;
+ const diff=e.changedTouches[0].clientX-touchX;touchX=null;
+ if(Math.abs(diff)>45)step(diff<0?1:-1);
+},{passive:true});
 document.addEventListener("keydown",e=>{
- if(!dialog.open)return;
- if(e.key==="ArrowLeft"){e.preventDefault();openPhoto(currentIndex-1);}
- if(e.key==="ArrowRight"){e.preventDefault();openPhoto(currentIndex+1);}
+ if(!dialog.open&&!view.contains(document.activeElement))return;
+ if(e.key==="ArrowLeft"){e.preventDefault();step(-1);}
+ if(e.key==="ArrowRight"){e.preventDefault();step(1);}
 });
-count.textContent="Đang kiểm tra ảnh thực có…";
-Promise.all(["restored","original"].map(async m=>{present[m]=await Promise.all(names.map((_,i)=>exists(file(m,i))));}))
- .then(()=>{mode=has("restored")?"restored":has("original")?"original":"fallback";render();})
- .catch(()=>{mode="fallback";render();});
+img.addEventListener("error",()=>{present[mode][index]=false;render();});
+showNotice("Đang kiểm tra bộ ảnh K28…");
+Promise.all(Object.keys(folders).map(async m=>{
+ present[m]=await Promise.all(photos.map((_,i)=>probe(path(m,i))));
+})).then(()=>{mode=present.restored.some(Boolean)?"restored":present.original.some(Boolean)?"original":"restored";render();})
+ .catch(()=>{render();showNotice("Không kiểm tra được album trên máy chủ. Thử tải lại trang.");});
 })();
