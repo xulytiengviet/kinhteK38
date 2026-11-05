@@ -1,117 +1,100 @@
-
-(function () {
+(function(){
 "use strict";
-const groups=[
- {id:"albumK28Class",title:"Lớp học thân quen",subtitle:"Những gương mặt và góc sân trường đã cùng chúng mình đi qua tuổi trẻ.",items:[1,3,4,5,6]},
- {id:"albumK28Trip",title:"Chuyến tham quan K28",subtitle:"Chuyến đi cùng nhau",items:[2,8,9,10]},
- {id:"albumK28Picnic",title:"Kỷ niệm dã ngoại K28",subtitle:"Một ngày dã ngoại",items:[7]}
-];
-const captions={
- 1:"Ngày chúng mình tốt nghiệp",
- 2:"Những nụ cười trên đồi cát",
- 3:"Tập thể trước giảng đường",
- 4:"Bạn bè thân thương",
- 5:"Những giây phút trong lớp",
- 6:"Ngày vui của lớp mình",
- 7:"Một ngày ở Lang Biang",
- 8:"Hội ngộ giữa núi trời",
- 9:"Cùng nhau đi tham quan",
- 10:"Ngày ấy bên nhau"
-};
-const allIds=groups.flatMap(g=>g.items);
-if(allIds.length!==10||new Set(allIds).size!==10)throw Error("Album cần có đúng mười ảnh không lặp.");
-const root=document.getElementById("anhxua");if(!root)return;
 const $=id=>document.getElementById(id);
-const dirs={restored:"images/ky-niem-k28/",original:"images/ky-niem-k28-goc/"};
-let mode="restored",lightboxIndex=0,renderVersion=0,shown=new Set();
-const src=(id,m=mode)=>dirs[m]+String(id).padStart(2,"0")+".webp";
-const sourceLabel=m=>m==="restored"?"Phục dựng AI":"Ảnh gốc";
-function updateMeta(){
- $("albumK28Enhanced").classList.toggle("is-selected",mode==="restored");
- $("albumK28Original").classList.toggle("is-selected",mode==="original");
- $("albumK28Enhanced").setAttribute("aria-pressed",String(mode==="restored"));
- $("albumK28Original").setAttribute("aria-pressed",String(mode==="original"));
- $("albumK28Disclaimer").textContent=mode==="restored"?
-   "Bộ ảnh rõ nét được phục dựng bằng AI nên có thể khác ảnh gốc ở một số chi tiết. Sử dụng nút Ảnh gốc để đối chiếu.":
-   "Ảnh gốc từ tư liệu lớp K28 được giữ để đối chiếu; kích thước nhỏ có thể khiến ảnh kém sắc nét khi phóng lớn.";
+const root=$("albumK28Groups");
+if(!root)return;
+const names=["Ngày tốt nghiệp","Dã ngoại trên đồi cát","Tập thể trước giảng đường","Những người bạn thân thiết","Khoảnh khắc lớp học","Ngày hội lớp","Lang Biang – Chuyến đi đáng nhớ","Hội ngộ trên núi","Tham quan trang trại","Một ngày bên nhau"];
+const groups=[
+ {id:"albumK28Class",title:"Lớp học thân quen",indices:[0,2,3,4,5]},
+ {id:"albumK28Trip",title:"Chuyến tham quan K28",indices:[6,8]},
+ {id:"albumK28Picnic",title:"Kỷ niệm dã ngoại K28",indices:[1,7,9]}
+];
+const paths={restored:"images/ky-niem-k28/",original:"images/ky-niem-k28-goc/"};
+const fallback=[
+ {src:"images/k28-lop-hoc.webp",title:"Lớp học thân quen",group:"albumK28Class"},
+ {src:"images/k28-tham-quan.webp",title:"Chuyến tham quan",group:"albumK28Trip"},
+ {src:"images/k28-da-ngoai.webp",title:"Kỷ niệm dã ngoại",group:"albumK28Picnic"}
+];
+const count=$("albumK28Count"),notice=$("albumK28Message"),disclaimer=$("albumK28Disclaimer");
+const restoredBtn=$("albumK28Enhanced"),originalBtn=$("albumK28Original");
+const dialog=$("albumK28Lightbox"),image=$("albumK28LightboxImage");
+let present={restored:[],original:[]},mode="fallback",items=[],currentIndex=0,previousFocus=null;
+const file=(m,n)=>paths[m]+String(n+1).padStart(2,"0")+".webp";
+function exists(url){
+ return new Promise(resolve=>{
+  let done=false;
+  const finish=ok=>{if(done)return;done=true;resolve(ok);};
+  const controller=typeof AbortController!=="undefined"?new AbortController():null;
+  const timer=setTimeout(()=>{controller?.abort();finish(false);},6500);
+  fetch(url,{method:"HEAD",signal:controller?.signal}).then(r=>{clearTimeout(timer);finish(r.ok);}).catch(()=>{
+   const img=new Image();
+   img.onload=()=>{clearTimeout(timer);finish(true);};
+   img.onerror=()=>{clearTimeout(timer);finish(false);};
+   img.src=url;
+  });
+ });
 }
-function updateCount(){
- $("albumK28Count").textContent=shown.size+" / 10 ảnh đã tải · "+sourceLabel(mode);
- const message=$("albumK28Message");
- message.hidden=shown.size===10;
- message.textContent=shown.size===10?"":"Đang thiếu "+(10-shown.size)+" ảnh trên GitHub. Vui lòng đồng bộ các tệp ảnh K28 vào thư mục images/ rồi tải lại trang. Ba ảnh cũ đã được gỡ khỏi album.";
+function has(m){return present[m].some(Boolean);}
+function status(s){notice.hidden=!s;notice.textContent=s;}
+function photos(){
+ if(mode==="fallback")return fallback.map((p,i)=>({...p,index:i,caption:"Ảnh dự phòng hiện có"}));
+ return names.map((title,i)=>({index:i,title,src:file(mode,i),group:groups.find(g=>g.indices.includes(i)).id,caption:mode==="original"?"Ảnh tư liệu gốc":"Ảnh xử lý rõ nét · đối chiếu ảnh gốc"})).filter(p=>present[mode][p.index]);
 }
-function makeImage(id,version){
- const button=document.createElement("button");button.type="button";button.className="album-k28-thumb";
- button.setAttribute("aria-label","Xem lớn ảnh "+id+": "+captions[id]);
- const placeholder=document.createElement("div");placeholder.className="album-k28-placeholder";
- placeholder.innerHTML='<span>▧</span><strong>Ảnh '+String(id).padStart(2,"0")+'</strong><small>Đang đồng bộ ảnh</small>';
- const img=document.createElement("img");img.alt=captions[id]+", "+sourceLabel(mode);
- img.loading="lazy";img.decoding="async";img.hidden=true;
- img.onload=()=>{if(renderVersion!==version)return;placeholder.hidden=true;img.hidden=false;shown.add(id);button.disabled=false;updateCount()};
- img.onerror=()=>{if(renderVersion!==version)return;placeholder.hidden=false;img.hidden=true;shown.delete(id);button.disabled=true;updateCount()};
- button.disabled=true;
- button.addEventListener("click",()=>openPhoto(id));
- button.append(img,placeholder);
- img.src=src(id);
- return button;
+function openPhoto(i){
+ if(!items.length)return;
+ currentIndex=(i+items.length)%items.length;
+ const p=items[currentIndex];
+ image.src=p.src;image.alt=p.title;
+ $("albumK28LightboxLabel").textContent=p.title;
+ $("albumK28LightboxIndex").textContent=(currentIndex+1)+" / "+items.length+" · "+p.caption;
+ if(!dialog.open){previousFocus=document.activeElement;dialog.showModal();}
 }
 function render(){
- const container=$("albumK28Groups");container.replaceChildren();renderVersion++;shown=new Set();
- const ver=renderVersion;updateMeta();
+ items=photos();root.replaceChildren();
+ restoredBtn.disabled=!has("restored");originalBtn.disabled=!has("original");
+ for(const [button,m] of [[restoredBtn,"restored"],[originalBtn,"original"]]){
+  button.classList.toggle("is-selected",mode===m);
+  button.setAttribute("aria-pressed",String(mode===m));
+ }
+ disclaimer.textContent=mode==="fallback"?"Chưa đủ album 10 ảnh. Các hình bên dưới chỉ là ảnh dự phòng, chưa được nghiệm thu.":mode==="original"?"Đây là ảnh tư liệu gốc; hãy giữ bản gốc để đối chiếu.":"Ảnh xử lý bằng AI có thể sai khuôn mặt hoặc bối cảnh. Chỉ xác nhận sự kiện sau khi đối chiếu ảnh gốc.";
  for(const group of groups){
   const section=document.createElement("section");section.className="album-k28-group";section.id=group.id;
-  const head=document.createElement("div");head.className="album-k28-group-head";
-  const title=document.createElement("h3");title.textContent=group.title;
-  const subtitle=document.createElement("p");subtitle.textContent=group.subtitle;
-  const counter=document.createElement("span");counter.textContent=group.items.length+" ảnh";
-  head.append(title,subtitle,counter);
-  const grid=document.createElement("div");grid.className="album-k28-grid";
-  for(const id of group.items){
-   const item=document.createElement("figure");item.className="album-k28-card";
-   const photo=makeImage(id,ver);
-   const label=document.createElement("figcaption");label.className="album-k28-photo-label";
-   label.append(document.createTextNode(String(id).padStart(2,"0")+" · "+captions[id]));
-   const sub=document.createElement("small");sub.textContent=sourceLabel(mode);label.append(sub);
-   item.append(photo,label);grid.append(item);
+  const title=document.createElement("h3");title.className="album-k28-heading";title.textContent=group.title;section.append(title);
+  const subset=items.filter(p=>p.group===group.id);
+  if(!subset.length){const p=document.createElement("p");p.className="album-k28-empty";p.textContent="Đang chờ bổ sung ảnh tư liệu cho nhóm này.";section.append(p);}
+  else{
+   const grid=document.createElement("div");grid.className="album-k28-grid";
+   for(const photo of subset){
+    const card=document.createElement("article");card.className="album-k28-card";
+    const button=document.createElement("button");button.type="button";button.className="album-k28-thumb";button.setAttribute("aria-label","Phóng to "+photo.title);
+    const img=document.createElement("img");img.src=photo.src;img.alt=photo.title;img.loading="lazy";img.decoding="async";
+    img.addEventListener("error",()=>{button.disabled=true;button.title="Không tải được ảnh";});
+    button.append(img);button.addEventListener("click",()=>openPhoto(items.indexOf(photo)));
+    const label=document.createElement("div");label.className="album-k28-photo-label";label.textContent=photo.title;
+    const small=document.createElement("small");small.textContent=photo.caption;label.append(small);
+    card.append(button,label);grid.append(card);
+   }
+   section.append(grid);
   }
-  section.append(head,grid);container.append(section);
+  root.append(section);
  }
- updateCount();
+ count.textContent=mode==="fallback"?items.length+" ảnh dự phòng · chờ album 10 ảnh":items.length+"/10 ảnh · "+(mode==="original"?"Ảnh gốc":"Ảnh xử lý");
+ status(mode==="fallback"?"Bộ 10 ảnh gốc và phục dựng chưa được tải đủ lên GitHub.":items.length<10?"Chỉ có "+items.length+"/10 ảnh thuộc chế độ này. Những ảnh thiếu đã được ẩn.":"");
 }
-function openPhoto(id){
- const modal=$("albumK28Lightbox");lightboxIndex=allIds.indexOf(id);
- if(lightboxIndex<0)lightboxIndex=0;
- const target=allIds[lightboxIndex];
- $("albumK28LightboxImage").src=src(target);
- $("albumK28LightboxImage").alt=captions[target];
- $("albumK28LightboxLabel").textContent=captions[target];
- $("albumK28LightboxIndex").textContent=String(target).padStart(2,"0")+" / 10 · "+sourceLabel(mode);
- if(!modal.open)modal.showModal();
-}
-function next(step){
- for(let i=1;i<=allIds.length;i++){
-  const j=(lightboxIndex+step*i+allIds.length*3)%allIds.length;
-  if(shown.has(allIds[j])){openPhoto(allIds[j]);return}
- }
-}
-$("albumK28Enhanced").addEventListener("click",()=>{if(mode!=="restored"){mode="restored";render()}});
-$("albumK28Original").addEventListener("click",()=>{if(mode!=="original"){mode="original";render()}});
-$("albumK28LightboxClose").addEventListener("click",()=>$("albumK28Lightbox").close());
-$("albumK28LightboxPrev").addEventListener("click",()=>next(-1));
-$("albumK28LightboxNext").addEventListener("click",()=>next(1));
-$("albumK28Lightbox").addEventListener("click",e=>{if(e.target===$("albumK28Lightbox"))e.target.close()});
+restoredBtn.addEventListener("click",()=>{if(has("restored")){mode="restored";render();}});
+originalBtn.addEventListener("click",()=>{if(has("original")){mode="original";render();}});
+$("albumK28LightboxClose").addEventListener("click",()=>dialog.close());
+$("albumK28LightboxPrev").addEventListener("click",()=>openPhoto(currentIndex-1));
+$("albumK28LightboxNext").addEventListener("click",()=>openPhoto(currentIndex+1));
+dialog.addEventListener("close",()=>{if(previousFocus?.isConnected)previousFocus.focus();});
+dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
 document.addEventListener("keydown",e=>{
- if(!$("albumK28Lightbox").open)return;
- if(e.key==="ArrowLeft"){e.preventDefault();next(-1)}
- if(e.key==="ArrowRight"){e.preventDefault();next(1)}
+ if(!dialog.open)return;
+ if(e.key==="ArrowLeft"){e.preventDefault();openPhoto(currentIndex-1);}
+ if(e.key==="ArrowRight"){e.preventDefault();openPhoto(currentIndex+1);}
 });
-let touchX=null;
-$("albumK28LightboxImage").addEventListener("touchstart",e=>{touchX=e.changedTouches[0].clientX},{passive:true});
-$("albumK28LightboxImage").addEventListener("touchend",e=>{
- if(touchX===null)return;
- const d=e.changedTouches[0].clientX-touchX;touchX=null;
- if(Math.abs(d)>65)next(d>0?-1:1);
-},{passive:true});
-render();
+count.textContent="Đang kiểm tra ảnh thực có…";
+Promise.all(["restored","original"].map(async m=>{present[m]=await Promise.all(names.map((_,i)=>exists(file(m,i))));}))
+ .then(()=>{mode=has("restored")?"restored":has("original")?"original":"fallback";render();})
+ .catch(()=>{mode="fallback";render();});
 })();
