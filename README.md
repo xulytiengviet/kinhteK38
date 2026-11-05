@@ -35,3 +35,12 @@ GitHub Pages: `main` + `/(root)`; tệp `CNAME` giữ `www.kt28.io.vn`. Xem [hư
 Dữ liệu gồm MSSV, năm sinh, họ tên và nơi ở cấp tỉnh/thành hoặc quốc gia của người thật. Người quản trị cần bảo đảm căn cứ công bố và tiếp nhận yêu cầu sửa/gỡ nếu thành viên không muốn hiển thị.
 
 © 2026 · Kinh tế K28 · ♡ Thầy Long Ngo gửi tặng Lớp.
+
+
+## Thước phim K28 — tối ưu di động
+
+Module `cinema-k28.js` và `cinema-k28.css` thêm mục phim ảnh nằm sau album và trước lưu bút, dùng ảnh tự chuyển 6,2 giây, ẩn/hiện âm thanh, tiến/lùi, xem toàn màn hình, hỗ trợ `prefers-reduced-motion` và điều khiển chạm từ 44px.
+
+- Để dùng đủ **10 ảnh mới** từ `K28.zip`, tải các ảnh WebP `01.webp`–`10.webp` vào `images/ky-niem-k28/`. Khi chưa có, module tự dùng 3 ảnh kỷ niệm sẵn có.
+- Nhạc được dùng từ file `media/k28-nhac-ky-niem.mp3` **nếu người quản trị có quyền phát công khai**. Trên mobile, trình duyệt chặn tự phát có tiếng trước tương tác, nên có nút `Xem phim & bật nhạc`. Người xem cũng có thể chọn MP3 ở máy cá nhân (không upload).
+- Không thay đổi CNAME, DNS, WebGIS, dữ liệu sinh viên hoặc ranh giới.

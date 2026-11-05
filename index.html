@@ -33,6 +33,8 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 @media print{.masthead,.map-tools,.side,.btn,.guestbook,footer{display:none!important}.map-shell{display:block}#map{height:360px;min-height:360px}.hero-inner{min-height:auto}.hero{background:#fff}.map-section,.timeline-section{padding:25px 0}}
 .map-mode{display:flex;gap:9px;align-items:center;margin:9px 0 12px}.map-mode label{white-space:nowrap;font-size:12px}.map-mode select{flex:1;min-width:0}.map-actions{flex-wrap:wrap}.map-actions .btn{white-space:normal}.map-note a{color:inherit;text-decoration:underline}
 </style>
+<link rel="stylesheet" href="cinema-k28.css?v=1">
+<script src="cinema-k28.js?v=1" defer></script>
 </head>
 <body>
 <header class="masthead"><div class="wrap masthead-inner"><a class="identity" href="#dau">Kinh tế <b>K28</b> <span aria-hidden="true">✦</span></a><nav class="nav" aria-label="Điều hướng"><a href="#bandokyuc">BẢN ĐỒ KÝ ỨC</a><a href="#cauchuyen">CHUYỆN CHÚNG MÌNH</a><a href="#namthang">NĂM THÁNG</a><a href="#luubut">LƯU BÚT</a></nav></div></header>
@@ -47,6 +49,42 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 <div class="memory-card"><a href="images/k28-tham-quan.webp" target="_blank" rel="noopener" aria-label="Mở ảnh chuyến tham quan"><div class="memory-pic"><img src="images/k28-tham-quan.webp" alt="Ảnh tập thể sinh viên và thầy cô trong một chuyến tham quan ngoài trời" loading="lazy"></div></a><div class="memory-caption">Một chuyến đi cùng nhau</div></div>
 <div class="memory-card"><a href="images/k28-da-ngoai.webp" target="_blank" rel="noopener" aria-label="Mở ảnh dã ngoại"><div class="memory-pic"><img src="images/k28-da-ngoai.webp" alt="Nhóm sinh viên tạo dáng lưu niệm bên dòng nước chảy qua ghềnh đá" loading="lazy"></div></a><div class="memory-caption">Ngày ấy bên nhau</div></div>
 </div><div class="upload-hint"><label class="btn soft" for="photos">＋ Thử thêm ảnh kỷ niệm từ thiết bị</label> <input id="photos" class="hidden" type="file" accept="image/png,image/jpeg,image/webp" multiple> <span>Ảnh chọn thêm chỉ xem trên trình duyệt · tối đa 3 ảnh, 8 MB/ảnh</span></div></div></section>
+
+<section id="k28Cinema" aria-label="Thước phim thanh xuân Kinh tế K28">
+ <div class="k28-layout">
+  <div class="k28-intro"><div class="k28-eyebrow">✦ KINH TẾ K28 · 2007–2011</div>
+   <h2>Mong ước kỷ niệm xưa</h2>
+   <p>Mười khoảnh khắc thanh xuân, những chuyến đi và những tình bạn không phai. Chạm <strong>Xem phim &amp; bật nhạc</strong> để bắt đầu trên điện thoại.</p>
+  </div>
+  <div class="k28-player">
+   <div class="k28-stage" id="k28Stage">
+    <div class="k28-images">
+     <img class="k28-frame visible" id="k28FrameA" src="images/k28-lop-hoc.webp" alt="Ảnh kỷ niệm K28" fetchpriority="low">
+     <img class="k28-frame" id="k28FrameB" alt="Ảnh kỷ niệm kế tiếp">
+    </div>
+    <div class="k28-stamp">✦ MỘT THỜI THANH XUÂN · K28</div>
+    <div class="k28-caption" aria-live="polite">
+      <span id="k28Fraction">01 / 03</span>
+      <h3 id="k28Caption">Góc lớp thân quen</h3>
+      <p id="k28Subcaption">Những năm tháng chẳng thể nào quên</p>
+    </div>
+    <button type="button" id="k28OverlayPlay" class="k28-play-big" aria-label="Xem phim và bật nhạc">▶</button>
+   </div>
+   <div id="k28Progress" class="k28-progress" aria-label="Chọn ảnh"></div>
+   <div class="k28-toolbar" role="group" aria-label="Điều khiển trình chiếu">
+    <button id="k28Play" type="button" class="k28-button k28-primary">▶ Xem phim &amp; bật nhạc</button>
+    <button id="k28Back" type="button" class="k28-button" aria-label="Ảnh trước">❮</button>
+    <button id="k28Forward" type="button" class="k28-button" aria-label="Ảnh sau">❯</button>
+    <button id="k28AudioToggle" type="button" class="k28-button">♫ Bật nhạc</button>
+    <button id="k28Full" type="button" class="k28-button" aria-label="Toàn màn hình">⛶</button>
+    <span id="k28Index" class="k28-index">1/3</span>
+    <label class="k28-local">♪ Chọn MP3 từ máy<input id="k28File" type="file" accept="audio/*"></label>
+   </div>
+  </div>
+  <p id="k28Notice" class="k28-notice" role="status">Ảnh tự chuyển mỗi 6 giây. Nhạc phát sau một lần chạm theo chính sách của trình duyệt. MP3 chọn từ thiết bị sẽ không được tải lên máy chủ.</p>
+  <audio id="k28Music" preload="none" loop src="media/k28-nhac-ky-niem.mp3"></audio>
+ </div>
+</section>
 <section class="guestbook" id="luubut"><div class="wrap guest-grid"><div><div class="eyebrow">05 / Đôi dòng gửi lại</div><h2 style="font:600 50px/1.1 'Cormorant Garamond',Georgia,serif;color:#713637;margin:10px 0">Lưu bút bạn bè</h2><p style="font-size:12px;color:#7b6858">Viết một lời nhắn cho thời sinh viên. Lưu bút chỉ lưu trên trình duyệt của bạn, chưa có hệ thống chia sẻ công khai.</p><input id="noteName" class="field" placeholder="Tên hoặc biệt danh" maxlength="60" aria-label="Tên người viết"><textarea id="noteText" placeholder="Mình còn nhớ những ngày..." maxlength="1000" aria-label="Nội dung lưu bút"></textarea><button class="btn primary" id="saveNote" type="button">♡ Giữ lại lời nhắn</button></div><div><div class="panel-title">Những dòng viết cho thanh xuân</div><div class="notes" id="notes"><div class="micro">Chưa có lưu bút trên trình duyệt này.</div></div></div></div></section>
 </main>
 <footer><div class="wrap"><div class="footer-flex"><div>© 2026 · Kinh tế K28 · Niên khóa 2007–2011</div><div>♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.</div></div></div></footer>
