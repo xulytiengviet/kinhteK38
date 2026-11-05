@@ -44,3 +44,17 @@ Module `cinema-k28.js` và `cinema-k28.css` thêm mục phim ảnh nằm sau alb
 - Để dùng đủ **10 ảnh mới** từ `K28.zip`, tải các ảnh WebP `01.webp`–`10.webp` vào `images/ky-niem-k28/`. Khi chưa có, module tự dùng 3 ảnh kỷ niệm sẵn có.
 - Nhạc được dùng từ file `media/k28-nhac-ky-niem.mp3` **nếu người quản trị có quyền phát công khai**. Trên mobile, trình duyệt chặn tự phát có tiếng trước tương tác, nên có nút `Xem phim & bật nhạc`. Người xem cũng có thể chọn MP3 ở máy cá nhân (không upload).
 - Không thay đổi CNAME, DNS, WebGIS, dữ liệu sinh viên hoặc ranh giới.
+
+
+## Album ảnh K28 và YouTube (bản cập nhật 05/11/2026)
+
+Album ảnh là mục riêng trong thanh điều hướng `#anhxua`, với hai chế độ **Ảnh phục dựng rõ nét (AI)** và **Ảnh gốc**, 10 ảnh kỷ niệm và trình xem phóng lớn trên điện thoại. Ảnh phục dựng AI có thể thay đổi khuôn mặt hoặc chi tiết; nên kiểm tra với ảnh gốc trước khi sử dụng làm tư liệu lịch sử.
+
+Tải gói `K28_Album_GitHub.zip`, giải nén và đưa **hai thư mục** sau lên repository, giữ nguyên tên tệp:
+
+- `images/ky-niem-k28/01.webp` đến `10.webp` – ảnh phục dựng rõ nét.
+- `images/ky-niem-k28-goc/01.webp` đến `10.webp` – ảnh gốc làm tham chiếu.
+
+Khi chưa có tệp ảnh mới, album sẽ tự sử dụng ba ảnh cũ trong `images/`. `album-k28.js` chỉ tải album mới khi đường dẫn đầu tiên có mặt; ảnh bên dưới được lazy load.
+
+Mục `#k28Cinema` nhúng **video YouTube** do người quản trị cung cấp: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Video chỉ tải khi người dùng bấm **Xem YouTube & bật nhạc**; hỗ trợ màn hình điện thoại, phát nhạc qua chính trình phát YouTube (không sao chép bản ghi âm lên GitHub). Nếu trình duyệt chặn autoplay hoặc chủ video tắt embed, người dùng bấm Play trong khung hoặc chọn mở trên YouTube. Tệp MP3 cũ không còn cần cho chức năng nhạc.
