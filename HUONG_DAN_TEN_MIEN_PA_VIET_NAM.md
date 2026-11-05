@@ -1,80 +1,61 @@
-# Kết nối tên miền PA Việt Nam → GitHub Pages · Kinh tế K38
+# Cấu hình tên miền kt28.io.vn · Kinh tế K28
 
-> Dự án: https://github.com/xulytiengviet/kinhteK38 · mặc định: https://xulytiengviet.github.io/kinhteK38/
+Trang kỷ niệm **Kinh tế K28** được cấu hình tên miền tùy chỉnh **`www.kt28.io.vn`** qua GitHub Pages.
 
-## 1. Bật GitHub Pages trước
+- Repository hiện tại: https://github.com/xulytiengviet/kinhteK38
+- GitHub Pages: https://github.com/xulytiengviet/kinhteK38/settings/pages
+- Website dự kiến: https://www.kt28.io.vn/
+- Tệp `CNAME` trong nhánh `main`: **`www.kt28.io.vn`** (không có `http://`, `https://`, `/`, hoặc dấu `\`).
 
-- Mở: https://github.com/xulytiengviet/kinhteK38/settings/pages
-- Mục **Build and deployment** → **Deploy from a branch** → chọn `main` và `/(root)` → **Save**.
-- Kiểm tra trang gốc hoạt động. Nếu chưa hoạt động, xem phần báo lỗi tại **Actions** và trong Settings → Pages.
+> Nếu repository sau này đổi tên từ `kinhteK38` thành `kinhteK28`, hãy cập nhật các liên kết GitHub trong tài liệu. Tên miền tùy chỉnh không cần đổi.
 
-## 2. Chọn kiểu tên miền
+## 1. GitHub Pages
 
-**Khuyến nghị**: sử dụng subdomain riêng như `k38.example.vn`, không ảnh hưởng website đang chạy ở `example.vn`.
+1. Vào **Settings → Pages** của repository.
+2. Chọn **Deploy from a branch** → nhánh `main` → thư mục `/(root)`.
+3. **Custom domain:** nhập chính xác `www.kt28.io.vn` → **Save**.
+4. Chọn **Check again** sau khi DNS phân giải đúng.
+5. Khi chứng chỉ đã được cấp, bật **Enforce HTTPS**.
 
-1. Vào **GitHub → Settings → Pages → Custom domain**.
-2. Nhập tên miền đã sở hữu, ví dụ `k38.example.vn`, và chọn **Save**.
-3. Chỉ sau đó tạo bản ghi DNS tại nơi đang quản lý DNS thực tế. GitHub khuyến nghị xác minh quyền sở hữu tên miền để giảm nguy cơ chiếm dụng.
+## 2. DNS tại PA Việt Nam (vùng `kt28.io.vn`)
 
-**Lưu ý**: chưa có tên miền thực tế do người quản trị cung cấp; tài liệu này sử dụng `example.vn` làm ví dụ. Không tạo tệp CNAME trong repo cho một tên miền chưa xác định.
+**Chỉ sửa ở nhà cung cấp DNS thực sự được Nameserver công khai ủy quyền.** Nếu DNS của tên miền trỏ sang Cloudflare hay nhà cung cấp khác, việc sửa bản ghi ở PA Việt Nam có thể không có hiệu lực.
 
-## 3. Thao tác tại PA Việt Nam
+| Host | Loại | Giá trị | TTL |
+|---|---|---|---|
+| `@` | A | `185.199.108.153` | `3600` |
+| `@` | A | `185.199.109.153` | `3600` |
+| `@` | A | `185.199.110.153` | `3600` |
+| `@` | A | `185.199.111.153` | `3600` |
+| `www` | CNAME | `xulytiengviet.github.io` | `3600` |
 
-1. Đăng nhập https://access.pavietnam.vn/.
-2. Vào **Tên miền** → chọn tên miền đang sở hữu → **Quản lý DNS**. Tên gọi menu có thể khác tùy giao diện.
-3. Kiểm tra nameserver: nếu tên miền đang dùng DNS của Cloudflare, nhà cung cấp khác, v.v., **phải sửa record ở nhà cung cấp DNS đang hoạt động**, không phải mặc nhiên ở PA Việt Nam.
-4. Chọn một trong các cấu hình dưới đây; **không trộn CNAME và A tại cùng một host**.
+Không tạo CNAME `www` chung với A/AAAA khác tại cùng host; không dùng `k38` hoặc `kt28` làm host CNAME nếu mục đích là `www.kt28.io.vn`. Không thay đổi MX/TXT phục vụ email nếu có.
 
-### Phương án A: subdomain `k38.example.vn` (khuyến nghị)
-
-| Loại | Host/Tên | Value/Đích | TTL |
-| --- | --- | --- | --- |
-| CNAME | `k38` | `xulytiengviet.github.io` | `3600` hoặc mặc định |
-
-Phần GitHub Custom domain: `k38.example.vn`.
-
-**Không** nhập `https://`, `/kinhteK38/` hoặc `www` trong **Value**. GitHub Pages sẽ tự ánh xạ repo dựa trên cấu hình Custom domain.
-
-### Phương án B: tên miền gốc `example.vn`
-
-| Loại | Host | Giá trị |
-| --- | --- | --- |
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `xulytiengviet.github.io` |
-
-Tùy chọn IPv6 cho host `@`: thêm AAAA `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
-
-**Chú ý**: việc cấu hình tên miền gốc có thể thay đổi website hiện có; sao lưu và kiểm tra các bản ghi `A`/`AAAA` cũ trước khi sửa. Giữ nguyên các bản ghi email `MX`, `TXT` có liên quan; không dùng wildcard `*.` trỏ vào GitHub Pages.
-
-## 4. Kiểm tra trên Windows 10/11
-
-Mở PowerShell:
+## 3. Kiểm tra trực tiếp trên Windows PowerShell
 
 ```powershell
-Resolve-DnsName k38.example.vn -Type CNAME
-Resolve-DnsName example.vn -Type A
-nslookup -type=NS example.vn
+Resolve-DnsName kt28.io.vn -Type NS -Server 8.8.8.8
+Resolve-DnsName www.kt28.io.vn -Type CNAME -Server 8.8.8.8
+Resolve-DnsName kt28.io.vn -Type A -Server 8.8.8.8
 ```
 
-Thay `example.vn` bằng tên miền thực tế. Với subdomain, kết quả CNAME cần trỏ tới `xulytiengviet.github.io`; với apex, A record cần trùng các IP chính thức ở trên.
+Kết quả kỳ vọng:
 
-Quay lại GitHub Pages, kiểm tra mục **DNS check**, chờ chứng chỉ cấp xong và bật **Enforce HTTPS**. DNS/chứng chỉ có thể mất đến 24 giờ.
+- `www.kt28.io.vn` có CNAME trỏ `xulytiengviet.github.io`.
+- `kt28.io.vn` có bốn IP GitHub Pages như trên.
+- Nameserver phù hợp với hệ thống bạn vừa chỉnh bản ghi DNS.
 
-## 5. Xử lý lỗi thường gặp
+Nếu báo **InvalidDNSError**, kiểm tra đúng vùng DNS, NS được ủy quyền, bản ghi CNAME/A xung đột và chờ DNS cập nhật. Sửa tên website hoặc tên repository không khắc phục lỗi DNS.
 
-- **Không tìm được CNAME**: sai Host, thiếu record tại nơi đang làm DNS, hoặc DNS chưa đồng bộ.
-- **404**: Pages chưa triển khai, Custom domain chưa được lưu, hoặc chưa có `index.html` ở thư mục xuất bản.
-- **Certificate invalid / HTTPS unavailable**: loại bỏ record xung đột, đợi GitHub xác minh và cấp chứng chỉ.
-- **Website hiện tại bị mất**: kiểm tra có sửa nhầm record apex `@` thay vì host `k38`.
-- **Ảnh album không tải**: xác minh ba file ở `images/k38-lop-hoc.webp`, `images/k38-tham-quan.webp`, `images/k38-da-ngoai.webp`.
+## 4. Lưu ý
 
-## Tài liệu chính thức
+- Quá trình lan truyền DNS có thể mất đến 24 giờ; việc cấp HTTPS cũng có thể cần thêm thời gian sau khi DNS hợp lệ.
+- Các ảnh kỷ niệm mới hiển thị ở `images/k28-lop-hoc.webp`, `images/k28-tham-quan.webp`, `images/k28-da-ngoai.webp`. Các tên ảnh K38 cũ được giữ làm đường dẫn tương thích.
+- Thao tác **đổi tên repository**: Settings → General → Repository name → `kinhteK28` (do người quản trị thực hiện).
 
-- GitHub Pages — Managing a custom domain: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
-- GitHub Pages — Securing your site with HTTPS: https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https
-- PA Việt Nam — https://www.pavietnam.vn/ · tài khoản quản trị: https://access.pavietnam.vn/
+## Tài liệu
 
-*Dành riêng cho Kinh tế K38 · ♡ Thầy Long Ngo gửi tặng Lớp.*
+- GitHub: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+- PA Việt Nam: https://access.pavietnam.vn/dns
+
+*♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.*

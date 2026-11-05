@@ -1,12 +1,13 @@
-# Kinh tế K38 · Bản đồ ký ức 2007–2011
+# Kinh tế K28 · Bản đồ ký ức 2007–2011
 
-Một trang **WebGIS kỷ niệm** cho lớp Kinh tế K38, gợi lại những miền quê, gương mặt và kỷ niệm thời sinh viên, trình bày bằng phong cách giấy cũ – nâu trầm – đỏ rượu – vàng đồng.
+Một trang **WebGIS kỷ niệm** cho lớp Kinh tế K28, gợi lại những miền quê, gương mặt và kỷ niệm thời sinh viên, trình bày bằng phong cách giấy cũ – nâu trầm – đỏ rượu – vàng đồng.
 
-**Website (sau khi bật GitHub Pages):** https://xulytiengviet.github.io/kinhteK38/
+**Tên miền tùy chỉnh:** https://www.kt28.io.vn/  
+**Repository hiện tại:** https://github.com/xulytiengviet/kinhteK38 (sau khi người quản trị đổi tên repository trong Settings → General, sẽ là `kinhteK28`).
 
 ## Tính năng
 
-- 33 hồ sơ sinh viên K38 với họ tên, MSSV, năm sinh, nơi sinh cũ và địa danh tham chiếu sau sáp nhập năm 2025.
+- 33 hồ sơ sinh viên K28 với họ tên, MSSV, năm sinh, nơi sinh cũ và địa danh tham chiếu sau sáp nhập năm 2025.
 - 20 miền quê đặt điểm đại diện trên bản đồ (33 hồ sơ); ô tìm kiếm theo họ tên, MSSV hoặc địa danh; lọc theo tỉnh/thành hiện nay.
 - Rê chuột lên điểm bản đồ để mở popup bạn học; nhấn hồ sơ để phóng đến điểm tương ứng. Mỗi popup hiển thị họ tên, MSSV, năm sinh, địa danh cũ và hiện nay.
 - 3 nền địa lý: **Địa hình (Esri World Topographic)**, **Vệ tinh (Esri World Imagery)** và **Đường phố (OpenStreetMap)**. Nền vệ tinh và mô hình sử dụng Leaflet/Vietflexmap dựa vào cách tổ chức của [ClipMap](https://github.com/xulytiengviet/clipmap).
@@ -17,7 +18,7 @@ Một trang **WebGIS kỷ niệm** cho lớp Kinh tế K38, gợi lại những 
 
 ## Nguồn dữ liệu và giới hạn địa lý
 
-Nguồn hồ sơ: bảng "DANH SÁCH SINH VIÊN KT-K38" trong file Word `K38.docx`, 33 dòng.
+Nguồn hồ sơ: bảng "DANH SÁCH SINH VIÊN KT-K38" trong file Word `K38.docx`, 33 dòng. **Tên tài liệu gốc được giữ để truy xuất nguồn**; việc đổi tên giao diện sang K28 không thay đổi hoặc tự xác minh dữ liệu sinh viên.
 
 - **33/33** hồ sơ được hiển thị tại **20 điểm tham khảo theo địa danh cũ**; tất cả các điểm đều gần một đô thị tiêu biểu trong địa phương tương ứng, *không phải tọa độ nơi sinh chính xác hoặc trọng tâm ranh giới*.
 - Hồ sơ **0768080** có nơi sinh cũ **Sông Bé** và được lớp cung cấp địa danh hiện nay là **Thành phố Hồ Chí Minh**. Bản đồ dùng điểm minh họa tại Thủ Dầu Một (vùng Sông Bé cũ), **không khẳng định đó là nơi sinh chính xác**. Về lịch sử, tỉnh Sông Bé còn bao gồm khu vực Bình Phước, nay thuộc Đồng Nai; muốn xác định chuẩn cần thêm huyện/xã nơi sinh.
@@ -27,9 +28,9 @@ Nguồn hồ sơ: bảng "DANH SÁCH SINH VIÊN KT-K38" trong file Word `K38.doc
 
 ## Ba ảnh kỷ niệm
 
-Website dùng ba ảnh thật do người biên tập cung cấp: `images/k38-lop-hoc.webp`, `images/k38-tham-quan.webp`, `images/k38-da-ngoai.webp`. Đây là các bản WebP nhẹ để website tải nhanh. Có thể thay bằng bản WebP chất lượng cao với **cùng tên tệp** mà không phải sửa HTML.
+Website dùng ba ảnh thật do người biên tập cung cấp: `images/k28-lop-hoc.webp`, `images/k28-tham-quan.webp`, `images/k28-da-ngoai.webp`. Đây là các bản WebP nhẹ để website tải nhanh. Có thể thay bằng bản WebP chất lượng cao với **cùng tên tệp** mà không phải sửa HTML.
 
-Lời tặng hiển thị ở chân trang: **♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K38.**
+Lời tặng hiển thị ở chân trang: **♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.**
 
 ## Kết nối tên miền PA Việt Nam
 
@@ -43,11 +44,11 @@ Repository dùng **một tệp `index.html` tĩnh**, không cần backend hoặc
 1. Mở **Settings → Pages** của repository.
 2. Trong **Build and deployment**, chọn **Deploy from a branch**.
 3. Chọn branch `main`, thư mục `/(root)`, nhấn **Save**.
-4. Mở https://xulytiengviet.github.io/kinhteK38/ sau khi GitHub báo Pages đã triển khai.
+4. Mở https://www.kt28.io.vn/ khi GitHub Pages đã triển khai và DNS/HTTPS xác thực thành công. Đường dẫn fallback của repository hiện tại là `https://xulytiengviet.github.io/kinhteK38/` (có thể tự chuyển hướng về tên miền tùy chỉnh).
 
 ## Quyền riêng tư và đồng thuận
 
-Trang chứa **họ tên, MSSV, năm sinh, nơi sinh của các cá nhân có thật** từ hồ sơ K38. Người quản trị cần có căn cứ phù hợp để công bố; nên thông báo cho các cựu sinh viên, cung cấp kênh yêu cầu sửa/gỡ dữ liệu, cân nhắc chế độ chỉ xem trong nhóm nếu chưa có đồng thuận. Không nên bổ sung điện thoại, địa chỉ cư trú, ảnh cá nhân hoặc thông tin nhạy cảm mà không được phép. Album ảnh người dùng chọn chỉ xem tại phiên trình duyệt; lưu bút không truyền lên server, không thể hiển thị liên thiết bị.
+Trang chứa **họ tên, MSSV, năm sinh, nơi sinh của các cá nhân có thật** từ hồ sơ K28. Người quản trị cần có căn cứ phù hợp để công bố; nên thông báo cho các cựu sinh viên, cung cấp kênh yêu cầu sửa/gỡ dữ liệu, cân nhắc chế độ chỉ xem trong nhóm nếu chưa có đồng thuận. Không nên bổ sung điện thoại, địa chỉ cư trú, ảnh cá nhân hoặc thông tin nhạy cảm mà không được phép. Album ảnh người dùng chọn chỉ xem tại phiên trình duyệt; lưu bút không truyền lên server, không thể hiển thị liên thiết bị.
 
 ## Nguồn công nghệ & bản đồ
 
@@ -58,3 +59,7 @@ Trang chứa **họ tên, MSSV, năm sinh, nơi sinh của các cá nhân có th
 - Dữ liệu bản đồ và ranh giới không có giá trị pháp lý. Cần Internet cho tile nền, thư viện và lớp ranh giới.
 
 Trang thiết kế phục vụ mục đích giáo dục, lưu giữ ký ức, không nhằm thương mại hóa thông tin cá nhân.
+
+## Đồng bộ tên repository GitHub
+
+Nhãn hiển thị của website, tài liệu, ảnh và GeoJSON đã đổi sang **Kinh tế K28**. Để đổi **đường dẫn GitHub** cho trùng tên, người quản trị vào **Settings → General → Repository name**, đổi `kinhteK38` thành `kinhteK28`. Bước đổi tên repository không thể thực hiện qua công cụ chỉnh sửa tệp. Sau khi đổi, cập nhật những đường dẫn `/kinhteK38/` còn ở README/hướng dẫn sang `/kinhteK28/`; giữ nguyên tệp `CNAME` là `www.kt28.io.vn`.
