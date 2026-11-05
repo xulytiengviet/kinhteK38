@@ -50,7 +50,7 @@ Nếu báo **InvalidDNSError**, kiểm tra đúng vùng DNS, NS được ủy qu
 ## 4. Lưu ý
 
 - Quá trình lan truyền DNS có thể mất đến 24 giờ; việc cấp HTTPS cũng có thể cần thêm thời gian sau khi DNS hợp lệ.
-- Các ảnh kỷ niệm mới hiển thị ở `images/k28-lop-hoc.webp`, `images/k28-tham-quan.webp`, `images/k28-da-ngoai.webp`. Các tên ảnh K38 cũ được giữ làm đường dẫn tương thích.
+- Album mới sử dụng ảnh trong `images/ky-niem-k28/` và `images/ky-niem-k28-goc/`; ba ảnh cũ đã được gỡ bỏ.
 - Thao tác **đổi tên repository**: Settings → General → Repository name → `kinhteK28` (do người quản trị thực hiện).
 
 ## Tài liệu

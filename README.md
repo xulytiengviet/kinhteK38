@@ -1,60 +1,46 @@
-# Kinh tế K28 · Bản đồ bạn bè hôm nay
+# Kinh tế K28 · Bản đồ bạn bè và Album thanh xuân
 
 **Website:** https://www.kt28.io.vn/  
 **Repository:** https://github.com/xulytiengviet/kinhteK38/  
 **Lời tặng:** ♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.
 
-## Danh sách cập nhật 05/11/2026
+## Dữ liệu K28
 
-Đã thay thế toàn bộ dữ liệu của 33 sinh viên dựa trên bảng mới do người quản trị cung cấp: STT, MSSV, họ tên, năm sinh, **quê quán** và **nơi ở hiện tại**. Hồ sơ **0768219** có STT **29**. Dữ liệu gốc đồng bộ: [data/roster-k28.csv](data/roster-k28.csv).
+Danh sách 33 sinh viên từ bảng cập nhật ngày 05/11/2026, gồm STT, MSSV, họ tên, năm sinh, quê quán và nơi ở hiện tại. STT 29 là **0768219 – Hoàng Thị Vân**. Xem [data/roster-k28.csv](data/roster-k28.csv).
 
-## Tính năng WebGIS
+WebGIS mặc định hiển thị nơi ở hiện tại, cho phép chuyển về quê quán, lọc và tìm kiếm, đặt điểm đại diện vùng và hiển thị ranh giới 34 tỉnh/thành sau sắp xếp 2025 (nguồn GeoJSON [ThangLeQuoc/vietnamese-provinces-database](https://github.com/ThangLeQuoc/vietnamese-provinces-database)). Trường hợp chưa xác định không bị gán điểm giả; Nhật Bản dùng điểm quy ước cấp quốc gia. Không công bố vị trí nhà riêng.
 
-- Mặc định xem **nơi ở hiện tại**, có bộ chọn chuyển sang **quê quán**.
-- Điểm nhóm theo tỉnh/thành; bấm vào người bạn để xem hồ sơ và chuyển tới điểm đại diện vùng.
-- Mặc định tải ranh giới hiện hành của các tỉnh/thành có người ở; nút **Nạp đủ 34 tỉnh/thành** tải toàn bộ ranh giới sau sắp xếp năm 2025.
-- Nhấn người bạn sẽ làm nổi ranh giới nơi ở hiện tại nếu có dữ liệu địa lý.
-- **Chưa xác định** vẫn nằm trong danh sách, không tự gắn vị trí.
-- **Nhật Bản** chỉ đặt điểm quy ước cấp quốc gia, không suy đoán nơi sinh sống.
-- Lưu bút nội bộ trình duyệt, album ba ảnh kỷ niệm, xuất điểm tham khảo GeoJSON.
+## Album ảnh K28 – không dùng ba ảnh cũ
 
-## Ranh giới hành chính
+Album `#anhxua` có **10 ảnh** được chia thành ba nhóm, với đủ các nhãn kỷ niệm:
 
-Dữ liệu GeoJSON 34 tỉnh/thành tải trực tiếp từ dự án [ThangLeQuoc/vietnamese-provinces-database](https://github.com/ThangLeQuoc/vietnamese-provinces-database), thư mục `json/geojson` trên GitHub Raw; không yêu cầu API key hoặc backend. Nếu nguồn ngoài tạm thời không truy cập được, bản đồ nền và dữ liệu danh sách vẫn hoạt động. Ranh giới cộng đồng mang tính minh họa, cần kiểm tra tài liệu pháp lý nếu sử dụng cho mục đích hành chính.
+- **Lớp học thân quen:** 01, 03, 04, 05, 06 – khoảnh khắc tốt nghiệp, lớp học và bạn bè.
+- **Chuyến tham quan K28 – Chuyến đi cùng nhau:** 02, 08, 09, 10 – những chuyến tham quan.
+- **Kỷ niệm dã ngoại K28 – Một ngày dã ngoại:** 07 – khoảnh khắc Lang Biang.
 
-Nguồn thông tin chính phủ về địa giới 2025: https://baochinhphu.vn/tra-cuu-dia-gioi-sau-sap-nhap-qua-ban-do-dien-tu-102250708175104468.htm.
+Ảnh được tải theo thứ tự, tối ưu di động (mỗi hàng một ảnh trên màn hình nhỏ), giữ đủ khung hình bằng `object-fit: contain`, phóng lớn trong lightbox, điều khiển bằng bàn phím hoặc vuốt. Có thể chọn **Ảnh phục dựng rõ nét** và **Ảnh gốc**. Bản AI có thể làm thay đổi một số chi tiết khuôn mặt/cảnh vật, không nên xem là tư liệu lịch sử nguyên trạng.
 
-Các điểm bản đồ là **điểm đại diện tỉnh/thành hoặc quốc gia**, không phải địa chỉ nhà riêng hay vị trí GPS được người học cung cấp.
+**Ba ảnh cũ và các bản sao K38 tương ứng đã được gỡ khỏi repository và không còn được dùng làm dự phòng.**
 
-## Triển khai
+### Đưa ảnh mới vào GitHub
 
-GitHub Pages: `main` + `/(root)`; tệp `CNAME` giữ `www.kt28.io.vn`. Xem [hướng dẫn PA Việt Nam](HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md). Đổi tên repository GitHub `kinhteK38` → `kinhteK28` thủ công tại Settings → General nếu muốn nhất quán đường dẫn.
+Gói **`K28_Album_GitHub.zip`** có 20 tệp WebP. Giải nén rồi tải nguyên cấu trúc hai thư mục sau vào nhánh `main`:
 
-## Quyền công bố
+- `images/ky-niem-k28/01.webp` đến `10.webp` (phục dựng rõ nét);
+- `images/ky-niem-k28-goc/01.webp` đến `10.webp` (ảnh gốc).
 
-Dữ liệu gồm MSSV, năm sinh, họ tên và nơi ở cấp tỉnh/thành hoặc quốc gia của người thật. Người quản trị cần bảo đảm căn cứ công bố và tiếp nhận yêu cầu sửa/gỡ nếu thành viên không muốn hiển thị.
+Có thể dùng `DONG_BO_ALBUM_K28.ps1` trong gói để sao chép ảnh vào clone Git, commit và push sau khi đăng nhập GitHub trên máy Windows. Khi các tệp chưa được tải lên, giao diện vẫn giữ đủ 10 vị trí ảnh với thông báo **Đang đồng bộ ảnh**, không quay lại ảnh cũ.
+
+## YouTube và âm nhạc
+
+Mục `#k28Cinema` nhúng video: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Người dùng nhấn **Xem YouTube & bật nhạc** để tải trình phát YouTube, tương thích chính sách phát có âm thanh trên di động. Nếu YouTube chặn tự phát hoặc nhúng, người dùng nhấn Play trong video hay mở trực tiếp YouTube. Không sao chép nhạc thương mại lên repository.
+
+## GitHub Pages
+
+Dùng `main` và `/(root)`; `CNAME` là `www.kt28.io.vn`. Xem [hướng dẫn DNS PA Việt Nam](HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md). Đổi tên repository `kinhteK38` sang `kinhteK28` thủ công tại Settings → General nếu muốn đồng bộ URL GitHub.
+
+## Quyền riêng tư
+
+Dữ liệu thành viên và ảnh lớp có người thật; cần bảo đảm quyền công bố và tiếp nhận yêu cầu chỉnh sửa/gỡ bỏ từ thành viên.
 
 © 2026 · Kinh tế K28 · ♡ Thầy Long Ngo gửi tặng Lớp.
-
-
-## Thước phim K28 — tối ưu di động
-
-Module `cinema-k28.js` và `cinema-k28.css` thêm mục phim ảnh nằm sau album và trước lưu bút, dùng ảnh tự chuyển 6,2 giây, ẩn/hiện âm thanh, tiến/lùi, xem toàn màn hình, hỗ trợ `prefers-reduced-motion` và điều khiển chạm từ 44px.
-
-- Để dùng đủ **10 ảnh mới** từ `K28.zip`, tải các ảnh WebP `01.webp`–`10.webp` vào `images/ky-niem-k28/`. Khi chưa có, module tự dùng 3 ảnh kỷ niệm sẵn có.
-- Nhạc được dùng từ file `media/k28-nhac-ky-niem.mp3` **nếu người quản trị có quyền phát công khai**. Trên mobile, trình duyệt chặn tự phát có tiếng trước tương tác, nên có nút `Xem phim & bật nhạc`. Người xem cũng có thể chọn MP3 ở máy cá nhân (không upload).
-- Không thay đổi CNAME, DNS, WebGIS, dữ liệu sinh viên hoặc ranh giới.
-
-
-## Album ảnh K28 và YouTube (bản cập nhật 05/11/2026)
-
-Album ảnh là mục riêng trong thanh điều hướng `#anhxua`, với hai chế độ **Ảnh phục dựng rõ nét (AI)** và **Ảnh gốc**, 10 ảnh kỷ niệm và trình xem phóng lớn trên điện thoại. Ảnh phục dựng AI có thể thay đổi khuôn mặt hoặc chi tiết; nên kiểm tra với ảnh gốc trước khi sử dụng làm tư liệu lịch sử.
-
-Tải gói `K28_Album_GitHub.zip`, giải nén và đưa **hai thư mục** sau lên repository, giữ nguyên tên tệp:
-
-- `images/ky-niem-k28/01.webp` đến `10.webp` – ảnh phục dựng rõ nét.
-- `images/ky-niem-k28-goc/01.webp` đến `10.webp` – ảnh gốc làm tham chiếu.
-
-Khi chưa có tệp ảnh mới, album sẽ tự sử dụng ba ảnh cũ trong `images/`. `album-k28.js` chỉ tải album mới khi đường dẫn đầu tiên có mặt; ảnh bên dưới được lazy load.
-
-Mục `#k28Cinema` nhúng **video YouTube** do người quản trị cung cấp: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Video chỉ tải khi người dùng bấm **Xem YouTube & bật nhạc**; hỗ trợ màn hình điện thoại, phát nhạc qua chính trình phát YouTube (không sao chép bản ghi âm lên GitHub). Nếu trình duyệt chặn autoplay hoặc chủ video tắt embed, người dùng bấm Play trong khung hoặc chọn mở trên YouTube. Tệp MP3 cũ không còn cần cho chức năng nhạc.
