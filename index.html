@@ -40,10 +40,10 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 .map-mode{display:flex;gap:9px;align-items:center;margin:9px 0 12px}.map-mode label{white-space:nowrap;font-size:12px}.map-mode select{flex:1;min-width:0}.map-actions{flex-wrap:wrap}.map-actions .btn{white-space:normal}.map-note a{color:inherit;text-decoration:underline}
 </style>
 <link rel="stylesheet" href="cinema-k28.css?v=2">
-<link rel="stylesheet" href="album-k28.css?v=4">
+<link rel="stylesheet" href="album-k28.css?v=5">
 <link rel="stylesheet" href="k28-experience.css?v=1">
 <script src="cinema-k28.js?v=2" defer></script>
-<script src="album-k28.js?v=3" defer></script>
+<script src="album-k28.js?v=5" defer></script>
 </head>
 <body>
 <header class="masthead"><div class="wrap masthead-inner"><a class="identity" href="#dau">Kinh tế <b>K28</b> <span aria-hidden="true">✦</span></a><nav class="nav" aria-label="Điều hướng"><a href="#dau">TRANG ĐẦU</a><a href="#namthang">NĂM THÁNG</a><a href="#anhxua">ALBUM ẢNH</a><a href="#bandokyuc">BẠN BÈ HÔM NAY</a><a href="#k28Cinema">THƯỚC PHIM</a><a href="#luubut">LƯU BÚT</a></nav></div></header>
@@ -59,20 +59,16 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
   <div class="section-head">
    <div class="eyebrow">03 / Album ảnh Kinh tế K28</div>
    <h2 id="albumTitle">Thanh xuân của chúng mình</h2>
-   <p>Mỗi tấm ảnh là một mảnh ghép của thanh xuân. Album chỉ hiển thị tư liệu đã tải lên; những ảnh còn thiếu sẽ được thông báo rõ ràng.</p>
+   <p>Mười khoảnh khắc, một khung ảnh duy nhất. Bấm <strong>Tiếp →</strong> hoặc vuốt ngang để lần lượt xem đủ 10 tấm ảnh; chạm ảnh để phóng lớn và chuyển giữa ảnh làm rõ với ảnh gốc.</p>
   </div>
-  <nav class="album-k28-categories" aria-label="Các nhóm kỷ niệm">
-   <a href="#albumK28Class">✦ Lớp học thân quen</a>
-   <a href="#albumK28Trip">✦ Chuyến tham quan K28</a>
-   <a href="#albumK28Picnic">✦ Kỷ niệm dã ngoại K28</a>
-  </nav>
+  
   <div class="album-k28-options" role="group" aria-label="Phiên bản album ảnh K28">
    <button type="button" class="album-k28-choice is-selected" id="albumK28Enhanced" aria-pressed="true">Ảnh phục dựng rõ nét</button>
    <button type="button" class="album-k28-choice" id="albumK28Original" aria-pressed="false">Ảnh gốc</button>
    <span id="albumK28Count" class="album-k28-count" role="status">Đang kiểm tra bộ ảnh…</span>
   </div>
   <p class="album-k28-disclaimer" id="albumK28Disclaimer">Ảnh phục dựng AI có thể thay đổi vài chi tiết khuôn mặt và cảnh vật; chọn “Ảnh gốc” để đối chiếu tư liệu.</p>
-  <div class="album-k28-groups" id="albumK28Groups" aria-live="off"></div>
+  <div class="album-k28-groups" id="albumK28Groups" aria-label="Trình chiếu một ảnh K28 tại một thời điểm"></div>
   <p class="album-k28-message" id="albumK28Message" role="status" hidden></p>
  </div>
  <dialog id="albumK28Lightbox" class="album-k28-lightbox" aria-label="Xem ảnh kỷ niệm K28">
