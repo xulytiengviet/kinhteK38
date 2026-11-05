@@ -27,7 +27,7 @@ Có hai bộ ảnh dự kiến:
 - images/ky-niem-k28/01.webp đến 10.webp: ảnh xử lý làm rõ
 - images/ky-niem-k28-goc/01.webp đến 10.webp: ảnh tư liệu gốc
 
-Trình duyệt kiểm tra từng ảnh có thực trước khi hiển thị. Khi chưa có bộ chính, website chỉ hiển thị 3 hình hiện có trong thư mục images/ và ghi rõ là ảnh dự phòng. Không coi đó là album 10 ảnh đã hoàn thành.
+Album hiện hiển thị **duy nhất một khung ảnh**, điều hướng **Trước / Tiếp**, 10 nút chọn nhanh, vuốt ngang trên điện thoại, phím mũi tên và mở ảnh lớn. Người xem có thể chuyển giữa ảnh gốc và ảnh làm rõ mà không mất vị trí đang xem. Ảnh dùng `object-fit: contain` để không cắt khuôn mặt. Trình duyệt kiểm tra từng ảnh trước khi hiển thị; khi chưa có bộ ảnh trên máy chủ, trang thông báo còn thiếu chứ **không hiển thị ba ảnh dự phòng hoặc ảnh giả**.
 
 Ảnh làm rõ bằng AI cần đối chiếu bản gốc trước khi khẳng định nhân vật, địa điểm và thời gian.
 
@@ -46,3 +46,8 @@ GitHub Pages: nhánh main, thư mục gốc. Tệp CNAME giữ www.kt28.io.vn; h
 - Điều kiện nghiệm thu và phân loại PASS: docs/QUALITY_GATE.md
 
 **Chưa FULL PASS** cho đến khi cung cấp 20 tệp ảnh đúng, rà soát tư liệu, quyền công bố và kiểm thử thực tế trên thiết bị.
+
+
+## Gói ảnh chính thức của người biên tập (05/11/2026)
+
+Bộ ZIP được cung cấp trong cuộc hội thoại có **10 ảnh làm rõ và 10 ảnh gốc**, định dạng WebP, kiểm tra toàn bộ tệp hợp lệ. Do GitHub connector chỉ ghi được tệp văn bản trong luồng hiện tại, những tệp ảnh nhị phân vẫn cần **được đẩy lên repository** qua Git/PowerShell. Có thể chạy `DONG_BO_ALBUM_K28.ps1` trong gói `K28_Album_10_Anh_Next_GitHub.zip` (sau khi giải nén) trên máy Windows đã cấu hình GitHub, hoặc tải hai thư mục ảnh lên repo thủ công. Cổng kiểm định ảnh `--strict` chưa PASS trước khi GitHub nhận đủ ảnh.
