@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#5b292c">
+<meta name="description" content="Kỷ yếu WebGIS Kinh tế K38 (2007–2011): những miền quê, những gương mặt và một thời sinh viên không quên.">
+<title>Kinh tế K38 · Thanh xuân còn mãi · 2007–2011</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+<style>
+:root{--ink:#3f302b;--muted:#76645b;--burgundy:#6c2d31;--red:#8d4540;--gold:#b08a4e;--paper:#f8f0dc;--cream:#fdf9ee;--line:#decfb3;--shadow:0 18px 60px #46321b19}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#efe5d0;color:var(--ink);font:14px/1.7 "Be Vietnam Pro",sans-serif}
+body:before{content:"";position:fixed;inset:0;opacity:.32;pointer-events:none;z-index:10000;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.17' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1320px;margin:auto;padding:0 30px}.masthead{background:#4d292b;color:#fff1d3;border-bottom:1px solid #ad936b66}.masthead-inner{min-height:57px;display:flex;align-items:center;justify-content:space-between;gap:16px}.identity{font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;font-weight:700;letter-spacing:.6px;text-decoration:none}.identity b{color:#eec990}.nav{display:flex;gap:24px;flex-wrap:wrap}.nav a{font-size:12px;text-decoration:none;letter-spacing:.04em}.nav a:hover{color:#f2cf92}
+.hero{overflow:hidden;position:relative;background:radial-gradient(circle at 73% 34%,#ddc9a2 0%,transparent 34%),linear-gradient(135deg,#fcf4df,#efe0c1);border-bottom:1px solid #dfcb9e}.hero:after{content:"";width:500px;height:500px;position:absolute;border:1px solid #b59b6c55;border-radius:50%;right:-150px;top:-180px;box-shadow:0 0 0 34px #bd9f7150,0 0 0 70px #bd9f7125;pointer-events:none}
+.hero-inner{min-height:445px;padding-top:70px;padding-bottom:64px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:44px;align-items:center}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.29em;font-weight:700;color:#98683e}.hero h1{font:600 clamp(60px,7vw,112px)/.9 "Cormorant Garamond",Georgia,serif;letter-spacing:-2.5px;margin:18px 0 20px;color:#602a31}.hero h1 em{display:block;color:#ac8147;font-weight:500}.hero-lead{font-size:15px;max-width:590px;color:#615047;margin-bottom:28px}.cta{display:flex;gap:11px;flex-wrap:wrap}.btn{padding:11px 17px;border-radius:3px;font-weight:700;font-size:12px;border:1px solid #7e4e3e;background:transparent;color:var(--burgundy);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--burgundy);color:#fff4de;border-color:var(--burgundy)}.btn.soft{background:#faf2e4;border-color:#d7bd8c}
+.postcard{position:relative;transform:rotate(4deg);padding:14px;background:#fbf6e8;box-shadow:0 14px 35px #43302038;border:1px solid #cbb995;max-width:330px;margin:auto;width:100%}.postcard:before{content:"";position:absolute;top:-13px;left:35%;width:110px;height:25px;background:#d9b98085;transform:rotate(-6deg)}.postcard-inner{min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:2px double #b89c75;padding:20px;background:radial-gradient(circle,#f5e7ce 1px,transparent 1px) 0 0/17px 17px}.postcard .year{font:600 68px/1 "Cormorant Garamond",Georgia,serif;color:#7b3c3c}.postcard .dash{width:75px;height:1px;background:#bc9f64;margin:16px}.postcard .words{font:italic 29px/1.1 "Cormorant Garamond",Georgia,serif;color:#765f4b}.postmark{border:2px solid #a88058;border-radius:50%;width:77px;height:77px;display:grid;place-content:center;font-size:9px;text-align:center;font-weight:700;color:#9a764c;position:absolute;right:25px;top:25px;transform:rotate(16deg);line-height:1.45}
+.stats{background:#ede0c8;border-bottom:1px solid #d5c3a3}.stats-inner{display:grid;grid-template-columns:repeat(4,1fr)}.stat{padding:21px 24px;border-right:1px solid #d7c5a6}.stat:first-child{border-left:1px solid #d7c5a6}.stat strong{display:block;color:#7e373c;font:600 37px/1 "Cormorant Garamond",Georgia,serif}.stat span{font-size:11px;letter-spacing:.07em;color:#7f6958;text-transform:uppercase}
+section{scroll-margin-top:25px}.section-head{margin-bottom:25px}.section-head h2{font:600 clamp(37px,4.4vw,62px)/1.1 "Cormorant Garamond",Georgia,serif;color:var(--burgundy);margin:8px 0}.section-head p{margin:0;color:var(--muted);max-width:800px}.map-section{padding:62px 0}.map-shell{border:1px solid #ccb68f;box-shadow:var(--shadow);background:var(--cream);display:grid;grid-template-columns:340px minmax(0,1fr);min-height:610px}.side{padding:22px 20px;border-right:1px solid #dfceb0;min-width:0;display:flex;flex-direction:column;gap:12px;background:#faf4e6}.panel-title{font:600 26px "Cormorant Garamond",Georgia,serif;color:#6b3536}.field{width:100%;border:1px solid #d7c5a8;background:white;border-radius:2px;padding:10px 12px;color:var(--ink)}.filter-row{display:flex;gap:8px}.filter-row select{min-width:0;flex:1}.micro{font-size:11px;color:#887464}.student-list{overflow-y:auto;max-height:360px;min-height:175px;border-top:1px solid #dfd0b6;padding-top:6px}.student{border:0;width:100%;text-align:left;background:transparent;padding:9px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px dashed #d7c8b0;color:#4a3630}.student:hover,.student.active{background:#f0dfc0}.avatar{height:34px;width:34px;flex:0 0 34px;border-radius:50%;display:grid;place-items:center;background:#dcc4a3;color:#71383b;font:700 21px "Cormorant Garamond",Georgia,serif}.student .n{font-size:12px;font-weight:700;display:block}.student .origin{font-size:10px;color:#806d5d;display:block}.map-area{position:relative;min-height:610px}#map{height:100%;width:100%;min-height:610px;background:#e6dfc8}.map-badge{position:absolute;left:16px;top:17px;z-index:700;pointer-events:none;background:#fff9ebe8;padding:8px 11px;border:1px solid #ddc99e;box-shadow:0 2px 15px #59412b1e;color:#67423b;font:700 11px "Be Vietnam Pro",sans-serif;letter-spacing:.07em}.map-tools{position:absolute;top:17px;right:16px;z-index:700;display:flex;gap:6px;max-width:calc(100% - 145px)}.map-tools select,.map-tools button{background:#fffaf0;border:1px solid #ceb68a;padding:8px 9px;font-size:11px;color:#653b35;box-shadow:0 2px 12px #39210b22;border-radius:2px}.map-tools select{max-width:180px}.map-note{position:absolute;bottom:22px;left:14px;z-index:700;background:#fff9eae8;color:#685344;padding:7px 9px;max-width:295px;border:1px solid #d7c2a2;font-size:10px;pointer-events:none}.map-tooltip{font-family:"Be Vietnam Pro",sans-serif}.province-pin{border-radius:50%;background:#783b3d;border:3px solid #eac993;color:#fff8e2;font:800 13px "Be Vietnam Pro",sans-serif;width:35px;height:35px;display:grid;place-items:center;box-shadow:0 3px 0 #7a49304d,0 0 0 5px #fff2d099;transition:transform .15s}.province-pin:hover{transform:scale(1.15)}.province-pin.single{background:#a47b46}
+.leaflet-popup-content-wrapper{background:#fff9e9;border:1px solid #bda378;border-radius:3px;box-shadow:0 15px 35px #2f211d43}.leaflet-popup-tip{background:#fff9e9}.leaflet-popup-content{font-family:"Be Vietnam Pro",sans-serif;margin:14px 17px;max-height:300px;overflow-y:auto}.p-title{font:700 22px "Cormorant Garamond",Georgia,serif;color:#76383a}.p-arrow{font-size:11px;color:#6c5d4d;padding-bottom:9px;border-bottom:1px solid #dfcbb1}.p-person{display:block;border:none;border-bottom:1px dashed #e0cdb2;background:transparent;text-align:left;padding:7px 0;width:100%;font-size:11px;cursor:pointer;color:#4f3b33}.p-person strong{display:block;font-size:11px}.p-person:hover{color:#9c4d3c}
+.profile{min-height:100px;padding:16px;background:#f4e7d2;border:1px solid #d8c3a0}.profile h3{font:700 25px/1 "Cormorant Garamond",Georgia,serif;color:#72373a;margin:3px 0 7px}.profile dl{margin:0;display:grid;grid-template-columns:85px 1fr;gap:2px 8px;font-size:11px}.profile dt{color:#816b59}.profile dd{margin:0;font-weight:600}.profile .change{color:#8d493d}.profile .small{font-size:10px;color:#806f5e;margin-top:8px}.map-actions{display:flex;gap:7px;flex-wrap:wrap}.map-actions .btn{padding:8px 10px;font-size:10px;flex:1}.status{font-size:10px;min-height:22px;color:#786859}
+.story-band{background:#4e2c2f;color:#f7e7cf;padding:60px 0;border-top:5px solid #b48e57;border-bottom:5px solid #b48e57}.story-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}.story-band h2{font:600 60px/1 "Cormorant Garamond",Georgia,serif;margin:10px 0;color:#f1d6a4}.story-band p{font-size:13px;color:#e4cfc0}.quote{border-left:2px solid #d5ad6b;padding-left:25px;font:italic 32px/1.3 "Cormorant Garamond",Georgia,serif}
+.timeline-section{padding:65px 0;background:#f8f0dd}.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:15px;border-top:1px solid #cfae78;margin-top:40px}.time-item{position:relative;padding:21px 5px}.time-item:before{content:"";width:10px;height:10px;background:#874347;border:3px solid #e9d3aa;border-radius:50%;position:absolute;top:-8px;left:8px}.time-item strong{font:700 36px "Cormorant Garamond",Georgia,serif;color:#77363e}.time-item span{display:block;font-weight:700;font-size:12px}.time-item p{font-size:11px;color:#806b5d;margin:4px 0}
+.memories-section{padding:62px 0}.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.memory-card{background:#f8eed9;padding:12px 12px 20px;border:1px solid #d3bf9f;box-shadow:0 9px 22px #3f2d1d17;transform:rotate(-1deg)}.memory-card:nth-child(2){transform:rotate(1.5deg)}.memory-card:nth-child(3){transform:rotate(-.5deg)}.memory-pic{height:195px;background:linear-gradient(150deg,#e7d6b6,#ceb693);display:grid;place-items:center;color:#896f4b;overflow:hidden}.memory-pic img{width:100%;height:100%;object-fit:cover;filter:sepia(.28)}.memory-pic .symbol{font-size:52px}.memory-caption{font:italic 26px "Cormorant Garamond",Georgia,serif;text-align:center;margin-top:11px;color:#6d4640}.upload-hint{margin-top:16px;font-size:11px;color:#826f5d}.guestbook{background:#f4e8d1;border-top:1px solid #dac5a2;padding:50px 0}.guest-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:32px}.guestbook textarea{width:100%;border:1px solid #d0ba96;background:#fffbf1;padding:13px;resize:vertical;min-height:120px}.notes{max-height:285px;overflow:auto}.note{margin-bottom:9px;background:#fff7e7;border:1px solid #e1cfb1;padding:12px}.note strong{color:#7d3d3b;font-size:12px}.note p{white-space:pre-wrap;font-size:12px;margin:5px 0}.note button{border:0;background:transparent;color:#ab6a53;font-size:10px}
+footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-flex{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer-flex a{color:#f0d1a0}.privacy{max-width:850px;margin-top:10px;opacity:.84}.hidden{display:none!important}
+@media(max-width:980px){.hero-inner{grid-template-columns:1.5fr .7fr}.postcard-inner{min-height:220px}.map-shell{grid-template-columns:300px minmax(0,1fr)}.side{padding:16px}.story-grid{gap:18px}}
+@media(max-width:720px){.wrap{padding:0 17px}.masthead-inner{align-items:flex-start;padding-top:10px;padding-bottom:10px;flex-direction:column;gap:2px}.nav{gap:13px}.hero-inner{grid-template-columns:1fr;padding-top:45px;padding-bottom:38px}.hero h1{font-size:69px}.postcard{display:none}.stats-inner{grid-template-columns:repeat(2,1fr)}.stat{padding:14px}.map-shell{display:flex;flex-direction:column}.side{order:2;border-right:0;border-top:1px solid #d8c6a8}.map-area{order:1;min-height:480px}#map{height:480px;min-height:480px}.student-list{max-height:260px}.map-tools{right:8px;top:57px}.map-badge{left:8px;top:9px}.map-note{bottom:10px;left:8px;max-width:245px}.story-grid,.guest-grid{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,1fr);row-gap:10px}.memory-grid{grid-template-columns:1fr 1fr}.memory-grid .memory-card:last-child{display:none}.memory-pic{height:145px}.story-band h2{font-size:46px}.quote{font-size:26px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media print{.masthead,.map-tools,.side,.btn,.guestbook,footer{display:none!important}.map-shell{display:block}#map{height:360px;min-height:360px}.hero-inner{min-height:auto}.hero{background:#fff}.map-section,.timeline-section{padding:25px 0}}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap masthead-inner"><a class="identity" href="#dau">Kinh tế <b>K38</b> <span aria-hidden="true">✦</span></a><nav class="nav" aria-label="Điều hướng"><a href="#bandokyuc">BẢN ĐỒ KÝ ỨC</a><a href="#cauchuyen">CHUYỆN CHÚNG MÌNH</a><a href="#namthang">NĂM THÁNG</a><a href="#luubut">LƯU BÚT</a></nav></div></header>
+<main>
+<section class="hero" id="dau"><div class="wrap hero-inner"><div><div class="eyebrow">✦ Kỷ yếu điện tử · Kinh tế K38 · Niên khóa 2007–2011 ✦</div><h1>Khi ta còn là <em>sinh viên...</em></h1><p class="hero-lead">Từ những miền quê khác nhau, chúng ta gặp nhau trong cùng một lớp học. Tháng năm trôi qua, tình bạn và những buổi đến trường vẫn còn nguyên trong ký ức.</p><div class="cta"><a class="btn primary" href="#bandokyuc">⌖ Tìm lại miền quê bạn bè</a><a class="btn soft" href="#namthang">♡ Đi qua những năm tháng</a></div></div><div class="postcard" aria-label="Bưu thiếp ký ức K38"><div class="postmark">K38<br>THANH XUÂN<br>♥</div><div class="postcard-inner"><div class="eyebrow">Bốn năm · Một thời</div><div class="year">2007<br>—2011</div><div class="dash"></div><div class="words">Nhớ một thời áo trắng,<br>nhớ một thời sinh viên</div></div></div></div></section>
+<div class="stats"><div class="wrap stats-inner"><div class="stat"><strong id="total">33</strong><span>Gương mặt trong kỷ yếu</span></div><div class="stat"><strong id="places">19</strong><span>Miền quê đặt điểm tham khảo</span></div><div class="stat"><strong id="modern">17</strong><span>Tỉnh, thành hiện nay đã xác định</span></div><div class="stat"><strong>04</strong><span>Năm thanh xuân 2007–2011</span></div></div></div>
+<section class="map-section" id="bandokyuc"><div class="wrap"><div class="section-head"><div class="eyebrow">01 / Kết nối ký ức bằng địa lý</div><h2>Bản đồ những miền quê</h2><p>Mỗi điểm sáng là một miền quê được ghi trong danh sách lớp. Rê chuột lên điểm để gặp lại bạn bè; chọn từng người để xem MSSV, năm sinh và hành trình tên gọi địa danh qua thời gian.</p></div><div class="map-shell"><aside class="side" aria-label="Tra cứu bạn học"><div class="panel-title">Danh sách thân thương ♡</div><input class="field" id="search" type="search" placeholder="Tìm tên, MSSV, quê quán…" aria-label="Tìm sinh viên"><div class="filter-row"><select class="field" id="provinceFilter" aria-label="Lọc theo tỉnh hiện nay"><option value="">Tất cả tỉnh, thành</option></select><button class="btn soft" id="reset" type="button" title="Xóa bộ lọc">↺</button></div><div class="micro" id="found" aria-live="polite">Đang tải danh sách…</div><div class="student-list" id="studentList" tabindex="0"></div><div class="profile" id="profile" aria-live="polite"><div class="micro">Chọn một người bạn để xem lại thông tin.</div></div><div class="map-actions"><button class="btn soft" type="button" id="outline">▱ Ranh giới hiện nay</button><button class="btn soft" type="button" id="export">↓ Xuất GeoJSON</button></div><div class="map-actions"><a class="btn soft" href="https://vietflexmap.github.io/anhmap/" target="_blank" rel="noopener noreferrer">ẢnhMap ↗</a><a class="btn soft" href="https://xulytiengviet.github.io/clipmap/" target="_blank" rel="noopener noreferrer">ClipMap ↗</a></div><div class="status" role="status" id="status">Các điểm là vị trí đại diện địa danh cũ ở cấp tỉnh, không phải tọa độ nơi sinh chính xác.</div></aside><div class="map-area"><div id="map" role="region" aria-label="Bản đồ địa hình các miền quê lớp K38"></div><div class="map-badge">⌖ VIỆT NAM · NHỮNG MIỀN QUÊ K38</div><div class="map-tools"><select id="basemap" aria-label="Chọn lớp bản đồ"><option value="topo">Địa hình</option><option value="sat">Vệ tinh · ClipMap</option><option value="road">Đường phố</option></select><button id="resetMap" title="Xem toàn cảnh Việt Nam" type="button">⌂ Toàn cảnh</button></div><div class="map-note">● Điểm quy ước theo địa danh cũ · Ranh giới mới là dữ liệu tham khảo · WGS84</div></div></div></div></section>
+<section class="story-band" id="cauchuyen"><div class="wrap story-grid"><div><div class="eyebrow" style="color:#d9b47e">02 / Một thời để nhớ</div><h2>Chúng mình đã từng<br>trẻ như thế.</h2><p>Dẫu sau này mỗi người một phương, những cái tên quen, chỗ ngồi ngày cũ, buổi thi cuối kỳ hay những cuộc hẹn không báo trước vẫn là một phần của tuổi trẻ.</p></div><div class="quote">“Bản đồ có thể đổi tên những miền đất, nhưng không thể đổi tên những kỷ niệm chúng ta đã có cùng nhau.”</div></div></section>
+<section class="timeline-section" id="namthang"><div class="wrap"><div class="section-head"><div class="eyebrow">03 / Dòng thời gian</div><h2>2007 — 2011, một thời không quên</h2><p>Những dấu mốc gợi nhớ của niên khóa. Các câu chuyện cụ thể có thể bổ sung khi lớp cùng xác nhận tư liệu.</p></div><div class="timeline"><div class="time-item"><strong>2007</strong><span>Ngày đầu gặp gỡ</span><p>Tên nhau còn lạ, lớp học thành quen.</p></div><div class="time-item"><strong>2008</strong><span>Những buổi đến trường</span><p>Bài vở, bạn bè, tiếng cười hành lang.</p></div><div class="time-item"><strong>2009</strong><span>Thanh xuân rực rỡ</span><p>Những kỷ niệm dần đầy thêm.</p></div><div class="time-item"><strong>2010</strong><span>Sắp đến ngày xa</span><p>Cùng nhau qua những mùa thi.</p></div><div class="time-item"><strong>2011</strong><span>Giữ một lời hẹn</span><p>Ra trường, mỗi người một hành trình.</p></div></div></div></section>
+<section class="memories-section" id="anhxua"><div class="wrap"><div class="section-head"><div class="eyebrow">04 / Album thời gian</div><h2>Trang ảnh còn chờ được lấp đầy</h2><p>Ảnh trong album là ảnh bạn chọn trực tiếp trên thiết bị; trang không tải lên máy chủ. Có thể bổ sung ảnh thật của lớp vào repository sau khi được sự đồng ý của người trong ảnh.</p></div><div class="memory-grid" id="memoryGrid"><div class="memory-card"><div class="memory-pic"><span class="symbol">✉</span></div><div class="memory-caption">Sân trường ngày ấy</div></div><div class="memory-card"><div class="memory-pic"><span class="symbol">✿</span></div><div class="memory-caption">Một góc lớp thân quen</div></div><div class="memory-card"><div class="memory-pic"><span class="symbol">♡</span></div><div class="memory-caption">Ngày mình còn bên nhau</div></div></div><div class="upload-hint"><label class="btn soft" for="photos">＋ Thử thêm ảnh kỷ niệm từ thiết bị</label> <input id="photos" class="hidden" type="file" accept="image/png,image/jpeg,image/webp" multiple> <span>Chỉ xem tại trình duyệt hiện tại · tối đa 3 ảnh, 8 MB/ảnh</span></div></div></section>
+<section class="guestbook" id="luubut"><div class="wrap guest-grid"><div><div class="eyebrow">05 / Đôi dòng gửi lại</div><h2 style="font:600 50px/1.1 'Cormorant Garamond',Georgia,serif;color:#713637;margin:10px 0">Lưu bút bạn bè</h2><p style="font-size:12px;color:#7b6858">Viết một lời nhắn cho thời sinh viên. Lưu bút chỉ lưu trên trình duyệt của bạn, chưa có hệ thống chia sẻ công khai.</p><input id="noteName" class="field" placeholder="Tên hoặc biệt danh" maxlength="60" aria-label="Tên người viết"><textarea id="noteText" placeholder="Mình còn nhớ những ngày..." maxlength="1000" aria-label="Nội dung lưu bút"></textarea><button class="btn primary" id="saveNote" type="button">♡ Giữ lại lời nhắn</button></div><div><div class="panel-title">Những dòng viết cho thanh xuân</div><div class="notes" id="notes"><div class="micro">Chưa có lưu bút trên trình duyệt này.</div></div></div></div></section>
+</main>
+<footer><div class="wrap"><div class="footer-flex"><div>© 2026 Kinh tế K38 · Niên khóa 2007–2011 · Thiết kế lưu giữ kỷ niệm</div><div><a href="https://github.com/xulytiengviet/kinhteK38" target="_blank" rel="noopener noreferrer">Mã nguồn</a> · <a href="https://github.com/Vietflexmap/anhmap" target="_blank" rel="noopener noreferrer">ẢnhMap</a> · <a href="https://github.com/xulytiengviet/clipmap" target="_blank" rel="noopener noreferrer">ClipMap</a></div></div><div class="privacy">Nguồn hồ sơ: K38.docx do người biên tập cung cấp. Chỉ sử dụng dữ liệu cá nhân và ảnh sinh viên khi có quyền công bố phù hợp; nếu có yêu cầu chỉnh sửa hoặc gỡ bỏ hãy liên hệ người quản trị repository. Điểm đặt trên bản đồ chỉ là tâm đại diện vùng địa danh cũ, không phải địa chỉ riêng; ranh giới và địa danh 2025 để tham khảo, không có giá trị pháp lý. Nền bản đồ theo điều khoản của © Esri / © OpenStreetMap và nhà cung cấp liên quan.</div></div></footer>
+<script type="text/plain" id="roster">
+1|0768005|PHẠM TRẦN THỊ NGỌC ÁNH|1989|Hà Tĩnh|Hà Tĩnh
+2|0768029|MAI THỊ GIẢNG|1988|Ninh Bình|Ninh Bình
+3|0768030|BÙI THỊ NGỌC HÀ|1989|Cao Bằng|Cao Bằng
+4|0768031|LÊ THỊ HÀ|1988|Quảng Ngãi|Quảng Ngãi
+5|0768032|NGUYỄN THỊ HÀ|1989|Ninh Bình|Ninh Bình
+6|0768047|NGUYỄN KIM HOA|1988|Thái Bình|Hưng Yên
+7|0768053|TRƯƠNG THỊ NGUYỆT HUẾ|1988|Hà Tây|Hà Nội
+8|0768060|PHẠM THỊ HUYỀN|1988|Thanh Hoá|Thanh Hóa
+9|0768068|LÊ THỊ HƯỜNG|1989|Bình Thuận|Lâm Đồng
+10|0768069|PHẠM THỊ NGỌC HƯỞNG|1989|Bình Thuận|Lâm Đồng
+11|0768080|VŨ KIÊN TRƯỜNG KỲ|1989|Sông Bé|Chưa xác định
+12|0768098|LÊ THỊ LY|1989|Đắk Lắk|Đắk Lắk
+13|0768126|NGUYỄN THỊ Ý NHI|1987|Hà Tĩnh|Hà Tĩnh
+14|0768129|NGÔ THỊ NHUNG|1988|Thanh Hoá|Thanh Hóa
+15|0768131|PHẠM THỊ NHUNG|1989|Hưng Yên|Hưng Yên
+16|0768139|NGUYỄN VĂN PHƯƠNG|1989|Đắk Lắk|Đắk Lắk
+17|0768141|PHẠM VINH QUANG|1989|Vĩnh Phúc|Phú Thọ
+18|0768146|LÊ THỊ KIM QUYÊN|1989|Thái Bình|Hưng Yên
+19|0768151|NGUYỄN VĂN SÁNG|1984|Kiên Giang|An Giang
+20|0768155|NGUYỄN NGỌC TÂM|1988|Nam Định|Ninh Bình
+21|0768156|NGUYỄN THỊ THANH TÂM|1985|Thanh Hoá|Thanh Hóa
+22|0768160|NGUYỄN NGỌC ĐAN THANH|1989|Kiên Giang|An Giang
+23|0768170|PHẠM THỊ THẢO|1984|Thanh Hoá|Thanh Hóa
+24|0768178|NGUYỄN KAO THIỆP|1989|Tp.HCM|Thành phố Hồ Chí Minh
+25|0768183|LÊ THỊ THUẬN|1989|Nam Định|Ninh Bình
+26|0768188|NGUYỄN THỊ THỦY|1989|Nghệ An|Nghệ An
+27|0768189|PHẠM THỊ THỦY|1988|Vĩnh Phúc|Phú Thọ
+28|0768207|LÊ THỊ HIỀN TRINH|1988|Bến Tre|Vĩnh Long
+39|0768219|HOÀNG THỊ VÂN|1987|Bình Thuận|Lâm Đồng
+30|0768221|HỒ THỊ VINH|1988|Khánh Hoà|Khánh Hòa
+31|0768222|LUYỆN THỊ VUI|1986|Đồng Nai|Đồng Nai
+32|0768227|ĐỚI THỊ YẾN|1989|Đà Nẵng|Thành phố Đà Nẵng
+33|0768231|TÔ NGỌC LIÊN|1988|Nghệ An|Nghệ An
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/vietflexmap@1.0.2/dist/vietflexmap.js"></script>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").toLowerCase().replace(/\s+/g," ").trim();
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rows=$("roster").textContent.trim().split(/\n+/).map(line=>{const [stt,id,name,born,old,current]=line.split("|");return {stt,id,name,born:+born,old,current}});
+/* A point represents a broadly recognizable town in the ORIGINAL province.
+   It is NOT an individual birthplace, historical provincial centroid, or precise address. */
+const towns={
+"Hà Tĩnh":[18.355,105.9],"Ninh Bình":[20.25,105.974],"Cao Bằng":[22.666,106.263],
+"Quảng Ngãi":[15.121,108.804],"Thái Bình":[20.447,106.334],"Hà Tây":[20.97,105.77],
+"Thanh Hoá":[19.807,105.776],"Bình Thuận":[10.928,108.102],"Đắk Lắk":[12.674,108.05],
+"Hưng Yên":[20.649,106.051],"Vĩnh Phúc":[21.309,105.604],"Kiên Giang":[10.011,105.08],
+"Nam Định":[20.438,106.162],"Nghệ An":[18.679,105.681],"Tp.HCM":[10.776,106.699],
+"Bến Tre":[10.243,106.377],"Khánh Hoà":[12.246,109.194],"Đồng Nai":[10.947,106.824],
+"Đà Nẵng":[16.059,108.224]
+};
+const R2="https://pub-7dd53e3ae939474d8bbfe3cec7145b16.r2.dev/";
+let map,base,markers=[],chosen=null,boundary=null,lastRows=rows.slice(),busy=false;
+const layers={
+topo:{url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",attrib:"Tiles © Esri · Topographic"},
+sat:{url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",attrib:"Imagery © Esri, Maxar, Earthstar Geographics"},
+road:{url:"https://tile.openstreetmap.org/{z}/{x}/{y}.png",attrib:"© OpenStreetMap contributors"}
+};
+function setStatus(s){$("status").textContent=s}
+function selectBase(which){if(!map)return;if(base)map.removeLayer(base);let k=layers[which]||layers.topo;base=L.tileLayer(k.url,{maxZoom:19,attribution:k.attrib}).addTo(map)}
+function initMap(){
+ if(!window.L){$("map").innerHTML='<div style="padding:60px;text-align:center">Không tải được thư viện Leaflet. Vui lòng kiểm tra Internet hoặc tải lại trang.</div>';setStatus("Không tải được thư viện bản đồ.");return}
+ try{
+  if(window.Vietflex&&typeof window.Vietflex.vietflexMap==="function"){
+   const v=window.Vietflex.vietflexMap("map",{center:[16.35,107.7],zoom:6,zoomControl:false});
+   map=v&&v.map&&typeof v.map.addLayer==="function"?v.map:v;
+   if(!map||typeof map.addLayer!=="function")throw Error("Vietflex không trả về đối tượng Leaflet");
+  } else throw Error("Không có lõi Vietflexmap");
+ }catch(e){
+   try{if(map&&map.remove)map.remove()}catch(_){}
+   const el=$("map");if(el&&el._leaflet_id){el._leaflet_id=null;el.innerHTML=""}
+   map=L.map("map",{zoomControl:false,center:[16.35,107.7],zoom:6,minZoom:4});
+ }
+ L.control.zoom({position:"bottomright"}).addTo(map);
+ L.control.scale({position:"bottomleft",imperial:false}).addTo(map);
+ map.eachLayer(layer=>{if(layer instanceof L.TileLayer)map.removeLayer(layer)});
+ selectBase("topo");
+ map.setMaxBounds([[6,98],[25,120]]);
+ renderMarkers(rows);
+}
+function makePopup(group,place){
+ const modern=[...new Set(group.map(p=>p.current))].join(", ");
+ return '<div class="map-tooltip"><div class="p-title">✦ '+esc(place)+'</div><div class="p-arrow">Địa danh hiện nay: <b>'+esc(modern)+'</b><br>'+group.length+' người bạn từ miền quê này</div>'+group.map(p=>'<button type="button" class="p-person" data-mssv="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong>MSSV '+esc(p.id)+' · Sinh năm '+p.born+'</button>').join("")+'</div>';
+}
+function renderMarkers(items){
+ if(!map)return;
+ markers.forEach(m=>map.removeLayer(m));markers=[];
+ const groups=new Map();
+ items.forEach(p=>{if(!towns[p.old])return;if(!groups.has(p.old))groups.set(p.old,[]);groups.get(p.old).push(p)});
+ groups.forEach((arr,place)=>{
+  const c=towns[place],html='<span class="province-pin '+(arr.length===1?"single":"")+'">'+arr.length+'</span>';
+  const icon=L.divIcon({html,className:"",iconSize:[35,35],iconAnchor:[17,17],popupAnchor:[0,-20]});
+  const marker=L.marker(c,{icon,title:place+" · "+arr.length+" người"}).addTo(map);
+  marker.bindPopup(makePopup(arr,place),{maxWidth:355,minWidth:245,autoPan:true});
+  marker.on("mouseover",()=>marker.openPopup());
+  marker.on("click",()=>{marker.openPopup();showProfile(arr[0],false)});
+  marker.place=place;markers.push(marker);
+ });
+ if(!items.length)setStatus("Không tìm thấy sinh viên phù hợp bộ lọc.");
+}
+function showProfile(p,move){
+ chosen=p;
+ $("profile").innerHTML='<div class="micro">HỒ SƠ KỶ YẾU · KINH TẾ K38</div><h3>'+esc(p.name)+'</h3><dl><dt>MSSV</dt><dd>'+esc(p.id)+'</dd><dt>Năm sinh</dt><dd>'+p.born+'</dd><dt>Nơi sinh cũ</dt><dd>'+esc(p.old)+'</dd><dt>Hiện nay</dt><dd class="change">'+esc(p.current)+'</dd></dl><div class="small">'+(towns[p.old]?'Vị trí bản đồ là điểm đại diện cấp tỉnh, không phải địa điểm sinh chính xác.':'Địa danh cũ chưa đủ thông tin xác định tỉnh hiện nay nên chưa đặt điểm.')+'</div>';
+ document.querySelectorAll(".student").forEach(el=>el.classList.toggle("active",el.dataset.mssv===p.id));
+ if(move&&map&&towns[p.old]){map.flyTo(towns[p.old],Math.max(map.getZoom(),8),{duration:.85});const marker=markers.find(m=>m.place===p.old);if(marker)marker.openPopup()}
+ if(!towns[p.old])setStatus("Sông Bé là địa danh lịch sử trải trên nhiều địa phương hiện nay; cần thêm nơi sinh cấp huyện/xã để xác định đúng.");
+}
+function renderList(){
+ const q=normalize($("search").value),province=$("provinceFilter").value;
+ lastRows=rows.filter(p=>(!province||p.current===province)&&(!q||normalize([p.name,p.id,p.old,p.current].join(" ")).includes(q)));
+ const list=$("studentList");list.replaceChildren();
+ for(const p of lastRows){
+  const b=document.createElement("button");b.type="button";b.className="student"+(chosen&&chosen.id===p.id?" active":"");b.dataset.mssv=p.id;
+  const avatar=document.createElement("span");avatar.className="avatar";avatar.textContent=p.name.split(" ").at(-1).charAt(0);
+  const labels=document.createElement("span");labels.innerHTML='<span class="n">'+esc(p.name)+'</span><span class="origin">'+esc(p.old)+' → '+esc(p.current)+'</span>';
+  b.append(avatar,labels);b.addEventListener("click",()=>showProfile(p,true));
+  b.addEventListener("mouseenter",()=>{showProfile(p,false);if(map){const m=markers.find(m=>m.place===p.old);if(m)m.openPopup()}});
+  list.appendChild(b);
+ }
+ $("found").textContent="Đang hiển thị "+lastRows.length+"/"+rows.length+" người bạn"+(lastRows.some(p=>!towns[p.old])?" · có hồ sơ chưa định vị":"");
+ renderMarkers(lastRows);
+}
+async function showBoundary(){
+ if(!map||busy)return;
+ if(boundary){map.removeLayer(boundary);boundary=null;$("outline").textContent="▱ Ranh giới hiện nay";setStatus("Đã ẩn ranh giới.");return}
+ if(!chosen){setStatus("Hãy chọn một sinh viên để biết tỉnh cần xem ranh giới.");return}
+ if(chosen.current==="Chưa xác định"){setStatus("Không thể tìm ranh giới: hồ sơ này chưa xác định tỉnh hiện nay.");return}
+ busy=true;$("outline").disabled=true;setStatus("Đang tải ranh giới hành chính từ bộ dữ liệu ClipMap / R2…");
+ try{
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
+  let idx,resp;
+  try{resp=await fetch(R2+"index.json",{signal:controller.signal});if(!resp.ok)throw Error("Không tìm thấy chỉ mục R2 (HTTP "+resp.status+")");idx=await resp.json()}finally{clearTimeout(timeout)}
+  if(!Array.isArray(idx.provinces))throw Error("Chỉ mục tỉnh không hợp lệ");
+  const canonical=s=>normalize(s).replace(/^(tinh|thanh pho)\s+/,"").replace(/^tp\s+/,"");
+  const name=canonical(chosen.current);
+  const matches=idx.provinces.filter(p=>canonical(p.name)===name);
+  if(matches.length!==1)throw Error("Không đối chiếu được tên tỉnh "+chosen.current+" trong chỉ mục");
+  const p=matches[0];
+  if(!/^provinces\/[A-Za-z0-9_-]+\.geojson$/.test(String(p.path)))throw Error("Đường dẫn GeoJSON không hợp lệ");
+  const g=await fetch(R2+p.path);if(!g.ok)throw Error("Không tải được GeoJSON: HTTP "+g.status);
+  const gj=await g.json();
+  boundary=L.geoJSON(gj,{interactive:false,style:{color:"#913d36",weight:1.3,fillColor:"#e1ab61",fillOpacity:.12}}).addTo(map);
+  if(boundary.getBounds().isValid())map.fitBounds(boundary.getBounds().pad(.07),{maxZoom:9});
+  $("outline").textContent="✕ Ẩn ranh giới";setStatus("Đã nạp ranh giới tham khảo tỉnh "+chosen.current+" sau sáp nhập 2025.");
+ }catch(e){setStatus("Không tải được ranh giới: "+e.message+". Có thể tra cứu địa danh tại ẢnhMap hoặc ClipMap.")}
+ finally{busy=false;$("outline").disabled=false}
+}
+function exportGeoJSON(){
+ const features=lastRows.filter(p=>towns[p.old]).map(p=>({type:"Feature",geometry:{type:"Point",coordinates:[towns[p.old][1],towns[p.old][0]]},properties:{MSSV:p.id,ho_ten:p.name,nam_sinh:p.born,noi_sinh_cu:p.old,dia_danh_2025:p.current,do_chinh_xac:"Diem dai dien dia danh cap tinh; khong phai vi tri sinh"}}));
+ const data={type:"FeatureCollection",name:"Kinh te K38 2007-2011 - representative points",features};
+ const u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/geo+json"}));
+ const a=document.createElement("a");a.href=u;a.download="K38-mien-que-tham-khao.geojson";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2500);
+ setStatus("Đã xuất "+features.length+" điểm tham khảo GeoJSON WGS84. Không gồm hồ sơ chưa định vị.");
+}
+function addPhotos(files){
+ const valid=[...files].filter(f=>["image/png","image/jpeg","image/webp"].includes(f.type)&&f.size<=8*1024*1024).slice(0,3);
+ if(!valid.length){alert("Chọn ảnh PNG, JPG hoặc WebP dưới 8 MB.");return}
+ const grid=$("memoryGrid");grid.replaceChildren();
+ valid.forEach((file,i)=>{
+  const card=document.createElement("div");card.className="memory-card";const pic=document.createElement("div");pic.className="memory-pic";
+  const img=new Image();const url=URL.createObjectURL(file);img.src=url;img.alt="Ảnh ký ức người dùng chọn số "+(i+1);img.onload=()=>URL.revokeObjectURL(url);
+  pic.appendChild(img);const caption=document.createElement("div");caption.className="memory-caption";caption.textContent="Ký ức của chúng mình · "+(i+1);card.append(pic,caption);grid.appendChild(card);
+ });
+}
+const NOTE_KEY="kinhteK38_guestbook_local_v1";
+function notesRead(){try{const a=JSON.parse(localStorage.getItem(NOTE_KEY)||"[]");return Array.isArray(a)?a.filter(n=>n&&typeof n.name==="string"&&typeof n.text==="string").slice(-25):[]}catch(_){return[]}}
+function notesRender(){
+ const holder=$("notes");holder.replaceChildren();let a=notesRead();
+ if(!a.length){const p=document.createElement("div");p.className="micro";p.textContent="Chưa có lưu bút trên trình duyệt này.";holder.appendChild(p);return}
+ a.reverse().forEach(n=>{const card=document.createElement("div");card.className="note";const name=document.createElement("strong");name.textContent=n.name+" · "+(n.date||"");
+ const p=document.createElement("p");p.textContent=n.text;
+ const del=document.createElement("button");del.type="button";del.textContent="Xóa lời nhắn";del.onclick=()=>{let all=notesRead();all=all.filter(item=>item.id!==n.id);try{localStorage.setItem(NOTE_KEY,JSON.stringify(all))}catch(_){}notesRender()};
+ card.append(name,p,del);holder.appendChild(card)});
+}
+function notesSave(){
+ const name=$("noteName").value.trim().slice(0,60),value=$("noteText").value.trim().slice(0,1000);
+ if(!name||!value){alert("Vui lòng nhập tên và một lời nhắn.");return}
+ const arr=notesRead();arr.push({id:Date.now()+"-"+Math.random().toString(36).slice(2),name,text:value,date:new Date().toLocaleDateString("vi-VN")});
+ try{localStorage.setItem(NOTE_KEY,JSON.stringify(arr.slice(-25)));$("noteText").value="";notesRender()}catch(_){alert("Trình duyệt đang chặn lưu cục bộ. Hãy kiểm tra chế độ riêng tư hoặc dung lượng lưu trữ.")}
+}
+$("total").textContent=rows.length;
+$("places").textContent=new Set(rows.filter(p=>towns[p.old]).map(p=>p.old)).size;
+$("modern").textContent=new Set(rows.filter(p=>p.current!=="Chưa xác định").map(p=>p.current)).size;
+[...new Set(rows.map(p=>p.current))].sort((a,b)=>a.localeCompare(b,"vi")).forEach(name=>$("provinceFilter").add(new Option(name,name)));
+$("search").addEventListener("input",renderList);
+$("provinceFilter").addEventListener("change",renderList);
+$("reset").addEventListener("click",()=>{$("search").value="";$("provinceFilter").value="";renderList();if(map)map.setView([16.35,107.7],6)});
+$("basemap").addEventListener("change",e=>selectBase(e.target.value));
+$("resetMap").addEventListener("click",()=>{if(map)map.setView([16.35,107.7],6)});
+$("outline").addEventListener("click",showBoundary);
+$("export").addEventListener("click",exportGeoJSON);
+$("photos").addEventListener("change",e=>addPhotos(e.target.files));
+$("saveNote").addEventListener("click",notesSave);
+document.addEventListener("click",e=>{const el=e.target.closest("[data-mssv].p-person");if(el){const p=rows.find(x=>x.id===el.dataset.mssv);if(p)showProfile(p,false)}});
+notesRender();renderList();initMap();if(!chosen)showProfile(rows[0],false);
+})();
+</script>
+</body>
+</html>
