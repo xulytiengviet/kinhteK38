@@ -15,7 +15,7 @@ jobs:
           node-version: '22'
       - run: node scripts/audit-k28.mjs
   archive:
-    name: Full archive readiness (requires 20 original/processed photos)
+    name: Full archive readiness (44 original JPG photos)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
