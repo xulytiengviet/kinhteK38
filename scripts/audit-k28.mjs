@@ -17,6 +17,12 @@ for(const id of ["albumK28Viewer","albumK28Image","albumK28Counter","albumK28Tit
  ok(html.includes('id="'+id+'"'),"Missing ID "+id);
 ok(html.includes('>Ảnh K28 · Thanh xuân vẫn ở đây</h2>'),"Wrong gallery heading");
 ok(gallery.includes("const TOTAL = 44"),"Carousel should have 44 images");
+ok(gallery.includes('const legacy = Array.from({length: 10}')&&gallery.includes('const archive = Array.from({length: TOTAL}'),"Album must support archive and current-photo fallback");
+ok(gallery.includes('firstNew && lastNew')&&gallery.includes('imageExists(legacy[0])'),"Album must avoid blank stage when 44 new photos are missing");
+ok(gallery.includes('image.classList.add("is-changing")')&&gallery.includes('probe.onerror'),"Photo transitions must have error handling");
+const fallbackFiles=Array.from({length:10},(_,i)=>"images/ky-niem-k28-goc/"+String(i+1).padStart(2,"0")+".webp");
+ok(fallbackFiles.every(has),"Current published 10-photo backup is incomplete");
+
 ok(gallery.includes("touchend")&&gallery.includes("ArrowRight"),"Carousel navigation incomplete");
 ok(!html.includes("albumK28Enhanced")&&!html.includes("albumK28Original"),"Old AI controls remain");
 ok(!html.includes("Ảnh phục dựng rõ nét")&&!html.includes("Ảnh xử lý làm rõ"),"Old AI labels remain");
@@ -39,6 +45,6 @@ for(let i=1;i<=44;i++){
 }
 if(process.argv.includes("--strict")&&missing.length)issues.push("Missing "+missing.length+"/44 original K28 JPGs");
 console.log("K28 CORE",issues.length?"FAIL":"PASS","| Alumni:",rows.length,"| Photos:",44-missing.length,"/44");
-console.log("K28 image gate:",missing.length?"BLOCKED — import ZIP and push JPGs":"FILES COMPLETE");
+console.log("K28 image gate:",missing.length?"44-photo import pending; published 10-photo fallback active":"44-photo archive complete");
 for(const issue of issues)console.error("✖",issue);
 process.exitCode=issues.length?1:0;
