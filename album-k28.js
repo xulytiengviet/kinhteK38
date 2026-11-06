@@ -96,7 +96,7 @@
       const failed = photos.splice(current, 1);
       if (photos.length) {
         createDots();
-        showStatus("Đang bỏ qua một ảnh không thể tải: " + failed[0].split("/").pop() + ".");
+        showStatus("");
         render(Math.min(current, photos.length - 1));
         return;
       }
@@ -164,14 +164,14 @@
       photos = legacy.slice();
       source = "legacy";
       viewer.classList.add("is-fallback");
-      showStatus("Đang hiển thị 10 ảnh K28 hiện có. Bộ 44 ảnh mới sẽ tự xuất hiện sau khi được đồng bộ lên website.");
+      showStatus("");
     } else {
       // Some deployments contain only the processed WebP directory.
       const alternative = legacy.map(path => path.replace("ky-niem-k28-goc", "ky-niem-k28"));
       if (await imageExists(alternative[0])) {
         photos = alternative;
         source = "legacy";
-        showStatus("Đang hiển thị ảnh K28 hiện có. Bộ 44 ảnh mới chưa được đồng bộ lên website.");
+        showStatus("");
       }
     }
     if (!photos.length) {
