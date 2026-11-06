@@ -12,11 +12,11 @@ Website: https://www.kt28.io.vn/ · Nguồn: xulytiengviet/kinhteK38
 
 Chạy: `node scripts/audit-k28.mjs`.
 
-## FULL CONTENT PASS (chỉ khi có 44 ảnh trên GitHub)
+## FULL CONTENT PASS (44 ảnh đã đồng bộ từ ZIP chính thức)
 - Bộ `K28(1).zip` gồm **44 ảnh JPG gốc, không trùng byte**, do người biên tập cung cấp.
 - Import đúng `images/anh-k28/01.jpg` ... `44.jpg` bằng `python scripts/import_anh_k28.py "K28(1).zip"`.
 - Dữ liệu ảnh được sao chép nguyên byte; hiệu ứng màu giấy cũ/sepia/chụp ảnh polaroid **chỉ dùng CSS**, không AI.
-- Script xóa các thư mục ảnh cũ **sau khi đã xác thực và lưu đủ 44 ảnh**.
+- Hai thư mục ảnh WebP cũ được xóa trong cùng commit công bố 44 ảnh JPG mới.
 - Chạy `node scripts/audit-k28.mjs --strict`; chỉ đạt khi 44/44 ảnh tồn tại trong repository và đã được push lên nhánh `main`.
 
 ## QA thủ công

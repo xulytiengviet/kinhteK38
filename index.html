@@ -43,7 +43,7 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
 <link rel="stylesheet" href="album-k28.css?v=9">
 <link rel="stylesheet" href="k28-experience.css?v=1">
 <script src="cinema-k28.js?v=2" defer></script>
-<script src="album-k28.js?v=11" defer></script>
+<script src="album-k28.js?v=12" defer></script>
 </head>
 <body>
 <header class="masthead"><div class="wrap masthead-inner"><a class="identity" href="#dau">Kinh tế <b>K28</b> <span aria-hidden="true">✦</span></a><nav class="nav" aria-label="Điều hướng"><a href="#dau">TRANG ĐẦU</a><a href="#namthang">NĂM THÁNG</a><a href="#anhxua">ALBUM ẢNH</a><a href="#bandokyuc">BẠN BÈ HÔM NAY</a><a href="#k28Cinema">THƯỚC PHIM</a><a href="#luubut">LƯU BÚT</a></nav></div></header>
@@ -62,7 +62,7 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
    <p>Những khoảnh khắc của lớp K28 trong một khung ảnh hoài cổ. Nhấn <strong>Tiếp</strong> hoặc vuốt ngang để tìm lại từng gương mặt quen; bộ 44 ảnh mới sẽ tự hiển thị khi đã được đồng bộ đầy đủ.</p>
   </div>
   <div id="albumK28Viewer" class="k28-album" tabindex="0" aria-label="Trình chiếu ảnh K28">
-   <div class="k28-album-top"><span class="k28-album-label">✦ Ảnh K28 · 2007–2011</span><span id="albumK28Counter" class="k28-album-count" aria-live="polite">00 / 00</span></div>
+   <div class="k28-album-top"><span class="k28-album-label">✦ Ảnh K28 · 2007–2011</span><span id="albumK28Counter" class="k28-album-count" aria-live="polite">01 / 44</span></div>
    <div class="k28-album-stage" id="albumK28Stage">
     <button class="k28-album-arrow previous" data-k28-prev type="button" aria-label="Ảnh trước">❮</button>
     <button type="button" class="k28-album-open" id="albumK28Zoom" aria-label="Xem ảnh lớn"><span class="k28-album-polaroid"><img id="albumK28Image" alt="Ảnh K28" decoding="async" loading="eager"></span></button>
@@ -81,7 +81,7 @@ footer{padding:24px 0;background:#42282a;color:#dbc8aa;font-size:11px}.footer-fl
  <dialog id="albumK28Lightbox" class="k28-album-dialog" aria-label="Xem ảnh K28 cỡ lớn">
   <div class="k28-album-dialog-head"><strong id="albumK28LightboxLabel">Ảnh K28</strong><button id="albumK28LightboxClose" type="button" aria-label="Đóng ảnh">✕</button></div>
   <img id="albumK28LightboxImage" alt="Ảnh K28">
-  <div class="k28-album-dialog-controls"><button id="albumK28LightboxPrev" type="button">← Trước</button><span id="albumK28LightboxIndex">00 / 00</span><button id="albumK28LightboxNext" type="button">Tiếp →</button></div>
+  <div class="k28-album-dialog-controls"><button id="albumK28LightboxPrev" type="button">← Trước</button><span id="albumK28LightboxIndex">01 / 44</span><button id="albumK28LightboxNext" type="button">Tiếp →</button></div>
  </dialog>
 </section>
 <section class="map-section" id="bandokyuc"><div class="wrap"><div class="section-head"><div class="eyebrow">04 / Kết nối ký ức bằng địa lý</div><h2>Bản đồ K28 · Bạn bè hôm nay</h2><p>Bản đồ mặc định theo nơi ở hiện tại; có thể chuyển về quê quán. Ranh giới hành chính sau sắp xếp 2025 và vị trí đại diện cấp tỉnh/thành được hiển thị, không phải địa chỉ cá nhân.</p></div><div class="map-shell"><aside class="side" aria-label="Tra cứu bạn học"><div class="panel-title">Danh sách thân thương ♡</div><div class="map-mode"><label for="locationMode">Hiển thị</label><select id="locationMode" class="field"><option value="current">Nơi ở hiện tại</option><option value="old">Quê quán</option></select></div><input class="field" id="search" type="search" placeholder="Tìm tên, MSSV, quê quán, nơi ở…" aria-label="Tìm sinh viên"><div class="filter-row"><select class="field" id="provinceFilter" aria-label="Lọc địa danh theo chế độ"><option value="">Tất cả nơi ở</option></select><button class="btn soft" id="reset" type="button" title="Xóa bộ lọc">↺</button></div><div class="micro" id="found" aria-live="polite">Đang tải danh sách…</div><div class="student-list" id="studentList" tabindex="0"></div><div class="profile" id="profile" aria-live="polite"><div class="micro">Chọn một người bạn để tìm về những năm tháng đã qua.</div></div><div class="map-actions"><button class="btn soft" type="button" id="outline">▱ Ẩn ranh giới</button><button class="btn soft" type="button" id="allBoundaries">▱ Nạp đủ 34 tỉnh/thành</button><button class="btn soft" type="button" id="export">↓ Xuất GeoJSON</button></div><div class="status" role="status" id="status">Vị trí đại diện tỉnh/thành hoặc quốc gia; không phải nơi ở cụ thể.</div></aside><div class="map-area"><div id="map" role="region" aria-label="Bản đồ địa hình các miền quê lớp K28"></div><div class="map-badge" id="mapBadge">⌖ KINH TẾ K28 · NƠI Ở HIỆN TẠI</div><div class="map-tools"><select id="basemap" aria-label="Chọn lớp bản đồ"><option value="topo">Địa hình</option><option value="sat">Vệ tinh · ClipMap</option><option value="road">Đường phố</option></select><button id="resetMap" title="Xem toàn cảnh Việt Nam" type="button">⌂ Toàn cảnh</button></div><div class="map-note">● Ranh giới tỉnh/thành 2025 · Điểm đại diện, không phải nhà riêng · <a href="https://github.com/ThangLeQuoc/vietnamese-provinces-database" target="_blank" rel="noopener">Nguồn GeoJSON</a></div></div></div></div></section>

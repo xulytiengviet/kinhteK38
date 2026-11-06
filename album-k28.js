@@ -4,32 +4,22 @@
   const viewer = $("albumK28Viewer");
   if (!viewer) return;
 
-  // The current archive always comes from K28(1).zip. Legacy photos provide
-  // a temporary, real-image fallback only while the 44 originals are missing.
+  // Original JPGs from K28(1).zip; bytes are unchanged.
   const TOTAL = 44;
   const archive = Array.from({length: TOTAL}, (_, i) =>
     "images/anh-k28/" + String(i + 1).padStart(2, "0") + ".jpg");
-  const legacy = Array.from({length: 10}, (_, i) =>
-    "images/ky-niem-k28-goc/" + String(i + 1).padStart(2, "0") + ".webp");
 
   const image = $("albumK28Image"), status = $("albumK28Status");
   const empty = $("albumK28Empty"), dialog = $("albumK28Lightbox");
   const dots = $("albumK28Dots");
   const zoom = $("albumK28Zoom");
   let photos = [], current = 0, token = 0, touchStart = null;
-  let lastFocused = null, displayReady = false, source = "loading";
+  let lastFocused = null, displayReady = false;
   const label = () => String(current + 1).padStart(2, "0") + " / " + String(photos.length).padStart(2, "0");
   const showStatus = message => {
     status.textContent = message || "";
     status.hidden = !message;
   };
-  const imageExists = url => new Promise(resolve => {
-    const check = new Image();
-    check.onload = () => resolve(true);
-    check.onerror = () => resolve(false);
-    check.src = url;
-  });
-
   function updateLabels() {
     const suffix = String(current + 1).padStart(2, "0");
     $("albumK28Title").textContent = "Ảnh K28 · Tấm " + suffix;
@@ -149,44 +139,12 @@
     if (event.key === "ArrowRight") { event.preventDefault(); step(1); }
   });
 
-  async function initialize() {
-    // New archive is selected only when the first and last items are present.
-    // This avoids the all-white failure while a GitHub upload is incomplete.
-    const [firstNew, lastNew] = await Promise.all([
-      imageExists(archive[0]), imageExists(archive[TOTAL - 1])
-    ]);
-    if (firstNew && lastNew) {
-      photos = archive.slice();
-      source = "archive";
-      viewer.classList.remove("is-fallback");
-      showStatus("");
-    } else if (await imageExists(legacy[0])) {
-      photos = legacy.slice();
-      source = "legacy";
-      viewer.classList.add("is-fallback");
-      showStatus("");
-    } else {
-      // Some deployments contain only the processed WebP directory.
-      const alternative = legacy.map(path => path.replace("ky-niem-k28-goc", "ky-niem-k28"));
-      if (await imageExists(alternative[0])) {
-        photos = alternative;
-        source = "legacy";
-        showStatus("");
-      }
-    }
-    if (!photos.length) {
-      empty.hidden = false;
-      empty.textContent = "Chưa có ảnh K28 trên máy chủ.";
-      showStatus("Cần tải bộ ảnh K28 vào GitHub trước khi hiển thị.");
-      $("albumK28Counter").textContent = "00 / 00";
-      return;
-    }
+  // All 44 photos are committed atomically with this source file.
+  function initialize() {
+    photos = archive.slice();
+    showStatus("");
     createDots();
     render(0);
   }
-  initialize().catch(() => {
-    empty.hidden = false;
-    empty.textContent = "Không thể tải album K28.";
-    showStatus("Đường dẫn ảnh hoặc kết nối máy chủ gặp sự cố.");
-  });
+  initialize();
 })();

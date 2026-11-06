@@ -7,25 +7,16 @@
 
 ## Ảnh K28: 44 tấm nguyên bản · phong cách hoài cổ
 
-Album ưu tiên **44 ảnh JPG gốc** của bộ `K28(1).zip`, giữ nguyên pixel, không xử lý AI. **Nếu bộ 44 ảnh chưa có trên GitHub Pages, giao diện tự dùng 10 ảnh WebP K28 đã công bố** để không xuất hiện khung trắng; số ảnh hiển thị khi đó là 10/10. Khi 44 ảnh JPG đã có đầy đủ, hệ thống tự ưu tiên bộ mới. Các hiệu ứng ảnh rửa, khung giấy cũ, tông ấm/sepia nhẹ được áp dụng chỉ bằng **CSS** để có cảm giác cuối thập niên 1980 – đầu 1990.
+Album dùng **44 ảnh JPG gốc** được công bố đầy đủ trên GitHub. Các hiệu ứng ảnh rửa, khung giấy cũ, tông ấm/sepia nhẹ được áp dụng chỉ bằng **CSS** để có cảm giác cuối thập niên 1980 – đầu 1990.
 
 Chức năng: một khung ảnh, nút Trước/Tiếp, vuốt ngang, phím mũi tên khi album được chọn, băng phim đánh số 01–44 và phóng lớn. Ảnh dùng `object-fit: contain`, không cắt khuôn mặt.
 
-### Nhập ZIP chính thức vào repository
+### Bộ ảnh chính thức đã đồng bộ
+44/44 ảnh JPG nguyên bản từ `K28(1).zip` đã được đưa lên GitHub theo thứ tự 01–44. 
+`data/anh-k28-manifest.json` chứa tên nguồn, SHA-256 và dung lượng để kiểm chứng byte gốc.
+Hai thư mục ảnh phiên bản cũ đã được xóa. Website chỉ dùng bộ ảnh này; không dùng ảnh AI.
 
-Lưu file đã cung cấp `K28(1).zip` vào thư mục gốc của bản clone repository, sau đó chạy:
-
-```bash
-python scripts/import_anh_k28.py "K28(1).zip"
-node scripts/audit-k28.mjs --strict
-git add -A
-git commit -m "assets(K28): publish 44 original K28 photos"
-git push origin main
-```
-
-Script kiểm tra đủ 44 tệp, bản sao nguyên byte và trùng lặp, tạo `data/anh-k28-manifest.json` (SHA-256 từng ảnh), đưa ảnh vào `images/anh-k28/01.jpg` đến `44.jpg`. Chỉ khi đó script mới dọn thư mục ảnh của các phiên bản trước. Ảnh nằm trong ZIP **chưa được coi là đã triển khai** nếu các tệp JPG chưa có trên GitHub. Không xóa 10 ảnh dự phòng khỏi repository trước khi 44 ảnh mới được xác nhận hiển thị trên website; nếu muốn loại bỏ hoàn toàn ảnh cũ, hãy làm sau FULL PASS.
-
-**Lưu ý:** GitHub không tự đọc tệp ZIP đính kèm trong ChatGPT. Cần thực hiện bước import/push phía trên từ máy đã đăng nhập GitHub. Không đưa ZIP gốc vào Git commit nếu chỉ cần lưu các ảnh đã giải nén.
+Kiểm thử: `node scripts/audit-k28.mjs --strict`. Việc kiểm tra trên thiết bị thực vẫn cần thực hiện riêng.
 
 ## WebGIS, dữ liệu và âm nhạc
 - **Danh sách:** 33 bạn học; 24 bạn có nơi ở hiện tại đã xác định.
