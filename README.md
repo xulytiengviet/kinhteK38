@@ -1,60 +1,44 @@
 # Kinh tế K28 · Thanh xuân của chúng mình
 
-- Website: https://www.kt28.io.vn/
-- Mã nguồn: https://github.com/xulytiengviet/kinhteK38
-- Niên khóa: 2007–2011
-- Lời tặng: ♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.
-- Giấy phép: kiểm tra LICENSE trước khi tái sử dụng nội dung và hình ảnh; tác quyền ảnh, video của chủ sở hữu tương ứng.
+**Website:** https://www.kt28.io.vn/ · **Niên khóa:** 2007–2011  
+**Lời tặng:** ♡ Thầy Long Ngo gửi tặng Lớp Kinh tế K28.
 
-## Trải nghiệm
-Trang đầu cảm xúc → Chuyện chúng mình → Dòng thời gian 2007–2011 → Album ảnh → Bản đồ bạn bè → YouTube & nhạc → Lưu bút cá nhân → Lời gửi cuối.
+Đây là kỷ yếu WebGIS dành cho những người bạn Kinh tế K28. Website gồm trang đầu, dòng thời gian, **Ảnh K28**, bản đồ bạn bè, video YouTube, lưu bút và lời gửi cuối.
 
-Lưu ý: Không biến kỷ niệm gợi nhớ thành các sự kiện lịch sử được khẳng định khi chưa có xác nhận của lớp.
+## Ảnh K28: 44 tấm nguyên bản · phong cách hoài cổ
 
-## Dữ liệu chuẩn
-- Có 33 thành viên, lưu chính tại data/roster-k28.csv và một bảng nhúng trong index.html.
-- Đúng 24/33 thành viên có nơi ở hiện tại đã xác định, 9 người chưa xác định.
-- MSSV 0768219 mang STT 29.
-- Trên bản đồ có thể chọn nơi ở hiện tại hoặc quê quán; lọc và thống kê phải đổi đồng bộ.
-- Điểm trên bản đồ là tâm đại diện địa danh, không phải GPS nhà riêng.
-- Xuất GeoJSON mặc định không chứa MSSV hoặc năm sinh. Hồ sơ gốc vẫn ở repository công khai; người quản trị chịu trách nhiệm xin phép và xử lý yêu cầu sửa/gỡ.
-- Ranh giới 34 tỉnh/thành năm 2025 dùng dữ liệu cộng đồng từ https://github.com/ThangLeQuoc/vietnamese-provinces-database, chỉ để tham khảo.
+Album dùng **44 ảnh JPG gốc**, giữ nguyên pixel, không xử lý AI. Các hiệu ứng ảnh rửa, khung giấy cũ, tông ấm/sepia nhẹ được áp dụng chỉ bằng **CSS** để có cảm giác cuối thập niên 1980 – đầu 1990.
 
-## Album ảnh
-Module: album-k28.js và album-k28.css. HTML phải có albumK28Groups, albumK28Message, các nút chuyển chế độ, dialog cùng các phần tử của nó.
+Chức năng: một khung ảnh, nút Trước/Tiếp, vuốt ngang, phím mũi tên khi album được chọn, băng phim đánh số 01–44 và phóng lớn. Ảnh dùng `object-fit: contain`, không cắt khuôn mặt.
 
-Có hai bộ ảnh dự kiến:
-- images/ky-niem-k28/01.webp đến 10.webp: ảnh xử lý làm rõ
-- images/ky-niem-k28-goc/01.webp đến 10.webp: ảnh tư liệu gốc
+### Nhập ZIP chính thức vào repository
 
-Album công khai mang tên **Ảnh K28**, chỉ hiển thị **một khung ảnh**, điều hướng **Trước / Tiếp**, 10 nút chọn nhanh, vuốt ngang, phím mũi tên và mở ảnh lớn. Ảnh dùng `object-fit: contain` để không cắt khuôn mặt. Các ảnh nguồn gốc vẫn lưu trong repository phục vụ bảo quản tư liệu nhưng không còn nút chuyển chế độ hoặc các nhãn kỹ thuật hiển thị cho bạn học.
+Lưu file đã cung cấp `K28(1).zip` vào thư mục gốc của bản clone repository, sau đó chạy:
 
-Ảnh làm rõ bằng AI cần đối chiếu bản gốc trước khi khẳng định nhân vật, địa điểm và thời gian.
+```bash
+python scripts/import_anh_k28.py "K28(1).zip"
+node scripts/audit-k28.mjs --strict
+git add -A
+git commit -m "assets(K28): publish 44 original K28 photos"
+git push origin main
+```
 
-## Video và lưu bút
-- Video được nhúng từ YouTube: https://www.youtube.com/watch?v=Q6IrWD7cFUI. Người xem chủ động phát; có liên kết mở YouTube khi không thể nhúng.
-- Lưu bút hiện chỉ lưu ở trình duyệt người dùng (localStorage), có chức năng sao lưu JSON; **chưa chia sẻ chung giữa các thành viên**.
-- Nút chia sẻ cho phép mở trình chia sẻ trên thiết bị hỗ trợ hoặc sao chép đường dẫn.
+Script kiểm tra đủ 44 tệp, bản sao nguyên byte và trùng lặp, tạo `data/anh-k28-manifest.json` (SHA-256 từng ảnh), đưa ảnh vào `images/anh-k28/01.jpg` đến `44.jpg`. Chỉ khi đó script mới dọn thư mục ảnh của các phiên bản trước. Ảnh nằm trong ZIP **chưa được coi là đã triển khai** nếu các tệp JPG chưa có trên GitHub.
 
-## Triển khai
-GitHub Pages: nhánh main, thư mục gốc. Tệp CNAME giữ www.kt28.io.vn; hướng dẫn DNS PA Việt Nam tại HUONG_DAN_TEN_MIEN_PA_VIET_NAM.md.
+**Lưu ý:** GitHub không tự đọc tệp ZIP đính kèm trong ChatGPT. Cần thực hiện bước import/push phía trên từ máy đã đăng nhập GitHub. Không đưa ZIP gốc vào Git commit nếu chỉ cần lưu các ảnh đã giải nén.
+
+## WebGIS, dữ liệu và âm nhạc
+- **Danh sách:** 33 bạn học; 24 bạn có nơi ở hiện tại đã xác định.
+- **Hồ sơ:** STT 29 tương ứng MSSV 0768219; danh sách nguồn được lưu trong `data/roster-k28.csv`.
+- **Bản đồ:** chuyển quê quán / nơi ở hiện tại; các điểm là tâm địa danh đại diện, không phải vị trí nhà riêng.
+- **Ranh giới địa giới 2025:** dữ liệu cộng đồng, chỉ tham khảo.
+- **Video:** https://www.youtube.com/watch?v=Q6IrWD7cFUI, chủ động chạm để phát.
+- **Lưu bút:** lưu cục bộ ở trình duyệt, hỗ trợ xuất JSON, chưa có backend lưu bút chung.
 
 ## Kiểm định
-- node scripts/audit-k28.mjs: kiểm tra Core.
-- node scripts/audit-k28.mjs --strict: kiểm tra đầy đủ 20 ảnh.
-- CI: .github/workflows/quality-gate.yml
-- Điều kiện nghiệm thu và phân loại PASS: docs/QUALITY_GATE.md
+- `node scripts/audit-k28.mjs`: CORE QA (HTML/JS, bản đồ, dữ liệu).
+- `node scripts/audit-k28.mjs --strict`: FULL IMAGE QA (44 ảnh JPG phải tồn tại).
+- `docs/QUALITY_GATE.md`: quy trình nghiệm thu.
+- `.github/workflows/quality-gate.yml`: GitHub Actions.
 
-**Chưa FULL PASS** cho đến khi cung cấp 20 tệp ảnh đúng, rà soát tư liệu, quyền công bố và kiểm thử thực tế trên thiết bị.
-
-
-## Gói ảnh chính thức của người biên tập (05/11/2026)
-
-**Đã đồng bộ lên GitHub đủ 20/20 WebP từ bộ ZIP** (10 ảnh chính trong `images/ky-niem-k28/` và 10 ảnh lưu trữ trong `images/ky-niem-k28-goc/`) tại commit `9d92eb371befd232c003327d0d0249584854acee`. Mã băm đối chiếu với nguồn gốc trùng khớp. Giao diện công khai chỉ hiển thị tên chung **Ảnh K28**; ảnh lưu trữ tiếp tục được giữ nguyên trong repository. Cổng kiểm tra `--strict` đã PASS ở commit đăng ảnh; rà soát nội dung và quyền công bố vẫn là công đoạn biên tập riêng.
-
-
-## Album Ảnh K28 · Bộ 44 ảnh nguyên bản (06/11/2026)
-
-Bộ album mới dùng **44 ảnh JPG gốc** từ `K28(1).zip`, hiển thị một khung ảnh, nút Trước/Tiếp, vuốt ngang, phím mũi tên, phóng lớn và băng phim chọn nhanh. Giao diện hoài cổ giấy ngà và sepia nhẹ **chỉ bằng CSS**, không sửa pixel hay dùng AI. Mọi dữ liệu ảnh gốc được giữ nguyên theo SHA-256.
-
-Cần nhập 44 ảnh vào `images/anh-k28/` trên GitHub Pages bằng `python scripts/import_anh_k28.py "K28(1).zip"` ở bản clone repo, sau đó commit/push. Script xác thực số lượng và loại bỏ thư mục ảnh của bản cũ **sau khi nhập đủ 44 ảnh**. Nếu ảnh nhị phân chưa được đẩy lên GitHub, mã album hiển thị trạng thái đồng bộ và kiểm thử `--strict` chưa PASS; không giả định ảnh đã triển khai chỉ vì HTML/JS có mặt.
+Trạng thái FULL PASS chỉ đạt khi mã nguồn, 44 tệp ảnh gốc trên GitHub Pages và kiểm thử thực tế đều đã được xác nhận. Việc công bố dữ liệu cá nhân và ảnh lưu niệm cần có quyền phù hợp.
