@@ -7,7 +7,7 @@
 
 ## Ảnh K28: 44 tấm nguyên bản · phong cách hoài cổ
 
-Album dùng **44 ảnh JPG gốc**, giữ nguyên pixel, không xử lý AI. Các hiệu ứng ảnh rửa, khung giấy cũ, tông ấm/sepia nhẹ được áp dụng chỉ bằng **CSS** để có cảm giác cuối thập niên 1980 – đầu 1990.
+Album ưu tiên **44 ảnh JPG gốc** của bộ `K28(1).zip`, giữ nguyên pixel, không xử lý AI. **Nếu bộ 44 ảnh chưa có trên GitHub Pages, giao diện tự dùng 10 ảnh WebP K28 đã công bố** để không xuất hiện khung trắng; số ảnh hiển thị khi đó là 10/10. Khi 44 ảnh JPG đã có đầy đủ, hệ thống tự ưu tiên bộ mới. Các hiệu ứng ảnh rửa, khung giấy cũ, tông ấm/sepia nhẹ được áp dụng chỉ bằng **CSS** để có cảm giác cuối thập niên 1980 – đầu 1990.
 
 Chức năng: một khung ảnh, nút Trước/Tiếp, vuốt ngang, phím mũi tên khi album được chọn, băng phim đánh số 01–44 và phóng lớn. Ảnh dùng `object-fit: contain`, không cắt khuôn mặt.
 
@@ -23,7 +23,7 @@ git commit -m "assets(K28): publish 44 original K28 photos"
 git push origin main
 ```
 
-Script kiểm tra đủ 44 tệp, bản sao nguyên byte và trùng lặp, tạo `data/anh-k28-manifest.json` (SHA-256 từng ảnh), đưa ảnh vào `images/anh-k28/01.jpg` đến `44.jpg`. Chỉ khi đó script mới dọn thư mục ảnh của các phiên bản trước. Ảnh nằm trong ZIP **chưa được coi là đã triển khai** nếu các tệp JPG chưa có trên GitHub.
+Script kiểm tra đủ 44 tệp, bản sao nguyên byte và trùng lặp, tạo `data/anh-k28-manifest.json` (SHA-256 từng ảnh), đưa ảnh vào `images/anh-k28/01.jpg` đến `44.jpg`. Chỉ khi đó script mới dọn thư mục ảnh của các phiên bản trước. Ảnh nằm trong ZIP **chưa được coi là đã triển khai** nếu các tệp JPG chưa có trên GitHub. Không xóa 10 ảnh dự phòng khỏi repository trước khi 44 ảnh mới được xác nhận hiển thị trên website; nếu muốn loại bỏ hoàn toàn ảnh cũ, hãy làm sau FULL PASS.
 
 **Lưu ý:** GitHub không tự đọc tệp ZIP đính kèm trong ChatGPT. Cần thực hiện bước import/push phía trên từ máy đã đăng nhập GitHub. Không đưa ZIP gốc vào Git commit nếu chỉ cần lưu các ảnh đã giải nén.
 
