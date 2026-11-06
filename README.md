@@ -51,3 +51,10 @@ GitHub Pages: nhánh main, thư mục gốc. Tệp CNAME giữ www.kt28.io.vn; h
 ## Gói ảnh chính thức của người biên tập (05/11/2026)
 
 **Đã đồng bộ lên GitHub đủ 20/20 WebP từ bộ ZIP** (10 ảnh chính trong `images/ky-niem-k28/` và 10 ảnh lưu trữ trong `images/ky-niem-k28-goc/`) tại commit `9d92eb371befd232c003327d0d0249584854acee`. Mã băm đối chiếu với nguồn gốc trùng khớp. Giao diện công khai chỉ hiển thị tên chung **Ảnh K28**; ảnh lưu trữ tiếp tục được giữ nguyên trong repository. Cổng kiểm tra `--strict` đã PASS ở commit đăng ảnh; rà soát nội dung và quyền công bố vẫn là công đoạn biên tập riêng.
+
+
+## Album Ảnh K28 · Bộ 44 ảnh nguyên bản (06/11/2026)
+
+Bộ album mới dùng **44 ảnh JPG gốc** từ `K28(1).zip`, hiển thị một khung ảnh, nút Trước/Tiếp, vuốt ngang, phím mũi tên, phóng lớn và băng phim chọn nhanh. Giao diện hoài cổ giấy ngà và sepia nhẹ **chỉ bằng CSS**, không sửa pixel hay dùng AI. Mọi dữ liệu ảnh gốc được giữ nguyên theo SHA-256.
+
+Cần nhập 44 ảnh vào `images/anh-k28/` trên GitHub Pages bằng `python scripts/import_anh_k28.py "K28(1).zip"` ở bản clone repo, sau đó commit/push. Script xác thực số lượng và loại bỏ thư mục ảnh của bản cũ **sau khi nhập đủ 44 ảnh**. Nếu ảnh nhị phân chưa được đẩy lên GitHub, mã album hiển thị trạng thái đồng bộ và kiểm thử `--strict` chưa PASS; không giả định ảnh đã triển khai chỉ vì HTML/JS có mặt.
