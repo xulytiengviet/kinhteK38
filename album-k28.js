@@ -19,7 +19,7 @@
     for (const [n, dot] of Array.from(dots.children).entries()) {
       dot.classList.toggle("is-active", n === current);
       dot.setAttribute("aria-current", n === current ? "true" : "false");
-      if (n === current) dot.scrollIntoView({block:"nearest", inline:"nearest", behavior:"instant"});
+      if (n === current) dots.scrollTo({left: Math.max(0, dot.offsetLeft - dots.offsetLeft - (dots.clientWidth - dot.offsetWidth) / 2), behavior:"auto"});
     }
   }
   function render(i) {
